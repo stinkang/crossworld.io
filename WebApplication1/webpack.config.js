@@ -5,10 +5,14 @@ var path = require("path");
 var WebpackNotifierPlugin = require("webpack-notifier");
 var BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 module.exports = {
-    entry: ['babel-polyfill', "./wwwroot/src/index.tsx"],
+    mode: 'development',
+    entry: {
+        index: './wwwroot/src/Home/index.tsx',
+        crossword: './wwwroot/src/Crossword/index.tsx'
+    },
     output: {
         path: path.resolve(__dirname, "./wwwroot/dist"),
-        filename: "bundle.js"
+        filename: '[name].bundle.js'
     },
     module: {
         rules: [
