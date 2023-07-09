@@ -37,10 +37,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Pages" />
-    </ItemGroup>
-
-    <ItemGroup>
       <AdditionalFiles Include="Views\Crossword\Details.cshtml" />
       <AdditionalFiles Include="Views\Crossword\Index.cshtml" />
     </ItemGroup>
