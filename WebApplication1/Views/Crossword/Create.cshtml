@@ -1,0 +1,36 @@
+﻿@model WebApplication1.Models.Crossword
+
+<h2>Create New Crossword</h2>
+
+@using (Html.BeginForm("Create", "Crossword", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div>
+        <label for="Width">Width:</label>
+        @Html.TextBoxFor(model => model.Width)
+    </div>
+    <div>
+        <label for="Height">Height:</label>
+        @Html.TextBoxFor(model => model.Height)
+    </div>
+    <div>
+        <h3>Clue:</h3>
+        <label for="Number">Number:</label>
+        @Html.TextBox("Clues[0].Number")
+        <label for="ClueText">ClueText:</label>
+        @Html.TextBox("Clues[0].ClueText")
+        <label for="ClueDirection">ClueDirection:</label>
+        @Html.TextBox("Clues[0].ClueDirection")
+        <label for="ClueDirection">Answer:</label>
+        @Html.TextBox("Clues[0].Answer")
+    </div>
+    <div>
+        <h3>Grid:</h3>
+        <label for="Grid">Grid:</label>
+        @Html.TextBox("Grid[0]")
+    </div>
+    
+    <!-- We're not including inputs for Clues and Grid for simplicity, but you might want to include these depending on your requirements. -->
+    <input type="submit" value="Create">
+}
