@@ -112,3 +112,4 @@ C:\Users\austi\RiderProjects\WebApplication1\WebApplication1\bin\Debug\net6.0\pa
 C:\Users\austi\RiderProjects\WebApplication1\WebApplication1\bin\Debug\net6.0\babel.config.json
 C:\Users\austi\RiderProjects\WebApplication1\WebApplication1\bin\Debug\net6.0\runtimes\win-x64\native\ChakraCore.dll
 C:\Users\austi\RiderProjects\WebApplication1\WebApplication1\bin\Debug\net6.0\runtimes\win-x64\native\ClearScriptV8.win-x64.dll
+C:\Users\austi\RiderProjects\WebApplication1\WebApplication1\bin\Debug\net6.0\tsconfig.json

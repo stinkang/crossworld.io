@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zA+//bDqQpdPhqnOy1SbgLEjN2oTP74GhhhE60C9n6U=",
+  "Hash": "AmCQh4eq2w2qD5gB6mhuLcKT771MuWw/MhMcz+TuGrs=",
   "Source": "CrossWorldApp",
   "BasePath": "_content/CrossWorldApp",
   "Mode": "Default",
@@ -134,23 +134,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
-    },
-    {
-      "Identity": "C:\\Users\\austi\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\js\\Tutorial.js",
-      "SourceId": "CrossWorldApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\austi\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
-      "BasePath": "_content/CrossWorldApp",
-      "RelativePath": "js/Tutorial.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\Tutorial.js"
     },
     {
       "Identity": "C:\\Users\\austi\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
@@ -1120,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\austi\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\src\\Tutorial.tsx",
+      "SourceId": "CrossWorldApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\austi\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/CrossWorldApp",
+      "RelativePath": "src/Tutorial.tsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\src\\Tutorial.tsx"
     }
   ]
 }

@@ -21,10 +21,6 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\austi\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\js\\Tutorial.js",
-      "PackagePath": "staticwebassets\\js\\Tutorial.js"
-    },
-    {
       "Id": "C:\\Users\\austi\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -255,6 +251,10 @@
     {
       "Id": "C:\\Users\\austi\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\austi\\RiderProjects\\WebApplication1\\WebApplication1\\wwwroot\\src\\Tutorial.tsx",
+      "PackagePath": "staticwebassets\\src\\Tutorial.tsx"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.CrossWorldApp.Microsoft.AspNetCore.StaticWebAssets.props",

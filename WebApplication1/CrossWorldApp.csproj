@@ -7,6 +7,17 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="React\**" />
+      <Content Remove="React\**" />
+      <EmbeddedResource Remove="React\**" />
+      <None Remove="React\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="wwwroot\src\index.tsx" />
+    </ItemGroup>
+
+    <ItemGroup>
       <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.win-x64" Version="3.21.0" />
       <PackageReference Include="JavaScriptEngineSwitcher.Extensions.MsDependencyInjection" Version="3.21.0" />
       <PackageReference Include="JavaScriptEngineSwitcher.V8" Version="3.21.3" />
@@ -27,7 +38,6 @@
 
     <ItemGroup>
       <Folder Include="Pages" />
-      <Folder Include="React\dist\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -36,8 +46,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="React\src\App.js" />
-      <Content Include="React\src\index.js" />
+      <TypeScriptCompile Include="wwwroot\src\index.tsx" />
     </ItemGroup>
 
 </Project>
