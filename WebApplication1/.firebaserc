@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "crossworld--dev",
+    "prod": "crossworld-8f2b0",
+    "dev": "crossworld--dev"
+  }
+}

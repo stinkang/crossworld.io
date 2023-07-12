@@ -4,11 +4,11 @@ using WebApplication1.Repositories;
 
 namespace WebApplication1.Controllers;
 
-public class CrosswordController : Controller
+public class CrosswordFeedController : Controller
 {
     private readonly ICrosswordRepository _crosswordRepository;
 
-    public CrosswordController(ICrosswordRepository crosswordRepository)
+    public CrosswordFeedController(ICrosswordRepository crosswordRepository)
     {
         _crosswordRepository = crosswordRepository;
     }

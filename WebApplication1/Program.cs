@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1;
 using WebApplication1.Repositories;
 using Microsoft.AspNetCore.Http;
-using JavaScriptEngineSwitcher.V8;
+using JavaScriptEngineSwitcher.ChakraCore;
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using React.AspNet;
 
@@ -12,7 +12,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddReact();
 
 // Make sure a JS engine is registered, or you will get an error!
-builder.Services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName).AddV8();
+builder.Services.AddJsEngineSwitcher(options => options.DefaultEngineName = ChakraCoreJsEngine.EngineName).AddChakraCore();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -41,7 +41,10 @@ app.UseReact(config =>
     // your components as well as all of their dependencies.
     // See http://reactjs.net/ for more information. Example:
     // config
-    //     .AddScript("~/React/src/App.js");
+    //     .SetReuseJavaScriptEngines(true)
+    //     .SetLoadBabel(false)
+    //     .SetLoadReact(false)
+    //     .SetReactAppBuildPath("~/dist");
 
     // If you use an external build too (for example, Babel, Webpack,
     // Browserify or Gulp), you can improve performance by disabling
