@@ -1,0 +1,17 @@
+﻿@model int?
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<body>
+    <div id="composition-root"></div>
+    <script src="~/dist/compose.js"></script>
+    <script type="text/javascript">
+        (function () {
+            window.InitComposition({
+                cid: @Model
+            });
+        })();
+    </script>
+</body>

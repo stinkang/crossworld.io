@@ -1,31 +1,47 @@
-﻿
-/// <binding />
-"use strict";
-var path = require("path");
-var WebpackNotifierPlugin = require("webpack-notifier");
-var BrowserSyncPlugin = require("browser-sync-webpack-plugin");
+﻿const path = require('path');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+
 module.exports = {
-    mode: 'development',
     entry: {
-        index: './wwwroot/src/Home/index.tsx',
-        crossword: './wwwroot/src/Crossword/index.tsx'
+        compose: './Content/components/Compose/index.js',
     },
     output: {
-        path: path.resolve(__dirname, "./wwwroot/dist"),
-        filename: '[name].bundle.js'
+        filename: '[name].js',
+        path: path.resolve(__dirname, './wwwroot/dist'),
     },
+    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
+                test: /\.(js|jsx|ts|tsx)$/,
                 exclude: /node_modules/,
+                loader: 'babel-loader',
+            },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
             },
         ],
     },
-    devtool: "inline-source-map",
-    plugins: [new WebpackNotifierPlugin(), new BrowserSyncPlugin()],
     resolve: {
-        extensions: ['.js', '.jsx', '.tsx', '.ts'],
-    }
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+    },
+    plugins: [
+        new WebpackManifestPlugin({
+            fileName: 'asset-manifest.json',
+            generate: (seed, files) => {
+                const manifestFiles = files.reduce((manifest, file) => {
+                    manifest[file.name] = file.path;
+                    return manifest;
+                }, seed);
+
+                const entrypointFiles = files.filter(x => x.isInitial && !x.name.endsWith('.map')).map(x => x.path);
+
+                return {
+                    files: manifestFiles,
+                    entrypoints: entrypointFiles,
+                };
+            },
+        }),
+    ]
 };
