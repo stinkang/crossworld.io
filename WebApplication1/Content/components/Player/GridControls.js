@@ -333,15 +333,15 @@ export default class GridControls extends Component {
       return this.typeLetterSync(letter, isRebus, {nextClueIfFilled});
     }
     if (!this.nextTime) this.nextTime = Date.now();
-    // setTimeout(() => {
-    //   if (letter === '/') isRebus = true;
-    //   const {r, c} = this.props.selected;
-    //   const value = this.props.grid[r][c].value;
-    //   if (!isRebus) {
-    //     this.goToNextEmptyCell({nextClueIfFilled});
-    //   }
-    //   this.props.updateGrid(r, c, isRebus ? (value || '').substr(0, 10) + letter : letter);
-    // }, Math.max(0, this.nextTime - Date.now()));
+    setTimeout(() => {
+      if (letter === '/') isRebus = true;
+      const {r, c} = this.props.selected;
+      const value = this.props.grid[r][c].value;
+      if (!isRebus) {
+        this.goToNextEmptyCell({nextClueIfFilled});
+      }
+      this.props.updateGrid(r, c, isRebus ? (value || '').substr(0, 10) + letter : letter);
+    }, Math.max(0, this.nextTime - Date.now()));
     this.nextTime = Math.max(this.nextTime, Date.now()) + 30;
   }
 

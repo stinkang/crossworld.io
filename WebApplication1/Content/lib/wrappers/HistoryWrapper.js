@@ -126,15 +126,15 @@ export default class HistoryWrapper {
       ...event,
       timestamp: (_.last(this.history)?.timestamp ?? 0) + this.optimisticEvents.length + 1000,
     };
-    // setTimeout(() => {
-    //   if (this.optimisticEvents.includes(event)) {
-    //     console.log('Detected websocket drop, reconnecting...');
-    //     this.optimisticEvents = [];
-    //     alert('disconnected, please refresh');
-    //     window.socket.close();
-    //     window.socket.open();
-    //   }
-    // }, 5000);
+    setTimeout(() => {
+      if (this.optimisticEvents.includes(event)) {
+        console.log('Detected websocket drop, reconnecting...');
+        this.optimisticEvents = [];
+        alert('disconnected, please refresh');
+        window.socket.close();
+        window.socket.open();
+      }
+    }, 5000);
     this.optimisticEvents.push(event);
   }
 

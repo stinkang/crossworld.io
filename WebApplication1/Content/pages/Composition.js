@@ -27,28 +27,33 @@ import * as xwordFiller from '../components/Compose/lib/xword-filler';
 export default class Composition extends Component {
   constructor(props) {
     super(props);
+    this.cid = Number(props.cid);
     this.state = {
       mobile: isMobile(),
     };
   }
 
   get cid() {
-    return Number(this.props.cid);
+    return Number(this._cid);
+  }
+
+  set cid(value) {
+    this._cid = value;
   }
 
   get composition() {
     return this.historyWrapper.getSnapshot();
   }
 
-  // initializeUser() {
-  //   this.user = getUser();
-  //   this.user.onAuth(() => {
-  //     this.forceUpdate();
-  //   });
-  // }
+  initializeUser() {
+    this.user = getUser();
+    this.user.onAuth(() => {
+      this.forceUpdate();
+    });
+  }
 
   initializeComposition() {
-    this.compositionModel = new CompositionModel(`/composition/${this.cid}`);
+    this.compositionModel = new CompositionModel(`/draft/${this.cid}`);
     this.historyWrapper = new ComposeHistoryWrapper();
     this.compositionModel.on('createEvent', (event) => {
       this.historyWrapper.setCreateEvent(event);
@@ -63,7 +68,7 @@ export default class Composition extends Component {
 
   componentDidMount() {
     this.initializeComposition();
-    // this.initializeUser();
+    this.initializeUser();
   }
 
   componentWillUnmount() {
@@ -251,7 +256,7 @@ export default class Composition extends Component {
         onPublish={this.handlePublish}
         onChangeRows={this.handleChangeRows}
         onChangeColumns={this.handleChangeColumns}
-        //myColor={this.user.color}
+        myColor={this.user.color}
         onUnfocus={this.handleUnfocusEditor}
       />
     );

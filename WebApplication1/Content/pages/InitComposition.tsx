@@ -2,9 +2,13 @@
 import * as ReactDOM from 'react-dom';
 import Composition from "./Composition";
 
-export const InitComposition = (cid: number) => {
+export interface InitCompositionOptions {
+    cid: number;
+};
+
+export const InitComposition = (options: InitCompositionOptions) => {
     ReactDOM.render(
-        <Composition cid={cid} />,
+        <Composition cid={options.cid} />,
         document.getElementById('composition-root')
     );
 };

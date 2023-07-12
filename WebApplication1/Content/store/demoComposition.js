@@ -1,5 +1,5 @@
 import _ from 'lodash';
-//import {SERVER_TIME} from './firebase';
+import {SERVER_TIME} from './firebase';
 import Composition, {CURRENT_VERSION} from './composition';
 
 export default class DemoComposition extends Composition {
@@ -34,7 +34,7 @@ export default class DemoComposition extends Composition {
 
     const version = CURRENT_VERSION;
     this.events.push({
-      //timestamp: SERVER_TIME,
+      timestamp: SERVER_TIME,
       type: 'create',
       params: {
         version,

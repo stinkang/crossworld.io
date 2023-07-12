@@ -115,7 +115,7 @@ export default class Composition extends EventEmitter {
     const {info, grid, circles, clues} = contents;
     this.events.push({
       timestamp: SERVER_TIME,
-      type: 'updateComposition',
+      type: 'updateDraft',
       params: {
         filename, // unused, for now
         info,

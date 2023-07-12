@@ -9,27 +9,27 @@ import EditableSpan from '../common/EditableSpan';
 import GridObject from '../../lib/wrappers/GridWrapper';
 import * as gameUtils from '../../lib/gameUtils';
 
-// if (typeof window !== 'undefined') {
-//   window.requestIdleCallback =
-//     window.requestIdleCallback ||
-//     function (cb) {
-//       const start = Date.now();
-//       return setTimeout(() => {
-//         cb({
-//           didTimeout: false,
-//           timeRemaining() {
-//             return Math.max(0, 50 - (Date.now() - start));
-//           },
-//         });
-//       }, 1);
-//     };
+if (typeof window !== 'undefined') {
+  window.requestIdleCallback =
+    window.requestIdleCallback ||
+    function (cb) {
+      const start = Date.now();
+      return setTimeout(() => {
+        cb({
+          didTimeout: false,
+          timeRemaining() {
+            return Math.max(0, 50 - (Date.now() - start));
+          },
+        });
+      }, 1);
+    };
 
-//   window.cancelIdleCallback =
-//     window.cancelIdleCallback ||
-//     function (id) {
-//       clearTimeout(id);
-//     };
-// };
+  window.cancelIdleCallback =
+    window.cancelIdleCallback ||
+    function (id) {
+      clearTimeout(id);
+    };
+};
 /*
  * Summary of Editor component
  *

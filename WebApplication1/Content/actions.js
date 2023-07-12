@@ -76,9 +76,9 @@ const actions = {
   // },
 
   getNextCid: (cbk) => {
-    const NUM_CIDS = 1000000;
-    for (let tries = 0; tries < 10; tries += 1) {
-      const cid = `${NUM_CIDS + Math.floor(Math.random() * NUM_CIDS)}`.substring(1);
+    const NUM_CIDS = 10000000;
+    for (let tries = 0; tries < 1; tries += 1) {
+      const cid = 1 + `${NUM_CIDS + Math.floor(Math.random() * NUM_CIDS)}`.substring(1);
       cbk(cid);
     }
   },

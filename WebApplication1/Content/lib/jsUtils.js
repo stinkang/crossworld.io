@@ -45,27 +45,27 @@ export function colorAverage(hex1, hex2, weight) {
   return rgbToHex(r, g, b);
 }
 
-// if (typeof window !== 'undefined') {
-//   window.requestIdleCallback =
-//     window.requestIdleCallback ||
-//     function(cb) {
-//       const start = Date.now();
-//       return setTimeout(() => {
-//         cb({
-//           didTimeout: false,
-//           timeRemaining() {
-//             return Math.max(0, 50 - (Date.now() - start));
-//           },
-//         });
-//       }, 1);
-//     };
+if (typeof window !== 'undefined') {
+  window.requestIdleCallback =
+    window.requestIdleCallback ||
+    function(cb) {
+      const start = Date.now();
+      return setTimeout(() => {
+        cb({
+          didTimeout: false,
+          timeRemaining() {
+            return Math.max(0, 50 - (Date.now() - start));
+          },
+        });
+      }, 1);
+    };
 
-//   window.cancelIdleCallback =
-//     window.cancelIdleCallback ||
-//     function(id) {
-//       clearTimeout(id);
-//     };
-// }
+  window.cancelIdleCallback =
+    window.cancelIdleCallback ||
+    function(id) {
+      clearTimeout(id);
+    };
+}
 
 const idleCallbacks = {};
 function lazy(id, cbk, minWait = 0) {
@@ -74,13 +74,13 @@ function lazy(id, cbk, minWait = 0) {
   }
   const idleCallback = requestIdleCallback(({didTimeout}) => {
     if (didTimeout) return;
-    // setTimeout(() => {
-    //   if (idleCallbacks[id] === idleCallback) {
-    //     cbk();
-    //   } else {
-    //     // then this was overriden
-    //   }
-    // }, minWait);
+    setTimeout(() => {
+      if (idleCallbacks[id] === idleCallback) {
+        cbk();
+      } else {
+        // then this was overriden
+      }
+    }, minWait);
     // ensure the callback happens at least 200 ms after
     // somehow this makes the rendering look less weird
     // ok this whole thing needs to be redone soon cause it's really hacky and still kinda laggy
