@@ -4,11 +4,13 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 module.exports = {
     entry: {
         compose: './Content/components/Compose/index.js',
+        user: './Content/components/User/index.js'
     },
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, './wwwroot/dist'),
     },
+    devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-source-map',
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     module: {
         rules: [

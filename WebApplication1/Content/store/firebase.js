@@ -1,9 +1,9 @@
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 // eslint-disable-next-line import/no-duplicates
 
-import 'firebase/database';
+import 'firebase/compat/database';
 // eslint-disable-next-line import/no-duplicates
-import 'firebase/auth';
+import 'firebase/compat/auth';
 
 const offline = false;
 const CONFIGS = {

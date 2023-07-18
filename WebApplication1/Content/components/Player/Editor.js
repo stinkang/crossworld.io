@@ -2,12 +2,26 @@
 import './css/editor.css';
 import Flex from 'react-flexview';
 import React, {Component} from 'react';
+import { Modal, Button } from 'react-bootstrap';
 import Grid from '../Grid';
 import GridControls from './GridControls';
 import EditableSpan from '../common/EditableSpan';
+import FileUploader from '../../components/Upload/FileUploader';
+import {
+  AiFillFileAdd,
+  AiFillFileExcel,
+  AiFillDatabase,
+  AiFillCaretDown,
+  AiFillCaretUp,
+  AiFillControl,
+  AiFillStar,
+  AiFillCloseCircle,
+  AiFillCheckCircle
+} from 'react-icons/ai';
 
 import GridObject from '../../lib/wrappers/GridWrapper';
 import * as gameUtils from '../../lib/gameUtils';
+import FullScreenModal from './EditorModal';
 
 if (typeof window !== 'undefined') {
   window.requestIdleCallback =
@@ -143,6 +157,26 @@ export default class Editor extends Component {
     }));
   };
 
+  handleUploadSuccess = (puzzle, filename = '') => {
+    this.props.onUploadSuccess(puzzle, filename);
+  };
+
+  handleUploadFail = () => {
+    this.props.onUploadFail();
+  };
+
+  handleExportClick = () => {
+    this.props.onExportClick();
+  }
+
+  handleUpdateAuthor = (event) => {
+    this.props.onUpdateAuthor(event.target.value);
+  }
+
+  handleUpdateTitle = (event) => {
+    this.props.onUpdateTitle(event.target.value);
+  }
+
   /* Helper functions used when rendering */
 
   get selectedIsWhite() {
@@ -239,69 +273,66 @@ export default class Editor extends Component {
     const {selected, direction} = this.state;
     return (
       <div className="editor--main--left">
-        <div className="editor--main--clue-bar">
-          <div className="editor--main--clue-bar--number">{this.clueBarAbbreviation}</div>
-          <div className="editor--main--clue-bar--text">
-            <EditableSpan
-              ref="clue"
-              key_={`${direction}${this.selectedClueNumber}`}
-              value={this.props.clues[direction][this.selectedClueNumber] || ''}
-              onChange={this.handleChangeClue}
-              onUnfocus={() => this.focusGrid()}
-              hidden={!this.selectedIsWhite || !this.selectedClueNumber}
+        <Flex>
+          <div className="left--toolbar">
+            <FullScreenModal 
+              onChangeRows={this.handleChangeRows}
+              onChangeColumns={this.handleChangeColumns}
+              onUpdateAuthor={this.handleUpdateAuthor}
+              onUpdateTitle={this.handleUpdateTitle}
+              grid={this.grid}
             />
+            <FileUploader success={this.handleUploadSuccess} fail={this.handleUploadFail} v2 />
+            <button className="icon-button" onClick={this.handleExportClick}>
+                <AiFillFileExcel />
+            </button>
+            <button className="icon-button" onClick={this.handleAutofill}>
+                <AiFillControl />
+            </button>
+            <button className="icon-button" onClick={this.handleClearPencil}>
+                <AiFillStar />
+            </button>
+            <button className="icon-button" onClick={this.handlePublish}>
+                <AiFillCheckCircle />
+            </button>
           </div>
-        </div>
-
-        <div className="editor--main--left--grid blurable">
-          <Grid
-            ref="grid"
-            size={this.props.size}
-            grid={this.props.grid}
-            cursors={this.props.cursors}
-            selected={selected}
-            direction={direction}
-            onSetSelected={this.handleSetSelected}
-            onChangeDirection={this.handleChangeDirection}
-            myColor={this.props.myColor}
-            references={[]}
-            editMode
-            cellStyle={{}}
-          />
-        </div>
-        <Flex className="editor--button" hAlignContent="center" onClick={this.handleToggleFreeze}>
-          {this.state.frozen ? 'Unfreeze Grid' : 'Freeze Grid'}
+          <div className="left--grid--and--clues">
+            <div className="editor--main--left--grid blurable">
+              <Grid
+                ref="grid"
+                size={this.props.size}
+                grid={this.props.grid}
+                cursors={this.props.cursors}
+                selected={selected}
+                direction={direction}
+                onSetSelected={this.handleSetSelected}
+                onChangeDirection={this.handleChangeDirection}
+                myColor={this.props.myColor}
+                references={[]}
+                editMode
+                cellStyle={{}}
+              />
+            </div>
+            <div className="editor--main--clue-bar">
+              <div className="editor--main--clue-bar--number">{this.clueBarAbbreviation}</div>
+              <div className="editor--main--clue-bar--text">
+                <EditableSpan
+                  ref="clue"
+                  key_={`${direction}${this.selectedClueNumber}`}
+                  value={this.props.clues[direction][this.selectedClueNumber] || ''}
+                  onChange={this.handleChangeClue}
+                  onUnfocus={() => this.focusGrid()}
+                  hidden={!this.selectedIsWhite || !this.selectedClueNumber}
+                />
+              </div>
+            </div>
+          </div>
+          {/* <Flex className="editor--button" hAlignContent="center" onClick={this.handleToggleFreeze}>
+            {this.state.frozen ? 'Unfreeze Grid' : 'Freeze Grid'}
+          </Flex> */}
         </Flex>
+        
         <Flex>
-          <Flex className="editor--button" hAlignContent="center" onClick={this.handleAutofill}>
-            Autofill Grid
-          </Flex>
-          <Flex className="editor--button" hAlignContent="center" onClick={this.handleClearPencil}>
-            Clear Pencil
-          </Flex>
-          <Flex className="editor--button" hAlignContent="center" onClick={this.handlePublish}>
-            Publish
-          </Flex>
-        </Flex>
-        <Flex>
-          <Flex className="editor--grid-size">{'Rows: '}</Flex>
-          <Flex className="editor--grid-size">
-            <input
-              className="editor--input"
-              type="number"
-              defaultValue={this.grid.size}
-              onChange={this.handleChangeRows}
-            />
-          </Flex>
-          <Flex className="editor--grid-size">{'Columns: '}</Flex>
-          <Flex className="editor--grid-size">
-            <input
-              className="editor--input"
-              type="number"
-              defaultValue={this.grid.size}
-              onChange={this.handleChangeColumns}
-            />
-          </Flex>
         </Flex>
       </div>
     );

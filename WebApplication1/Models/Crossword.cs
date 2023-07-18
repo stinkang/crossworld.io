@@ -1,18 +1,38 @@
-﻿namespace WebApplication1.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+
+namespace CrossWorldApp.Models;
 
 public class Crossword
 {
+    [Key]
     public int Id { get; set; }
 
-    // Dimensions of the crossword
-    public int Width { get; set; }
-    public int Height { get; set; }
+    public string Title { get; set; }
 
-    // Clues for the crossword. 
-    // Assuming a Clue class exists that contains properties for the clue text, direction, and number.
-    public List<Clue> Clues { get; set; }
+    public string Author { get; set; }
 
-    // Grid squares. Could be 0 (white), -1 (black), or a different integer (for a word start).
-    // Assuming it's a one-dimensional array, and you need to calculate position based on width and height.
-    public int[] Grid { get; set; }
+    public ICollection<CrosswordClue> CrosswordClues { get; set; } // The many-to-many joining table
+
+    public int UserId { get; set; } // Foreign key property
+    
+    [ForeignKey("UserId")]
+    public User User { get; set; }
+
+    [Column(TypeName = "text")]
+    public string GridJson { get; set; }
+
+    [NotMapped]
+    public List<List<string>>? Grid
+    {
+        get
+        {
+            return GridJson == null ? null : JsonConvert.DeserializeObject<List<List<string>>>(GridJson);
+        }
+        set
+        {
+            GridJson = JsonConvert.SerializeObject(value);
+        }
+    }
 }

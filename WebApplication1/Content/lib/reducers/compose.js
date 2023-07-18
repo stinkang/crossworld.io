@@ -21,7 +21,7 @@ const reducers = {
     };
   },
 
-  updateComposition: (composition, params) => {
+  updateDraft: (composition, params) => {
     // equivalent to create, but there can only be one create
     const {info = {}, grid = [[{}]], circles = [], clues = []} = params;
 

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using WebApplication1;
-using WebApplication1.Repositories;
+using CrossWorldApp;
+using CrossWorldApp.Repositories;
 using Microsoft.AspNetCore.Http;
 using JavaScriptEngineSwitcher.ChakraCore;
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
@@ -9,6 +9,7 @@ using React.AspNet;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddTransient<ITestCrosswordRepository, TestCrosswordRepository>();
 builder.Services.AddReact();
 
 // Make sure a JS engine is registered, or you will get an error!

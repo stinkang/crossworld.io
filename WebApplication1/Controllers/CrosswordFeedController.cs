@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Models;
-using WebApplication1.Repositories;
+using CrossWorldApp.Models;
+using CrossWorldApp.Repositories;
 
 namespace WebApplication1.Controllers;
 

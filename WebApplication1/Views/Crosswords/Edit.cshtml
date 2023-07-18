@@ -1,4 +1,4 @@
-﻿@model WebApplication1.Models.Crossword
+﻿@model CrossWorldApp.Models.Crossword
 
 @{
     ViewData["Title"] = "Edit";
@@ -13,16 +13,6 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Width" class="control-label"></label>
-                <input asp-for="Width" class="form-control" />
-                <span asp-validation-for="Width" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Height" class="control-label"></label>
-                <input asp-for="Height" class="form-control" />
-                <span asp-validation-for="Height" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="Grid" class="control-label"></label>
                 <input asp-for="Grid" class="form-control" />

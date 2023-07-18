@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication1.Models.Crossword>
+﻿@model IEnumerable<CrossWorldApp.Models.TestCrossword>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,12 +13,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Width)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Height)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Grid)
             </th>
             <th></th>
@@ -27,15 +21,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Width)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Height)
-            </td>
-            <td>
+@*            <td>
                 @Html.DisplayFor(modelItem => item.Grid)
-            </td>
+            </td>*@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
