@@ -1,55 +1,55 @@
 // import {gameWords} from './lib/names';
 // import {makeGrid} from './lib/gameUtils';
-// import firebase, {getTime} from './store/firebase';
+import firebase, {getTime} from './store/firebase';
 // // eslint-disable-next-line import/no-cycle
 // import {GameModel, PuzzleModel} from './store';
 
 // // for interfacing with firebase
 
-// const db = firebase.database();
-// function disconnect() {
-//   // no-op for now
-// }
+const db = firebase.database();
+function disconnect() {
+  // no-op for now
+}
 
-// function setPuzzle(pid, puzzle) {
-//   const {info, private: private_ = false} = puzzle;
-//   const {title, author} = info;
-//   db.ref(`puzzlelist/${pid}`).set({
-//     pid,
-//     info,
-//     title,
-//     private: private_,
-//     author,
-//     importedTime: getTime(),
-//     stats: {
-//       solves: {},
-//       numSolves: 0,
-//     },
-//   });
-//   db.ref(`puzzle/${pid}`).set({
-//     ...puzzle,
-//     pid,
-//   });
-// }
+function setPuzzle(pid, puzzle) {
+  const {info, private: private_ = false} = puzzle;
+  const {title, author} = info;
+  db.ref(`puzzlelist/${pid}`).set({
+    pid,
+    info,
+    title,
+    private: private_,
+    author,
+    importedTime: getTime(),
+    stats: {
+      solves: {},
+      numSolves: 0,
+    },
+  });
+  db.ref(`puzzle/${pid}`).set({
+    ...puzzle,
+    pid,
+  });
+}
 
 const actions = {
-  // updatePuzzle: (pid, puzzle) => {
-  //   setPuzzle(pid, puzzle);
-  // },
-  // // puzzle: { title, type, grid, clues }
-  // createPuzzle: (puzzle, cbk) => {
-  //   db.ref('counters').transaction(
-  //     (counters) => {
-  //       const pid = ((counters && counters.pid) || 0) + 1;
-  //       return {...counters, pid};
-  //     },
-  //     (err, success, snapshot) => {
-  //       const pid = snapshot.child('pid').val();
-  //       setPuzzle(pid, puzzle);
-  //       cbk && cbk(pid);
-  //     }
-  //   );
-  // },
+  updatePuzzle: (pid, puzzle) => {
+    setPuzzle(pid, puzzle);
+  },
+  // puzzle: { title, type, grid, clues }
+  createPuzzle: (puzzle, cbk) => {
+    db.ref('counters').transaction(
+      (counters) => {
+        const pid = ((counters && counters.pid) || 0) + 1;
+        return {...counters, pid};
+      },
+      (err, success, snapshot) => {
+        const pid = snapshot.child('pid').val();
+        setPuzzle(pid, puzzle);
+        cbk && cbk(pid);
+      }
+    );
+  },
 
   // getNextGid: (cbk) => {
   //   db.ref('counters').transaction(
@@ -98,25 +98,25 @@ const actions = {
 //     });
 //   },
 
-//   createComposition: (dims, pattern, cbk) => {
-//     const type = Math.max(dims.r, dims.c) <= 7 ? 'Mini Puzzle' : 'Daily Puzzle';
-//     const textGrid = pattern.map((row) => row.map((cell) => (cell === 0 ? '' : '.')));
-//     const grid = makeGrid(textGrid);
-//     const composition = {
-//       info: {
-//         title: 'Untitled',
-//         type,
-//         author: 'Anonymous',
-//       },
-//       grid: grid.toArray(),
-//       clues: grid.alignClues([]),
-//       published: false,
-//     };
-//     const cid = db.ref('composition').push().key;
-//     db.ref(`composition/${cid}`).set(composition, () => {
-//       cbk(cid);
-//     });
-//   },
+  createComposition: (dims, pattern, cbk) => {
+    const type = Math.max(dims.r, dims.c) <= 7 ? 'Mini Puzzle' : 'Daily Puzzle';
+    const textGrid = pattern.map((row) => row.map((cell) => (cell === 0 ? '' : '.')));
+    const grid = makeGrid(textGrid);
+    const composition = {
+      info: {
+        title: 'Untitled',
+        type,
+        author: 'Anonymous',
+      },
+      grid: grid.toArray(),
+      clues: grid.alignClues([]),
+      published: false,
+    };
+    const cid = db.ref('composition').push().key;
+    db.ref(`composition/${cid}`).set(composition, () => {
+      cbk(cid);
+    });
+  },
 
 //   makePrivate: (pid) => {
 //     db.ref(`puzzlelist/${pid}/private`).set(true);

@@ -5,26 +5,34 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1;
-using WebApplication1.Models;
+using CrossWorldApp;
+using CrossWorldApp.Models;
+using CrossWorldApp.Repositories;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace CrossWorldApp.Controllers
 {
     public class CrosswordsController : Controller
     {
         private readonly CrossWorldDbContext _context;
+        private readonly ITestCrosswordRepository _testCrosswordRepository;
 
-        public CrosswordsController(CrossWorldDbContext context)
+        public CrosswordsController(
+            CrossWorldDbContext context,
+            ITestCrosswordRepository testCrosswordRepository
+            )
         {
             _context = context;
+            _testCrosswordRepository = testCrosswordRepository;
         }
 
         // GET: Crosswords
         public async Task<IActionResult> Index()
         {
-              return _context.Crosswords != null ? 
-                          View(await _context.Crosswords.ToListAsync()) :
-                          Problem("Entity set 'CrossWorldDbContext.Crosswords'  is null.");
+              return _context.TestCrosswords != null ? 
+                          View(await _context.TestCrosswords.ToListAsync()) :
+                          Problem("Entity set 'CrossWorldDbContext.TestCrosswords'  is null.");
         }
 
         // GET: Crosswords/Details/5
@@ -62,6 +70,20 @@ namespace CrossWorldApp.Controllers
             {
                 _context.Add(crossword);
                 await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(crossword);
+        }
+
+        // POST: Crosswords/Create2
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        public async Task<IActionResult> Create2([FromBody] TestCrossword crossword)
+        {
+            if (ModelState.IsValid)
+            {
+                _testCrosswordRepository.AddTestCrossword(crossword);
                 return RedirectToAction(nameof(Index));
             }
             return View(crossword);

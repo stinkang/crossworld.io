@@ -1,4 +1,4 @@
-//import 'react-flexview/lib/flexView.css';
+import 'react-flexview/lib/flexView.css';
 import './css/composition.css';
 
 import React, {Component} from 'react';
@@ -9,7 +9,6 @@ import Flex from 'react-flexview';
 
 import actions from '../actions';
 import Editor from '../components/Player/Editor';
-//import FileUploader from '../components/Upload/FileUploader';
 import {CompositionModel, getUser} from '../store';
 import ComposeHistoryWrapper from '../lib/wrappers/ComposeHistoryWrapper';
 import EditableSpan from '../components/common/EditableSpan';
@@ -210,13 +209,38 @@ export default class Composition extends Component {
 
     clues = makeClues(clues, makeGridFromComposition(grid).grid);
     grid = grid.map((row) => row.map(({value}) => value || '.'));
+    let author = info.author;
+    let title = info.title;
 
-    const puzzle = {grid, clues, info};
+    const puzzle = {
+      clues,
+      author,
+      title,
+      grid
+    };
+    const stringJSON = JSON.stringify(puzzle);
 
-    actions.createPuzzle(puzzle, (pid) => {
-      console.log('Puzzle path: ', `/beta/play/${pid}`);
-      redirect(`/beta/play/${pid}`);
-    });
+    fetch('/Crosswords/create2', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: stringJSON,
+      })
+      .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      // Navigate to the index page.
+      window.location.href = "/Crosswords/Index";
+      }).catch(error => {
+        console.log('Error: ', error);
+      });
+    // actions.createPuzzle(puzzle, (pid) => {
+    //   console.log('Puzzle path: ', `/beta/play/${pid}`);
+    //   redirect(`/beta/play/${pid}`);
+    // });
   };
 
   handleClearPencil = () => {
@@ -258,6 +282,11 @@ export default class Composition extends Component {
         onChangeColumns={this.handleChangeColumns}
         myColor={this.user.color}
         onUnfocus={this.handleUnfocusEditor}
+        onUploadSuccess={this.handleUploadSuccess}
+        onUploadFail={this.handleUploadFail}
+        onExportClick={this.handleExportClick}
+        onUpdateTitle={this.handleUpdateTitle}
+        onUpdateAuthor={this.handleUpdateAuthor}
       />
     );
   }
@@ -307,10 +336,6 @@ export default class Composition extends Component {
           <Flex column shrink={0}>
             {this.renderEditor()}
           </Flex>
-          {/* <Flex column>
-            <FileUploader success={this.handleUploadSuccess} fail={this.handleUploadFail} v2 />
-            <button onClick={this.handleExportClick}>Export to puz</button>
-          </Flex> */}
         </Flex>
       </Flex>
     );

@@ -1,19 +1,10 @@
-﻿@model WebApplication1.Models.Crossword
+﻿@model CrossWorldApp.Models.Crossword
 
 <h2>Create New Crossword</h2>
 
 @using (Html.BeginForm("Create", "Crossword", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
-    <div>
-        <label for="Width">Width:</label>
-        @Html.TextBoxFor(model => model.Width)
-    </div>
-    <div>
-        <label for="Height">Height:</label>
-        @Html.TextBoxFor(model => model.Height)
-    </div>
     <div>
         <h3>Clue:</h3>
         <label for="Number">Number:</label>

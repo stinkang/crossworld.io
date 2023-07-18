@@ -94,11 +94,11 @@
 }
 
 .editor--main--clues--list--scroll--clue.selected {
-  background-color: var(--main-blue-3);
+  background-color: lightskyblue;
 }
 
 .editor--main--clues--list--scroll--clue.half-selected {
-  border-left: 5px solid var(--main-blue-3);
+  border-left: 5px solid lightskyblue;
 }
 
 .editor--main--clues--list--scroll--clue--number {
@@ -135,4 +135,35 @@
   color: var(--main-blue);
   margin-top: 30px;
   justify-content: left;
+}
+
+.icon-button {
+  background: none; /* Remove background */
+  border: none; /* Remove border */
+  width: 50px; /* Same size as before */
+  height: 50px; /* Same size as before */
+  color: white; /* White icon color */
+  cursor: pointer; /* Change cursor to pointer when hovering over the button */
+}
+
+.left--toolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.editor--grid-size {
+  position: relative; /* Establish a new positioning context for children */
+}
+
+.editor--input {
+  position: absolute; /* Position the input relative to the nearest positioned ancestor */
+  left: 100%; /* Position the input to the right edge of the button */
+  top: 0; /* Align the input with the top of the button */
+  z-index: 10; /* Ensure the input renders on top of other content */
+}
+
+.modal-content {
+  background-color: black;
 }

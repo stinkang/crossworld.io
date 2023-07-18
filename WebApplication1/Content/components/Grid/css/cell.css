@@ -55,12 +55,12 @@ div:focus .frozen .cell.highlighted {
 }
 
 .cell.highlighted {
-  background-color: var(--main-blue-3);
+  background-color: lightskyblue;
 }
 
-div:focus .cell.highlighted {
+/* div:focus .cell.highlighted {
   background-color: var(--main-blue-2);
-}
+} */
 
 .cell.referenced {
   background-color: #b3ff00;
@@ -75,7 +75,7 @@ div:focus .cell.referenced {
 }
 
 .cell.selected {
-  background-color: #4aeba1;
+  background-color: rgb(44, 174, 255);
   /*background-color: #98ee99;*/
 }
 

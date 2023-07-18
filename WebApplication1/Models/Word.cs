@@ -1,4 +1,4 @@
-﻿namespace WebApplication1.Models;
+﻿namespace CrossWorldApp.Models;
 
 public class Word
 {

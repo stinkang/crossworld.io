@@ -1,7 +1,7 @@
-﻿using WebApplication1.Models;
+﻿using CrossWorldApp.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebApplication1.Repositories;
+namespace CrossWorldApp.Repositories;
 
 public class CrosswordRepository : ICrosswordRepository
 {

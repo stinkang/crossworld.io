@@ -141,15 +141,11 @@ function downloadBlob(data, fileName) {
   document.body.appendChild(a);
   a.style = 'display: none';
   const blob = new Blob([data]);
-  if (typeof window !== 'undefined') {
-    const url = window.URL.createObjectURL(blob);
-  }
+  const url = window.URL.createObjectURL(blob);
   a.href = url;
   a.download = fileName;
   a.click();
-  if (typeof window !== 'undefined') {
-    window.URL.revokeObjectURL(url);
-  }
+  window.URL.revokeObjectURL(url);
 }
 
 export {hasShape, toArr, lazy, rand_int, rand_color, pure, isAncestor, isMobile, downloadBlob};

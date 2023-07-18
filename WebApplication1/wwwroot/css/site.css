@@ -15,4 +15,18 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: black;
+  color: white;
+}
+
+head {
+    background-color: black;
+}
+
+a {
+    color: white;
+}
+
+.navbar-light .navbar-brand {
+    color: white;
 }
