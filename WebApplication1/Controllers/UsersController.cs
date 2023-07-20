@@ -28,7 +28,7 @@ namespace CrossWorldApp.Controllers
         }
 
         // GET: Users/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string? id)
         {
             if (id == null || _context.Users == null)
             {
@@ -45,7 +45,7 @@ namespace CrossWorldApp.Controllers
             return View(user);
         }
 
-        // GET: Users/GetByUID/5
+/*        // GET: Users/GetByUID/5
         [Route("Users/GetByUID/{uid}")]
         public async Task<IActionResult> GetByUID(string uid)
         {
@@ -61,7 +61,7 @@ namespace CrossWorldApp.Controllers
             }
 
             return Json(new { exists = true, username = user.Username, uid = user.Uid });
-        }
+        }*/
 
         // GET: Users/Create
         public IActionResult Create()
@@ -105,7 +105,7 @@ namespace CrossWorldApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Uid,Username")] User user)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Uid,Username")] User user)
         {
             if (id != user.Id)
             {
@@ -136,7 +136,7 @@ namespace CrossWorldApp.Controllers
         }
 
         // GET: Users/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string? id)
         {
             if (id == null || _context.Users == null)
             {
@@ -172,7 +172,7 @@ namespace CrossWorldApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        private bool UserExists(string id)
         {
           return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
         }

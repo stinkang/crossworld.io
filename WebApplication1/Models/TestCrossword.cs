@@ -15,10 +15,10 @@ namespace CrossWorldApp.Models
 
         public string Author { get; set; }
 
-        public int? UserId { get; set; } // Foreign key property
+        public string? UserId { get; set; } // Foreign key property
 
         [ForeignKey("UserId")]
-        public User? User { get; set; }
+        public CrossworldUser? User { get; set; }
 
         [NotMapped]
         public List<List<string>> Grid {  get; set; }

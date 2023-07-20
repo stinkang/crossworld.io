@@ -15,10 +15,10 @@ public class Crossword
 
     public ICollection<CrosswordClue> CrosswordClues { get; set; } // The many-to-many joining table
 
-    public int UserId { get; set; } // Foreign key property
+    public string? UserId { get; set; } // Foreign key property
     
     [ForeignKey("UserId")]
-    public User User { get; set; }
+    public CrossworldUser User { get; set; }
 
     [Column(TypeName = "text")]
     public string GridJson { get; set; }
