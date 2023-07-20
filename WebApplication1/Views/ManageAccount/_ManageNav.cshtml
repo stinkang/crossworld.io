@@ -1,0 +1,16 @@
+﻿@using CrossWorldApp.Views.ManageAccount
+
+@*@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}*@
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="nav-link @ManageNavPages.ActivePageClass(ViewContext, "ManageAccount", "Index")" id="profile" asp-controller="ManageAccount" asp-action="Index">Profile</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.ActivePageClass(ViewContext, "ManageAccount", "ChangePassword")" id="password" asp-controller="ManageAccount" asp-action="ChangePassword">Password</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.ActivePageClass(ViewContext, "ManageAccount", "ChangeUsername")" id="username" asp-controller="ManageAccount" asp-action="ChangeUsername">Username</a></li>
+@*    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item"><a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">External logins</a></li>
+    }
+    <li class="nav-item"><a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">Two-factor authentication</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">Personal data</a></li>*@
+</ul>

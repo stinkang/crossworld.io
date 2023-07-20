@@ -1,0 +1,31 @@
+﻿@model CrossWorldApp.ViewModels.Account.ChangeUsernameViewModel
+@{
+    ViewData["Title"] = "Change username";
+}
+
+<h3>@ViewData["Title"]</h3>
+@if (TempData["StatusMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["StatusMessage"]
+    </div>
+}
+<div class="row">
+    <div class="col-md-6">
+        <form asp-controller="ManageAccount" asp-action="ChangeUsername" id="change-username-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input asp-for="Username" class="form-control" autocomplete="current-password" aria-required="true" />
+                <label asp-for="Username" class="form-label"></label>
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Update username</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

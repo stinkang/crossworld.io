@@ -3,8 +3,7 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 module.exports = {
     entry: {
-        compose: './Content/components/Compose/index.js',
-        user: './Content/components/User/index.js'
+        compose: './Content/components/Compose/index.js'
     },
     output: {
         filename: '[name].js',

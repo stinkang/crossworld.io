@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Models;
+using CrossWorldApp.ViewModels.Account;
 
 namespace WebApplication1.Controllers;
 
