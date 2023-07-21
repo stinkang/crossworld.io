@@ -15,18 +15,37 @@ html {
 
 body {
   margin-bottom: 60px;
-  background-color: black;
-  color: white;
+  /*background-color: black;
+  color: white;*/
 }
 
-head {
+/*head {
     background-color: black;
+}*/
+
+/*a {
+    color: white;
+}*/
+
+/*.navbar-light .navbar-brand {
+    color: white;
+}*/
+
+/*for Tab control*/
+div.login-logout-tab div.card.header {
+    padding: 0px 0px 12px 0px;
 }
 
-a {
-    color: white;
+div.login-logout-tab li.nav-tabs {
+    margin: 0px 0px -12px 0px;
 }
 
-.navbar-light .navbar-brand {
-    color: white;
+div.login-logout-tab li.nav-item {
+    width: 50%
 }
+
+div.login-logout-tab a.nav-link {
+    font-size: 25px;
+    color: #495057;
+    text-align: center;
+}  

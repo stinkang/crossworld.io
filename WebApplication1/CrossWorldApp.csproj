@@ -11,23 +11,6 @@
       <Content Remove="React\**" />
       <Content Include="Content\components\CrosswordFeed\index.tsx" />
       <Content Include="Content\components\CrosswordFeed\Tutorial.tsx" />
-      <Content Include="Content\components\Crossword\actions.js" />
-      <Content Include="Content\components\Crossword\Cell.tsx" />
-      <Content Include="Content\components\Crossword\Compose\Compose.js" />
-      <Content Include="Content\components\Crossword\Compose\Composition.js" />
-      <Content Include="Content\components\Crossword\Compose\EditableSpan.js" />
-      <Content Include="Content\components\Crossword\Compose\Editor.js" />
-      <Content Include="Content\components\Crossword\Compose\index.tsx" />
-      <Content Include="Content\components\Crossword\Constructor.tsx" />
-      <Content Include="Content\components\Crossword\gameUtils.js" />
-      <Content Include="Content\components\Crossword\Grid.tsx" />
-      <Content Include="Content\components\Crossword\GridControls.js" />
-      <Content Include="Content\components\Crossword\GridWrapper.js" />
-      <Content Include="Content\components\Crossword\hashGridRow.ts" />
-      <Content Include="Content\components\Crossword\index.js" />
-      <Content Include="Content\components\Crossword\redirect.js" />
-      <Content Include="Content\components\Crossword\RerenderBoundary.tsx" />
-      <Content Include="Content\components\Crossword\types.ts" />
       <Content Include="Content\components\Home\index.tsx" />
       <Content Include="Content\components\Home\Tutorial.tsx" />
       <EmbeddedResource Remove="React\**" />
@@ -46,17 +29,19 @@
       <PackageReference Include="JavaScriptEngineSwitcher.V8" Version="3.21.3" />
       <PackageReference Include="JavaScriptEngineSwitcher.V8.Native.win-x64" Version="3.21.3" />
       <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.20" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.20" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0-preview.4.23259.3" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0-preview.4.23259.3">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-preview.4.23259.3" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.18">
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.20">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.14" />
+      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.15" />
       <PackageReference Include="React.AspNet" Version="5.2.12" />
     </ItemGroup>
 
@@ -71,8 +56,6 @@
 
     <ItemGroup>
       <None Include="Content\components\Compose\index.js" />
-      <TypeScriptCompile Include="Content\components\Crossword\Compose\index.tsx" />
-      <TypeScriptCompile Include="Content\components\Crossword\index.tsx" />
       <TypeScriptCompile Include="Content\pages\InitCompose.tsx" />
       <TypeScriptCompile Include="Content\pages\InitComposition.tsx" />
     </ItemGroup>
