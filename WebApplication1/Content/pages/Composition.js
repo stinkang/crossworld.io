@@ -22,18 +22,17 @@ import {
 } from '../lib/gameUtils';
 import format from '../lib/format';
 import * as xwordFiller from '../components/Compose/lib/xword-filler';
-
 export default class Composition extends Component {
   constructor(props) {
     super(props);
-    this.cid = Number(props.cid);
+    this.cid = props.cid;
     this.state = {
       mobile: isMobile(),
     };
   }
 
   get cid() {
-    return Number(this._cid);
+    return this._cid;
   }
 
   set cid(value) {
@@ -52,7 +51,7 @@ export default class Composition extends Component {
   }
 
   initializeComposition() {
-    this.compositionModel = new CompositionModel(`/draft/${this.cid}`);
+    this.compositionModel = new CompositionModel(`/drafts/${this.id}`);
     this.historyWrapper = new ComposeHistoryWrapper();
     this.compositionModel.on('createEvent', (event) => {
       this.historyWrapper.setCreateEvent(event);
@@ -62,25 +61,83 @@ export default class Composition extends Component {
       this.historyWrapper.addEvent(event);
       this.handleUpdate();
     });
-    this.compositionModel.attach();
-  }
+      this.compositionModel.attach();
+      // this.handleCreateIfNotExists();
+    };
+/*
+    handleCreateIfNotExists = () => {
+        // If the composition doesn't exist, initialize it.
+        fetch(`/Drafts/DraftExists?Id=${this.cid}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (!data) {
+                console.log("Draft does not exist");
+                // handle case when draft does not exist
+                this.handleCreateDraft();
+            }
+        })
+        .catch(error => {
+            console.error(`There has been a problem with your fetch operation: ${error.message}`);
+        });
+    };
+
+    handleCreateDraft = () => {
+        let { grid, clues, info } = this.composition;
+        let id = this.cid;
+
+        clues = makeClues(clues, makeGridFromComposition(grid).grid);
+        grid = grid.map((row) => row.map(({ value }) => value || '.'));
+        let title = info.title;
+
+        const draft = {
+            clues,
+            title,
+            grid,
+            id
+        };
+        const stringJSON = JSON.stringify(draft);
+
+        fetch("/Drafts/Create", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: stringJSON
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+        }).catch(error => {
+            console.log('Error: ', error);
+        });
+    };*/
+
 
   componentDidMount() {
     this.initializeComposition();
-    this.initializeUser();
+      this.initializeUser();
+      window.addEventListener("beforeunload", this.handleSaveDraft);
   }
 
   componentWillUnmount() {
-    if (this.compositionModel) this.compositionModel.detach();
+      if (this.compositionModel) this.compositionModel.detach();
+      window.removeEventListener("beforeunload", this.handleSaveDraft);
   }
 
-  get title() {
-    if (!this.compositionModel || !this.compositionModel.attached) {
-      return undefined;
-    }
-    const info = this.composition.info;
-    return `Compose: ${info.title}`;
-  }
+  // get title() {
+  //   if (!this.compositionModel || !this.compositionModel.attached) {
+  //     return undefined;
+  //   }
+  //   const info = this.composition.info;
+  //   return `Compose: ${info.title}`;
+  // }
 
   get otherCursors() {
     return _.filter(this.composition.cursors, ({id}) => id !== this.user.id);
@@ -100,7 +157,7 @@ export default class Composition extends Component {
     const composition = this.historyWrapper.getSnapshot();
     if (isEdit) {
       const {title, author} = composition.info;
-      this.user.joinComposition(this.cid, {
+      this.user.joinComposition(this.id, {
         title,
         author,
         published: isPublished,
@@ -203,6 +260,42 @@ export default class Composition extends Component {
       this.handleChangeSize(this.composition.grid.length, newCols);
     }
   };
+
+    handleSaveDraft = (event) => {
+        event.preventDefault();
+        let { grid, clues, info } = this.composition;
+        let id = this.cid;
+
+        clues = makeClues(clues, makeGridFromComposition(grid).grid);
+        grid = grid.map((row) => row.map(({ value }) => value || '.'));
+        let title = info.title;
+
+        const puzzle = {
+            clues,
+            title,
+            grid,
+            id
+        };
+        const stringJSON = JSON.stringify(puzzle);
+
+        fetch('/drafts/update', {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: stringJSON,
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            // Navigate to the index page.
+            window.location.href = "/Crosswords/Index";
+        }).catch(error => {
+            console.log('Error: ', error);
+        });
+    }
 
   handlePublish = () => {
     let {grid, clues, info} = this.composition;

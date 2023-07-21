@@ -73,7 +73,7 @@
       ".read": true,
       ".write": true
     },
-    "draft": {
+    "drafts": {
       ".read": true,
       ".write": true
     },

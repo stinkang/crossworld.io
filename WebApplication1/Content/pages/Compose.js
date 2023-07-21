@@ -20,89 +20,29 @@ export default class Compose extends Component {
     this.puzzle = null;
   }
   
-  componentDidMount() {
-    this.initializeUser();
-  }
-  
-  handleAuth = () => {
-    if (this.user.fb) {
-      this.user.listCompositions().then((compositions) => {
-        this.setState({compositions});
-      });
-    }
-  };
-  
   handleCreateClick = (e) => {
     e.preventDefault();
-    actions.getNextCid((cid) => {
-      const composition = new CompositionModel(`/draft/${cid}`);
+    fetch('/drafts/create')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+        return response.json();
+    }).catch(error => {
+      console.log('Error: ', error);
+    }).then(data => {
+      const composition = new CompositionModel(`/drafts/${data.id}`);
       composition.initialize().then(() => {
-        redirect(`/draft/${cid}`);
+        redirect(`/drafts/edit/${data.id}`);
       });
     });
   };
-  
-  initializeUser() {
-    this.user = getUser();
-    this.user.onAuth(this.handleAuth);
-  }
-  
-  linkToComposition(cid, {title, author}) {
-    return (
-      <span>
-        <a href={`/draft/${cid}/`}>{cid}</a>:{title} by
-        {author}
-      </span>
-    );
-  }
 
   render() {
-    const {limit, compositions} = this.state;
      return (
-      <Flex column className="compositions">
-        {/* <Nav v2 composeEnabled /> */}
-        <Helmet>
-          <title>Down for Across: Compose</title>
-        </Helmet>
-        <Flex shrink={0} hAlignContent="center">
-          Limit: {limit}
-          &nbsp;
-          <button
-            onClick={() => {
-              this.setState({limit: limit + 10});
-            }}
-          >
-            +
-          </button>
-          &nbsp;
-          <button
-            onClick={() => {
-              this.setState({limit: limit + 50});
-            }}
-          >
-            ++
-          </button>
-        </Flex>
-        <Flex
-          column
-          style={{
-            paddingLeft: 30,
-            paddingTop: 20,
-            paddingBottom: 20,
-          }}
-        >
-          <h3>Compositions</h3>
-          <Flex column>
-            {_.keys(compositions).length === 0 && 'Nothing found'}
-            {_.keys(compositions).map((cid) => (
-              <div>{this.linkToComposition(cid, compositions[cid])}</div>
-            ))}
-          </Flex>
-          <div>
-            <button onClick={this.handleCreateClick}>New</button>
-          </div>
-         </Flex>
-      </Flex>
+      <div>
+        <button onClick={this.handleCreateClick}>New</button>
+      </div>
     );
   }
 }

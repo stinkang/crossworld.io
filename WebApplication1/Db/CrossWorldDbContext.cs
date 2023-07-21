@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using CrossWorldApp.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using CrossWorldApp.Controllers;
 
 namespace CrossWorldApp;
 
@@ -14,6 +15,8 @@ public class CrossWorldDbContext : IdentityDbContext<CrossworldUser>
     public DbSet<Clue> Clues { get; set; }
     public DbSet<CrosswordClue> CrosswordClues { get; set; }
     public DbSet<TestCrossword> TestCrosswords { get; set; }
+
+    public DbSet<Draft> Drafts { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -49,6 +52,11 @@ public class CrossWorldDbContext : IdentityDbContext<CrossworldUser>
             .HasMany(u => u.PublishedTestCrosswords)
             .WithOne(t => t.User) // No navigation property in TestCrossword
             .HasForeignKey(t => t.UserId); // Name of the foreign key property
+
+        modelBuilder.Entity<CrossworldUser>()
+            .HasMany(u => u.Drafts)
+            .WithOne(d => d.User) // No navigation property in Draft
+            .HasForeignKey(d => d.UserId); // Name of the foreign key property
     }
 
     // ... other properties and methods ...

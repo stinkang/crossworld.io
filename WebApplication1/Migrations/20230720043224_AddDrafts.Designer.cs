@@ -4,6 +4,7 @@ using CrossWorldApp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CrossWorldApp.Migrations
 {
     [DbContext(typeof(CrossWorldDbContext))]
-    partial class CrossWorldDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230720043224_AddDrafts")]
+    partial class AddDrafts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -164,12 +167,18 @@ namespace CrossWorldApp.Migrations
 
             modelBuilder.Entity("CrossWorldApp.Models.Draft", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CluesString")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("FirebaseId")
+                        .HasColumnType("int");
 
                     b.Property<string>("GridString")
                         .IsRequired()

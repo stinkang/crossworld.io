@@ -4,6 +4,7 @@ using CrossWorldApp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CrossWorldApp.Migrations
 {
     [DbContext(typeof(CrossWorldDbContext))]
-    partial class CrossWorldDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230720202033_ChangeDraftIdToString")]
+    partial class ChangeDraftIdToString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,6 +174,9 @@ namespace CrossWorldApp.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("FirebaseId")
+                        .HasColumnType("int");
+
                     b.Property<string>("GridString")
                         .IsRequired()
                         .HasColumnType("text");
@@ -183,6 +189,9 @@ namespace CrossWorldApp.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FirebaseId")
+                        .IsUnique();
 
                     b.HasIndex("UserId");
 

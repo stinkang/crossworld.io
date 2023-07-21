@@ -55,7 +55,7 @@ public class AccountController : Controller
             return View(model);
         }
 
-        var user = new CrossworldUser { UserName = model.Email, Email = model.Email };
+        var user = new CrossworldUser { UserName = model.Username, Email = model.Email };
 
         var result = await _userManager.CreateAsync(user, model.Password);
         if (result.Succeeded)
@@ -68,7 +68,7 @@ public class AccountController : Controller
             // Sign the user in and redirect them to the home page
             await _signInManager.SignInAsync(user, isPersistent: false);
 
-            return RedirectToAction("ChangeUsername", "ManageAccount");
+            return RedirectToAction("Home", "Index");
         }
 
         // If we got this far, something failed, so redisplay the form with error messages
