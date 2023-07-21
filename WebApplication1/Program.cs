@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using CrossWorldApp;
 using CrossWorldApp.Repositories;
+using CrossWorldApp.Services;
 using Microsoft.AspNetCore.Http;
 using JavaScriptEngineSwitcher.ChakraCore;
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
@@ -12,6 +13,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<ITestCrosswordRepository, TestCrosswordRepository>();
+builder.Services.AddTransient<IDraftRepository, DraftRepository>();
+builder.Services.AddTransient<ICrosswordRepository, CrosswordRepository>();
+builder.Services.AddTransient<ICrossworldUserService, CrossworldUserService>();
+builder.Services.AddTransient<IDraftService, DraftService>();
+
 builder.Services.AddReact();
 
 // Make sure a JS engine is registered, or you will get an error!
@@ -55,7 +61,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     // Cookie settings
     options.Cookie.HttpOnly = true;
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+    options.ExpireTimeSpan = TimeSpan.FromHours(4);
 
     options.LoginPath = "/Account/Login";
     //options.AccessDeniedPath = "/Account/AccessDenied";

@@ -157,7 +157,7 @@ export default class Composition extends EventEmitter {
     });
   }
 
-  initialize(rawComposition = {}) {
+  async initialize(rawComposition = {}) {
     const {
       info = {
         title: 'Untitled',
@@ -186,18 +186,16 @@ export default class Composition extends EventEmitter {
     };
     const version = CURRENT_VERSION;
     // nuke existing events
-    return this.events
-      .set({})
-      .then(() =>
-        this.events.push({
-          timestamp: SERVER_TIME,
-          type: 'create',
-          params: {
-            version,
-            composition,
-          },
-        })
-      )
-      .then(() => this.ref.child('published').set(false));
+    await this.events
+      .set({});
+    await this.events.push({
+      timestamp: SERVER_TIME,
+      type: 'create',
+      params: {
+        version,
+        composition,
+      },
+    });
+    return await this.ref.child('published').set(false);
   }
 }
