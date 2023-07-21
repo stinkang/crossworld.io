@@ -17,17 +17,13 @@ const FullScreenModal = (props) => {
         props.onChangeColumns(event);
     };
     
-    const handleUpdateAuthor = (event) => {
-        props.onUpdateAuthor(event);
-      };
-    
     const handleUpdateTitle = (event) => {
         props.onUpdateTitle(event);
     };
 
     return (
         <>
-            <Button className="icon--button" variant="primary" onClick={handleShow}>
+            <Button className="settings-button" variant="primary" onClick={handleShow}>
                 Settings
             </Button>
             <Modal show={show} onHide={handleClose} centered>
@@ -36,16 +32,8 @@ const FullScreenModal = (props) => {
                         <div>Title: </div>
                         <input
                             type="text"
-                            defaultValue={props.grid.size}
+                            defaultValue={props.title}
                             onChange={handleUpdateTitle}
-                        />
-                    </Flex>
-                    <Flex>
-                        <div>Author: </div>
-                        <input
-                            type="text"
-                            defaultValue={props.grid.size}
-                            onChange={handleUpdateAuthor}
                         />
                     </Flex>
                     <Flex>

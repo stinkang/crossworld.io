@@ -81,6 +81,9 @@ export default class Editor extends Component {
     this.prvIdleID = {};
   }
 
+  get title() {
+    return this.props.title;
+  }
   get grid() {
     const grid = new GridObject(this.props.grid);
     grid.assignNumbers();
@@ -167,10 +170,6 @@ export default class Editor extends Component {
 
   handleExportClick = () => {
     this.props.onExportClick();
-  }
-
-  handleUpdateAuthor = (event) => {
-    this.props.onUpdateAuthor(event.target.value);
   }
 
   handleUpdateTitle = (event) => {
@@ -275,26 +274,7 @@ export default class Editor extends Component {
       <div className="editor--main--left">
         <Flex>
           <div className="left--toolbar">
-            <FullScreenModal 
-              onChangeRows={this.handleChangeRows}
-              onChangeColumns={this.handleChangeColumns}
-              onUpdateAuthor={this.handleUpdateAuthor}
-              onUpdateTitle={this.handleUpdateTitle}
-              grid={this.grid}
-            />
-            <FileUploader success={this.handleUploadSuccess} fail={this.handleUploadFail} v2 />
-            <button className="icon-button" onClick={this.handleExportClick}>
-                <AiFillFileExcel />
-            </button>
-            <button className="icon-button" onClick={this.handleAutofill}>
-                <AiFillControl />
-            </button>
-            <button className="icon-button" onClick={this.handleClearPencil}>
-                <AiFillStar />
-            </button>
-            <button className="icon-button" onClick={this.handlePublish}>
-                <AiFillCheckCircle />
-            </button>
+
           </div>
           <div className="left--grid--and--clues">
             <div className="editor--main--left--grid blurable">
@@ -420,6 +400,31 @@ export default class Editor extends Component {
               {/* <Flex className="editor--right--hints">
                 <Hints grid={this.props.grid} num={this.selectedClueNumber} direction={direction} />
               </Flex> */}
+              <Flex row>
+                <div className="spacer"></div>
+                <FullScreenModal 
+                  onChangeRows={this.handleChangeRows}
+                  onChangeColumns={this.handleChangeColumns}
+                  onUpdateTitle={this.handleUpdateTitle}
+                  grid={this.grid}
+                  title={this.title}
+                />
+                {/* <FileUploader success={this.handleUploadSuccess} fail={this.handleUploadFail} v2 /> */}
+                {/* <Button variant="primary" onClick={this.handleExportClick}>
+                    Export
+                </Button> */}
+                {/* <button className="icon-button" onClick={this.handleAutofill}>
+                    <AiFillControl />
+                </button>
+                <button className="icon-button" onClick={this.handleClearPencil}>
+                    <AiFillStar />
+                </button> */}
+                &nbsp;
+                &nbsp;
+                <Button className="publish-button" variant="primary" onClick={this.handlePublish}>
+                  Publish
+                </Button>
+              </Flex>
             </Flex>
           </Flex>
         </GridControls>

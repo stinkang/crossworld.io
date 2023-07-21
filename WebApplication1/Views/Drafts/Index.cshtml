@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CrossWorldApp.Models.Draft>
+﻿@model CrossWorldApp.ViewModels.Drafts.DraftsIndexViewModel
 
 @{
     ViewBag.Title = "Drafts";
@@ -7,34 +7,13 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<div id="compose-root"></div>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Title</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div id="drafts-index-root"></div>
 
 <script src="~/dist/compose.js"></script>
 
 <script type="text/javascript">
     (function () {
-        window.InitCompose();
+        window.InitDraftsIndex(@Html.Raw(Json.Serialize(Model)));
     })();
 </script>
 

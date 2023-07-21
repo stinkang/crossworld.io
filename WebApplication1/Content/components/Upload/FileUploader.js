@@ -163,7 +163,7 @@ export default class FileUploader extends Component {
             className={`file-uploader ${isDragActive ? 'drag-active' : ''}`}
           >
             <input {...getInputProps()} />
-            <MdFileUpload className="icon-button" />
+            <MdFileUpload />
           </div>
         )}
       </Dropzone>

@@ -51,7 +51,7 @@ export default class Composition extends Component {
   }
 
   initializeComposition() {
-    this.compositionModel = new CompositionModel(`/drafts/${this.id}`);
+    this.compositionModel = new CompositionModel(`/drafts/${this.cid}`);
     this.historyWrapper = new ComposeHistoryWrapper();
     this.compositionModel.on('createEvent', (event) => {
       this.historyWrapper.setCreateEvent(event);
@@ -131,13 +131,17 @@ export default class Composition extends Component {
       window.removeEventListener("beforeunload", this.handleSaveDraft);
   }
 
-  // get title() {
-  //   if (!this.compositionModel || !this.compositionModel.attached) {
-  //     return undefined;
-  //   }
-  //   const info = this.composition.info;
-  //   return `Compose: ${info.title}`;
-  // }
+  get title() {
+    if (!this.compositionModel || !this.compositionModel.attached) {
+      return undefined;
+    }
+    const info = this.composition.info;
+    return `Compose: ${info.title}`;
+  }
+
+    set title(value) {
+        this.title = value;
+    }
 
   get otherCursors() {
     return _.filter(this.composition.cursors, ({id}) => id !== this.user.id);
@@ -157,7 +161,7 @@ export default class Composition extends Component {
     const composition = this.historyWrapper.getSnapshot();
     if (isEdit) {
       const {title, author} = composition.info;
-      this.user.joinComposition(this.id, {
+      this.user.joinComposition(this.cid, {
         title,
         author,
         published: isPublished,
@@ -267,7 +271,7 @@ export default class Composition extends Component {
         let id = this.cid;
 
         clues = makeClues(clues, makeGridFromComposition(grid).grid);
-        grid = grid.map((row) => row.map(({ value }) => value || '.'));
+        grid = grid.map((row) => row.map(({ value }) => value));
         let title = info.title;
 
         const puzzle = {
@@ -291,7 +295,7 @@ export default class Composition extends Component {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             // Navigate to the index page.
-            window.location.href = "/Crosswords/Index";
+            //window.location.href = "/Crosswords/Index";
         }).catch(error => {
             console.log('Error: ', error);
         });
@@ -301,7 +305,7 @@ export default class Composition extends Component {
     let {grid, clues, info} = this.composition;
 
     clues = makeClues(clues, makeGridFromComposition(grid).grid);
-    grid = grid.map((row) => row.map(({value}) => value || '.'));
+    grid = grid.map((row) => row.map(({value}) => value));
     let author = info.author;
     let title = info.title;
 
@@ -353,6 +357,8 @@ export default class Composition extends Component {
     const grid = gridObject.grid;
     const clues = makeClues(this.composition.clues, grid);
     const cursors = this.otherCursors;
+    const info = this.composition.info;
+    const title = info.title;
 
     return (
       <Editor
@@ -362,6 +368,7 @@ export default class Composition extends Component {
         size={this.getCellSize()}
         grid={grid}
         clues={clues}
+        title={title}
         cursors={cursors}
         onUpdateGrid={this.handleUpdateGrid}
         onAutofill={this.handleAutofill}

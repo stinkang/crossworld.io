@@ -94,7 +94,7 @@
 }
 
 .editor--main--clues--list--scroll--clue.selected {
-  background-color: lightskyblue;
+  background-color: rgb(44, 174, 255);
 }
 
 .editor--main--clues--list--scroll--clue.half-selected {
@@ -142,7 +142,7 @@
   border: none; /* Remove border */
   width: 50px; /* Same size as before */
   height: 50px; /* Same size as before */
-  color: white; /* White icon color */
+  color: black; /* White icon color */
   cursor: pointer; /* Change cursor to pointer when hovering over the button */
 }
 
@@ -164,6 +164,23 @@
   z-index: 10; /* Ensure the input renders on top of other content */
 }
 
-.modal-content {
-  background-color: black;
+.publish-button {
+  background-color: rgb(3, 183, 3);
+  color: white;
+  border: 1px solid  rgb(3, 183, 3);
+}
+
+.publish-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+  border: 1px solid #45a049;
+}
+
+.settings-button {
+  background-color: rgb(44, 174, 255);
+  color: white;
+  border: 1px solid  rgb(44, 174, 255);
+}
+
+.spacer {
+  flex-grow: 1;
 }

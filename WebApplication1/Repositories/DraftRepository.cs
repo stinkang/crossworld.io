@@ -41,9 +41,9 @@ namespace CrossWorldApp.Repositories
             }
         }
 
-        public void DeleteDraft(string userId, string id)
+        public void DeleteDraft(string id)
         {
-            var existingDraft = _context.Drafts.FirstOrDefault(d => d.UserId == userId && d.Id == id);
+            var existingDraft = _context.Drafts.FirstOrDefault(d => d.Id == id);
             if (existingDraft != null)
             {
                 _context.Drafts.Remove(existingDraft);
@@ -58,6 +58,6 @@ namespace CrossWorldApp.Repositories
         Draft GetDraftById(string id);
         void AddDraft(Draft draft);
         void UpdateDraft(Draft draft);
-        void DeleteDraft(string userId, string id);
+        void DeleteDraft(string id);
     }
 }

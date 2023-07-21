@@ -15,7 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        return RedirectToAction(actionName: "Index", controllerName: "Crosswords");
     }
 
     public IActionResult Privacy()

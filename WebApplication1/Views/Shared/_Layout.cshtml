@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/CrossWorldApp.styles.css" asp-append-version="true"/>
+    <script>
+        // Immediately invoked function to set the theme on initial load
+        (function() {
+            let currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+            if (currentTheme) {
+                document.documentElement.setAttribute('data-theme', currentTheme);
+            }
+        })();
+      </script>
+
 </head>
 <body>
 <header>
@@ -19,12 +29,20 @@
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
+                    <!-- Keep your other links here -->
+                </ul>
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="Drafts" asp-action="Index">Drafts</a>
+                        <a class="nav-link" asp-controller="Drafts" asp-action="Index">Drafts</a>
                     </li>
                 </ul>
             </div>
             @await Html.PartialAsync("_LoginPartial")
+            &nbsp;
+            <label class="switch">
+              <input type="checkbox" id="darkModeSwitch">
+              <span class="slider round"></span>
+            </label>
         </div>
     </nav>
 </header>
@@ -41,6 +59,21 @@
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    let currentTheme = localStorage.getItem('theme');
+    let darkModeSwitch = document.getElementById('darkModeSwitch');
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        darkModeSwitch.checked = currentTheme === 'dark';
+        document.body.style.visibility = 'visible'; // make the body visible
+    }
+    darkModeSwitch.addEventListener('change', function(event) {
+        let theme = event.target.checked ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme',  theme);
+    });
+    
+</script>
 @*<script src="~/js/site.js" asp-append-version="true"></script>*@
 @await RenderSectionAsync("Scripts", required: false)
 </body>

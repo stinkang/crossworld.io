@@ -41,7 +41,7 @@ export default class Compose extends Component {
   render() {
      return (
       <div>
-        <button onClick={this.handleCreateClick}>New</button>
+        <button className="link-button" onClick={this.handleCreateClick}>New</button>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 ﻿using CrossWorldApp.Models;
+using CrossWorldApp.ViewModels.Drafts;
 using Microsoft.AspNetCore.Identity;
 
 namespace CrossWorldApp.Services
@@ -28,10 +29,26 @@ namespace CrossWorldApp.Services
             };
             return draft;
         }
+        
+        public DraftsIndexViewModel GetIndexViewModel(List<Draft> drafts)
+        {
+            var viewModel = new DraftsIndexViewModel
+            {
+                Drafts = drafts.Select(d => new DraftsIndexDraftViewModel
+                {
+                    Id = d.Id,
+                    Title = d.Title,
+                    Grid = d.Grid
+                })
+            };
+            
+            return viewModel;
+        }
     }
 
     public interface IDraftService
     {
         Draft newMini(CrossworldUser user);
+        DraftsIndexViewModel GetIndexViewModel(List<Draft> drafts);
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using CrossWorldApp;
 using CrossWorldApp.Models;
 using CrossWorldApp.Repositories;
+using CrossWorldApp.ViewModels.Crosswords;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 
@@ -31,7 +32,10 @@ namespace CrossWorldApp.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.TestCrosswords != null ? 
-                          View(await _context.TestCrosswords.ToListAsync()) :
+                          View(new CrosswordsIndexViewModel
+                          {
+                              Crosswords = await _context.TestCrosswords.ToListAsync()
+                          }) :
                           Problem("Entity set 'CrossWorldDbContext.TestCrosswords'  is null.");
         }
 

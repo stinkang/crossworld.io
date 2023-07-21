@@ -37,7 +37,9 @@ public class DraftsController : Controller
             return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
         }
 
-        return View(user.Drafts);
+        var viewModel = _draftService.GetIndexViewModel(user.Drafts);
+
+        return View(viewModel);
     }
 
     [HttpGet]
@@ -70,9 +72,16 @@ public class DraftsController : Controller
             return new JsonResult(new { error = $"Unable to load user with ID '{_userManager.GetUserId(User)}'." });
         }
 
-        Draft draft = new Draft();
-        draft.Id = id;
-        draft.User = user;
+        Draft draft = new Draft
+        {
+            Id = id,
+            User = user,
+            Title = "Untitled",
+            Grid = new List<List<string>>(),
+            Clues = new TestCrosswordClues()
+        };
+
+        _draftRepository.AddDraft(draft);
 
         return new JsonResult(new { draft = draft });
     }
@@ -115,6 +124,22 @@ public class DraftsController : Controller
         }
 
         return View(draft);
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+        {
+            return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+        }
+
+        _draftRepository.DeleteDraft(id);
+
+        _logger.LogInformation($"Draft deleted by {user.UserName}.");
+
+        return RedirectToAction(nameof(Index));
     }
 
     /*    [HttpPut]

@@ -30,8 +30,8 @@
 
 .cell.black {
   /* z-index: 2; */
-  background-color: var(--main-black);
-  color: var(--main-black);
+  background-color: black;
+  color: black;
 }
 
 .cell.hidden {
@@ -41,8 +41,8 @@
 }
 
 .cell.black.selected {
-  background-color: var(--main-black);
-  color: var(--main-black);
+  background-color: black;
+  color: black;
   border: 3px solid #4aeba1;
 }
 
