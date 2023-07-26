@@ -10,6 +10,9 @@ namespace CrossWorldApp.Models
 
         [JsonIgnore]
         public List<TestCrossword>? PublishedTestCrosswords { get; set; }
+        
+        [JsonIgnore]
+        public List<Solve>? Solves { get; set; }
 
         [JsonIgnore]
         public List<Draft>? Drafts { get; set; }

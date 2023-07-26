@@ -54,5 +54,7 @@ namespace CrossWorldApp.Models
             }
         }
 
+        [System.Text.Json.Serialization.JsonIgnore]
+        public List<Solve>? Solves { get; set; }
     }
 }

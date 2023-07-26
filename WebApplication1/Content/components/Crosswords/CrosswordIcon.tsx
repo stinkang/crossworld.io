@@ -27,6 +27,10 @@ export function CrosswordIcon(props: CrosswordIconViewModel) {
                 <div>
                     By {props.author}
                 </div>
+                <form action={'/Solve/Create/'} method="post">
+                    <input type="hidden" name="crosswordId" value={props.id} />
+                    <button type="submit" className="link-button">Solve</button>
+                </form>
             </Flex>
         </Flex>
     );

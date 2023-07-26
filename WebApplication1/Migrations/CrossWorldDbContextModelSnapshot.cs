@@ -189,6 +189,42 @@ namespace CrossWorldApp.Migrations
                     b.ToTable("Drafts");
                 });
 
+            modelBuilder.Entity("CrossWorldApp.Models.Solve", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("GridString")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsCoOp")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSolved")
+                        .HasColumnType("bit");
+
+                    b.Property<double>("MillisecondsElapsed")
+                        .HasColumnType("float");
+
+                    b.Property<int>("TestCrosswordId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("UsedHints")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TestCrosswordId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Solves");
+                });
+
             modelBuilder.Entity("CrossWorldApp.Models.TestCrossword", b =>
                 {
                     b.Property<int>("Id")
@@ -399,6 +435,23 @@ namespace CrossWorldApp.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("CrossWorldApp.Models.Solve", b =>
+                {
+                    b.HasOne("CrossWorldApp.Models.TestCrossword", "TestCrossword")
+                        .WithMany("Solves")
+                        .HasForeignKey("TestCrosswordId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CrossWorldApp.Models.CrossworldUser", "User")
+                        .WithMany("Solves")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("TestCrossword");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("CrossWorldApp.Models.TestCrossword", b =>
                 {
                     b.HasOne("CrossWorldApp.Models.CrossworldUser", "User")
@@ -476,6 +529,13 @@ namespace CrossWorldApp.Migrations
                     b.Navigation("PublishedCrosswords");
 
                     b.Navigation("PublishedTestCrosswords");
+
+                    b.Navigation("Solves");
+                });
+
+            modelBuilder.Entity("CrossWorldApp.Models.TestCrossword", b =>
+                {
+                    b.Navigation("Solves");
                 });
 #pragma warning restore 612, 618
         }

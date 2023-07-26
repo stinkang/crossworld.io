@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CrossWorldApp;
 using CrossWorldApp.Models;
 using CrossWorldApp.Repositories;
+using CrossWorldApp.Services;
 using CrossWorldApp.ViewModels.Crosswords;
+using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 
@@ -18,14 +21,21 @@ namespace CrossWorldApp.Controllers
     {
         private readonly CrossWorldDbContext _context;
         private readonly ITestCrosswordRepository _testCrosswordRepository;
+        private readonly ICrossworldUserService _userService;
+        private readonly UserManager<CrossworldUser> _userManager;
+        
 
         public CrosswordsController(
             CrossWorldDbContext context,
-            ITestCrosswordRepository testCrosswordRepository
+            ITestCrosswordRepository testCrosswordRepository,
+            ICrossworldUserService userService,
+            UserManager<CrossworldUser> userManager
             )
         {
             _context = context;
             _testCrosswordRepository = testCrosswordRepository;
+            _userService = userService;
+            _userManager = userManager;
         }
 
         // GET: Crosswords
@@ -40,21 +50,32 @@ namespace CrossWorldApp.Controllers
         }
 
         // GET: Crosswords/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<JsonResult> Details(int? id)
         {
-            if (id == null || _context.Crosswords == null)
+            if (id == null || _context.TestCrosswords == null)
             {
-                return NotFound();
+                return new JsonResult(new { error = "Not found crossword" });
             }
 
-            var crossword = await _context.Crosswords
+            var crossword = await _context.TestCrosswords
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (crossword == null)
             {
-                return NotFound();
+                return new JsonResult(new { error = "Not found crossword" });
             }
 
-            return View(crossword);
+            return Json(
+                new
+                {
+                    info = new
+                    {
+                        author = crossword.Author, 
+                        title = crossword.Title
+                    }, 
+                    grid = crossword.Grid,
+                    clues = crossword.Clues
+                }
+            );
         }
 
         // GET: Crosswords/Create
@@ -87,6 +108,7 @@ namespace CrossWorldApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                crossword.User = await _userManager.GetUserAsync(User);
                 _testCrosswordRepository.AddTestCrossword(crossword);
                 return RedirectToAction(nameof(Index));
             }

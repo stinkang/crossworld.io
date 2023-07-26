@@ -16,6 +16,7 @@ builder.Services.AddTransient<ITestCrosswordRepository, TestCrosswordRepository>
 builder.Services.AddTransient<IDraftRepository, DraftRepository>();
 builder.Services.AddTransient<ICrosswordRepository, CrosswordRepository>();
 builder.Services.AddTransient<ICrossworldUserService, CrossworldUserService>();
+builder.Services.AddTransient<ISolveRepository, SolveRepository>();
 builder.Services.AddTransient<IDraftService, DraftService>();
 
 builder.Services.AddReact();

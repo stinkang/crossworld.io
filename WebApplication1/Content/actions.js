@@ -51,22 +51,22 @@ const actions = {
     );
   },
 
-  // getNextGid: (cbk) => {
-  //   db.ref('counters').transaction(
-  //     (counters) => {
-  //       const gid = (counters && counters.gid) || 0;
-  //       return {
-  //         ...counters,
-  //         gid: gid + 1,
-  //       };
-  //     },
-  //     (error, committed, snapshot) => {
-  //       const gid = snapshot.child('gid').val();
-  //       const word = gameWords[Math.floor(Math.random() * gameWords.length)];
-  //       cbk(`${gid}-${word}`);
-  //     }
-  //   );
-  // },
+  getNextGid: (cbk) => {
+    db.ref('counters').transaction(
+      (counters) => {
+        const gid = (counters && counters.gid) || 0;
+        return {
+          ...counters,
+          gid: gid + 1,
+        };
+      },
+      (error, committed, snapshot) => {
+        const gid = snapshot.child('gid').val();
+        const word = gameWords[Math.floor(Math.random() * gameWords.length)];
+        cbk(`${gid}-${word}`);
+      }
+    );
+  },
 
   // getNextBid: (cbk) => {
   //   // Copying Cid logic for now...

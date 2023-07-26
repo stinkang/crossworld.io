@@ -17,6 +17,8 @@ public class CrossWorldDbContext : IdentityDbContext<CrossworldUser>
     public DbSet<TestCrossword> TestCrosswords { get; set; }
 
     public DbSet<Draft> Drafts { get; set; }
+    
+    public DbSet<Solve> Solves { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -57,6 +59,16 @@ public class CrossWorldDbContext : IdentityDbContext<CrossworldUser>
             .HasMany(u => u.Drafts)
             .WithOne(d => d.User) // No navigation property in Draft
             .HasForeignKey(d => d.UserId); // Name of the foreign key property
+        
+        modelBuilder.Entity<CrossworldUser>()
+            .HasMany(u => u.Solves)
+            .WithOne(s => s.User) // No navigation property in CrosswordSolve
+            .HasForeignKey(s => s.UserId); // Name of the foreign key property
+        
+        modelBuilder.Entity<TestCrossword>()
+            .HasMany(t => t.Solves)
+            .WithOne(s => s.TestCrossword) // No navigation property in CrosswordSolve
+            .HasForeignKey(s => s.TestCrosswordId); // Name of the foreign key property
     }
 
     // ... other properties and methods ...

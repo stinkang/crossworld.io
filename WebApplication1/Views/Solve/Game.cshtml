@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>title</h2>
+
+
+<div id="solve-game-root"></div>
+<script src="~/dist/solve.js"></script>
+
+<script type="text/javascript">
+    (function () {
+        window.InitSolveGame("@ViewData["id"]");
+    })();
+</script>

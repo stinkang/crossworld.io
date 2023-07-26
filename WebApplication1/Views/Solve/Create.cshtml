@@ -1,0 +1,16 @@
+﻿@model CrossWorldApp.ViewModels.Solve.SolveViewModel;
+
+@{
+    ViewBag.Title = "Solve";
+    Layout = "_Layout";
+}
+
+<h2>Solve</h2>
+
+<script src="~/dist/crosswords.js"></script>
+
+<script type="text/javascript">
+    (function () {
+        window.InitCrosswordsSolve(@Html.Raw(Json.Serialize(Model)));
+    })();
+</script>

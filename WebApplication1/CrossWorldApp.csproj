@@ -59,6 +59,13 @@
       <TypeScriptCompile Include="Content\components\Crosswords\CrosswordIcon.tsx" />
       <TypeScriptCompile Include="Content\components\Crosswords\CrosswordsIndex.tsx" />
       <TypeScriptCompile Include="Content\components\Crosswords\InitCrosswordsIndex.tsx" />
+      <TypeScriptCompile Include="Content\components\Crosswords\Models\CrosswordModel.ts" />
+      <TypeScriptCompile Include="Content\components\Solve\InitSolveEdit.tsx" />
+      <TypeScriptCompile Include="Content\components\Solve\InitSolveGame.tsx" />
+      <TypeScriptCompile Include="Content\components\Solve\Models\Solve.ts" />
+      <TypeScriptCompile Include="Content\components\Solve\Models\SolveViewModel.ts" />
+      <TypeScriptCompile Include="Content\components\Solve\SolveEdit.tsx" />
+      <TypeScriptCompile Include="Content\components\Solve\SolveGame.tsx" />
       <TypeScriptCompile Include="Content\pages\DraftIcon.tsx" />
       <TypeScriptCompile Include="Content\pages\DraftsIndex.tsx" />
       <TypeScriptCompile Include="Content\pages\InitCompose.tsx" />
