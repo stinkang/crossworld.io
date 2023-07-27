@@ -1,0 +1,15 @@
+﻿@model CrossWorldApp.ViewModels.Users.ProfileViewModel;
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div id="profile-view-root"></div>
+<script src="~/dist/users.js"></script>
+
+<script type="text/javascript">
+    (function () {
+        window.InitProfileView(@Html.Raw(Json.Serialize(Model)));
+    })();
+</script>

@@ -50,6 +50,10 @@ export default class Game extends Component {
   get beta() {
     return true;
   }
+  
+  get userName() {
+    return this.props.userName;
+  }
 
   get query() {
     return querystring.parse(this.props.location.search.slice(1));
@@ -337,6 +341,7 @@ export default class Game extends Component {
         // battleModel={this.battleModel}
         team={this.state.team}
         unreads={this.unreads}
+        solveId={this.gid}
       />
     );
   }
@@ -360,6 +365,7 @@ export default class Game extends Component {
         game={this.game}
         gid={this.state.gid}
         users={this.game.users}
+        userName={this.userName}
         id={id}
         myColor={color}
         onChat={this.handleChat}

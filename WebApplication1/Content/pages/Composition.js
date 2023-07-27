@@ -28,6 +28,7 @@ export default class Composition extends Component {
     this.cid = props.cid;
     this.state = {
       mobile: isMobile(),
+      isAnonymous: false
     };
   }
 
@@ -212,6 +213,10 @@ export default class Composition extends Component {
     this.compositionModel.updateAuthor(author);
     this.handleChange();
   };
+  
+  handleUpdateIsAnonymous = (isAnonymous) => {
+    this.isAnonymous = isAnonymous;
+  };
 
   handleUnfocusHeader = () => {
     this.chat && this.chat.focus();
@@ -306,12 +311,12 @@ export default class Composition extends Component {
 
     clues = makeClues(clues, makeGridFromComposition(grid).grid);
     grid = grid.map((row) => row.map(({value}) => value));
-    let author = info.author;
+    let isAnonymous = this.isAnonymous;
     let title = info.title;
 
     const puzzle = {
       clues,
-      author,
+      isAnonymous,
       title,
       grid
     };
@@ -342,6 +347,10 @@ export default class Composition extends Component {
 
   handleClearPencil = () => {
     this.compositionModel.clearPencil();
+  };
+  
+  handleChangeAnonimity = (event) => {
+    this.compositionModel.updateAnonimity(event.target.checked);
   };
 
   getCellSize() {
@@ -386,7 +395,8 @@ export default class Composition extends Component {
         onUploadFail={this.handleUploadFail}
         onExportClick={this.handleExportClick}
         onUpdateTitle={this.handleUpdateTitle}
-        onUpdateAuthor={this.handleUpdateAuthor}
+        onUpdateIsAnonymous={this.handleUpdateIsAnonymous}
+        onChangeAnonimity={this.handleChangeAnonimity}
       />
     );
   }

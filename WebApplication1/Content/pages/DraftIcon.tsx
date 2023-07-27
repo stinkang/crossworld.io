@@ -2,13 +2,14 @@
 import { DraftsIndexDraftViewModel } from "../components/Compose/Models/DraftsIndexDraftViewModel";
 import Flex from 'react-flexview';
 import './css/draftindex.css';
+import '../../Content/components/Crosswords/css/crosswords.css'
 
 
 export function DraftIcon(props: DraftsIndexDraftViewModel) {
     const grid = props.grid;
     return (
         <Flex>
-            <div>
+            <div className="crossword-icon-border">
                 {grid.map(row =>
                     <Flex>{row.map(cell =>
                         cell === '.' ?

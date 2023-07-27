@@ -45,6 +45,29 @@ public class TestCrosswordRepository: ITestCrosswordRepository
             _context.SaveChanges();
         }
     }
+
+    public TestCrossword[] GetPublishedCrosswordsForUser(string userId)
+    {
+        return _context.TestCrosswords.Where(crossword => crossword.UserId == userId).ToArray();
+    }
+    
+    public TestCrossword[] GetCompletedCrosswordsForUser(string userId)
+    {
+        var completedCrosswords = 
+            (from solve in _context.Solves
+            join crossword in _context.TestCrosswords on solve.TestCrosswordId equals crossword.Id
+            where solve.UserId == userId && solve.IsSolved == true
+            select crossword).ToArray();
+        
+        return completedCrosswords;
+    }
+    
+    public TestCrossword GetTestCrosswordWithUser(int id)
+    {
+        return _context.TestCrosswords
+            .Include(crossword => crossword.User)
+            .FirstOrDefault(crossword => crossword.Id == id);
+    }
 }
 
 public interface ITestCrosswordRepository
@@ -54,4 +77,10 @@ public interface ITestCrosswordRepository
     void AddTestCrossword(TestCrossword crossword);
     void UpdateTestCrossword(TestCrossword crossword);
     void DeleteTestCrossword(int id);
+
+    TestCrossword[] GetPublishedCrosswordsForUser(string userId);
+    
+    TestCrossword[] GetCompletedCrosswordsForUser(string userId);
+
+    TestCrossword GetTestCrosswordWithUser(int id);
 }

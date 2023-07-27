@@ -30,3 +30,32 @@
 .modal-content {
     background-color: var(--background-color);
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* adjust this as needed */
+}
+.flex-item {
+    margin: 10px; /* adjust as needed */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* adjust the 250px to fit your needs */ /* adjust the 250px to fit your needs */
+    grid-row-gap: 100px;
+    /* gap: 10px; adjust the gap between items */
+}
+
+.grid-item {
+    /* Style for individual items, if needed */
+}
+
+.icon-text {
+    font-style: italic;
+    color: gray;
+}
+
+.crossword-icon-border {
+    border: 8px solid black;
+}

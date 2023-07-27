@@ -7,16 +7,36 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CrossWorldApp.Models;
 using CrossWorldApp;
+using CrossWorldApp.Repositories;
+using CrossWorldApp.Services;
+using CrossWorldApp.ViewModels;
+using CrossWorldApp.ViewModels.Users;
+using Microsoft.AspNetCore.Identity;
 
 namespace CrossWorldApp.Controllers
 {
     public class UsersController : Controller
     {
         private readonly CrossWorldDbContext _context;
+        private readonly UserManager<CrossworldUser> _userManager;
+        private readonly ICrossworldUserService _userService;
+        private readonly ITestCrosswordRepository _crosswordRepository;
+        private readonly ISolveRepository _solveRepository;
 
-        public UsersController(CrossWorldDbContext context)
+
+        public UsersController(
+            CrossWorldDbContext context,
+            UserManager<CrossworldUser> userManager,
+            ICrossworldUserService userService,
+            ITestCrosswordRepository crosswordRepository,
+            ISolveRepository solveRepository
+            )
         {
             _context = context;
+            _userManager = userManager;
+            _userService = userService;
+            _crosswordRepository = crosswordRepository;
+            _solveRepository = solveRepository;
         }
 
         // GET: Users
@@ -107,6 +127,12 @@ namespace CrossWorldApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Id,Uid,Username")] User user)
         {
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null || currentUser.Id != id)
+            {
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+            
             if (id != user.Id)
             {
                 return NotFound();
@@ -138,6 +164,12 @@ namespace CrossWorldApp.Controllers
         // GET: Users/Delete/5
         public async Task<IActionResult> Delete(string? id)
         {
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null || currentUser.Id != id)
+            {
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+            
             if (id == null || _context.Users == null)
             {
                 return NotFound();
@@ -156,11 +188,17 @@ namespace CrossWorldApp.Controllers
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (_context.Users == null)
             {
                 return Problem("Entity set 'CrossWorldDbContext.User'  is null.");
+            }
+            
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null || currentUser.Id != id)
+            {
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
             var user = await _context.Users.FindAsync(id);
             if (user != null)
@@ -170,6 +208,36 @@ namespace CrossWorldApp.Controllers
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+        
+        [HttpGet]
+        [Route("User/Profile/{id}")]
+        public async Task<IActionResult> Profile(string id)
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null)
+            {
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
+            // if (currentUser.Id == id)
+            // {
+            //     var viewModel = new OwnProfileViewModel
+            //     {
+            //         
+            //     }
+            // }
+
+            var profileUser = await _userService.GetUserWithTestCrosswordsAsync(id);
+
+            var viewModel = new ProfileViewModel
+            {
+                UserName = profileUser.UserName,
+                CompletedCrosswords = _crosswordRepository.GetCompletedCrosswordsForUser(id).ToList(),
+                PublishedCrosswords = profileUser.PublishedTestCrosswords.ToList()
+            };
+
+            return View(viewModel);
         }
 
         private bool UserExists(string id)

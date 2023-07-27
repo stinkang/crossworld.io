@@ -20,33 +20,12 @@ const isEmojis = (str) => {
 export default class Chat extends Component {
   constructor() {
     super();
-    const username = localStorage.getItem(this.usernameKey) || nameGenerator();
-    this.state = {
-      username,
-    };
     this.chatBar = React.createRef();
-    this.usernameInput = React.createRef();
   }
 
   componentDidMount() {
-    const battleName = localStorage.getItem(`battle_${this.props.bid}`);
-    // HACK
-    if (battleName && !localStorage.getItem(this.usernameKey)) {
-      this.setState({username: battleName});
-    }
-    this.handleUpdateDisplayName(this.state.username);
+    this.handleUpdateDisplayName(this.props.userName);
   }
-
-  get usernameKey() {
-    return `username_${window.location.href}`;
-  }
-
-  handleSendMessage = (message) => {
-    const {id} = this.props;
-    const username = this.props.users[id].displayName;
-    this.props.onChat(username, id, message);
-    localStorage.setItem(this.usernameKey, username);
-  };
 
   handleUpdateDisplayName = (username) => {
     if (!this.usernameInput?.current?.focused) {
@@ -58,6 +37,19 @@ export default class Chat extends Component {
     localStorage.setItem(this.usernameKey, username);
   };
 
+  get userName() {
+    return this.props.userName;
+  }
+
+  get usernameKey() {
+    return `username_${window.location.href}`;
+  }
+
+  handleSendMessage = (message) => {
+    const {id} = this.props;
+    this.props.onChat(this.userName, id, message);
+  };
+
   handleUpdateColor = (color) => {
     color = color || this.props.color;
     const {id} = this.props;
@@ -66,12 +58,6 @@ export default class Chat extends Component {
 
   handleUnfocus = () => {
     this.props.onUnfocus && this.props.onUnfocus();
-  };
-
-  handleBlur = () => {
-    let {username} = this.state;
-    username = username || nameGenerator();
-    this.setState({username});
   };
 
   handleToggleChat = () => {
@@ -134,25 +120,6 @@ export default class Chat extends Component {
     );
   }
 
-  renderFencingOptions() {
-    const fencingUrl = `/fencing/${this.props.gid}`;
-    const normalUrl = `/beta/game/${this.props.gid}`;
-    const isFencing = this.props.isFencing;
-    // const fencingStarted = this.props.game.isFencing;
-    const fencingPlayers = this.props.game.fencingUsers?.length ?? 0;
-    return (
-      <div>
-        {!isFencing && !!fencingPlayers && <a href={fencingUrl}>Join Fencing ({fencingPlayers} joined)</a>}
-        {!isFencing && !fencingPlayers && (
-          <a href={fencingUrl} style={{opacity: 0.1, textDecoration: 'none'}}>
-            X
-          </a>
-        )}
-        {isFencing && <a href={normalUrl}>Leave Fencing</a>}
-      </div>
-    );
-  }
-
   renderChatHeader() {
     if (this.props.header) return this.props.header;
     const {info = {}, bid} = this.props;
@@ -176,26 +143,6 @@ export default class Chat extends Component {
             {bid}
           </div>
         )}
-        {this.renderFencingOptions()}
-      </div>
-    );
-  }
-
-  renderUsernameInput() {
-    return this.props.hideChatBar ? null : (
-      <div className="chat--username">
-        {'You are '}
-        <ColorPicker color={this.props.myColor} onUpdateColor={this.handleUpdateColor} />
-        <EditableSpan
-          ref={this.usernameInput}
-          className="chat--username--input"
-          mobile={this.props.mobile}
-          value={this.state.username}
-          onChange={this.handleUpdateDisplayName}
-          onBlur={this.handleBlur}
-          onUnfocus={this.focus}
-          style={{color: this.props.myColor}}
-        />
       </div>
     );
   }
@@ -343,7 +290,6 @@ export default class Chat extends Component {
 
     return (
       <>
-        {this.renderUsernameInput()}
         {this.renderUsersPresent(users)}
       </>
     );

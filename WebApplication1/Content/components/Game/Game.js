@@ -33,12 +33,55 @@ export default class Game extends Component {
       screenWidth,
     });
     this.componentDidUpdate({});
+    window.addEventListener("beforeunload", this.handleSaveSolve);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.myColor !== this.props.myColor) {
       this.handleUpdateColor(this.props.id, this.props.myColor);
     }
+  }
+  
+  componentWillUnmount()
+  {
+    window.removeEventListener("beforeunload", this.handleSaveSolve);
+  }
+  
+  handleSaveSolve = () => {
+    const {
+      grid,
+      circles,
+      shades,
+      cursors,
+      pings,
+      users,
+      solved,
+      solution,
+      themeColor,
+      optimisticCounter,
+      clock
+    } = this.game;
+    const millisecondsElapsed = clock.trueTotalTime;
+    const solveId = this.props.solveId;
+    const isSolved = solved;
+    const solveGrid = grid.map((row) => row.map((cell) => cell.value));
+    console.log(solved);
+    fetch('/solve/edit/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        solveId,
+        solveGrid,
+        isSolved,
+        millisecondsElapsed
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        });
   }
 
   get rawGame() {

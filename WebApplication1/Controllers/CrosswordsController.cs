@@ -57,8 +57,7 @@ namespace CrossWorldApp.Controllers
                 return new JsonResult(new { error = "Not found crossword" });
             }
 
-            var crossword = await _context.TestCrosswords
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var crossword = _testCrosswordRepository.GetTestCrosswordWithUser(id.Value);
             if (crossword == null)
             {
                 return new JsonResult(new { error = "Not found crossword" });
@@ -69,7 +68,7 @@ namespace CrossWorldApp.Controllers
                 {
                     info = new
                     {
-                        author = crossword.Author, 
+                        author = crossword.IsAnonymous ? "Anonymous" : crossword.User.UserName, 
                         title = crossword.Title
                     }, 
                     grid = crossword.Grid,
@@ -106,9 +105,12 @@ namespace CrossWorldApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Create2([FromBody] TestCrossword crossword)
         {
+            var user = await _userManager.GetUserAsync(User);
+            
             if (ModelState.IsValid)
             {
-                crossword.User = await _userManager.GetUserAsync(User);
+                crossword.UserId = user.Id;
+                crossword.Author = crossword.IsAnonymous ? "Anonymous" : user.UserName;
                 _testCrosswordRepository.AddTestCrossword(crossword);
                 return RedirectToAction(nameof(Index));
             }

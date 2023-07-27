@@ -18,6 +18,7 @@ export function DraftsIndex(props: DraftsIndexOptions) {
                     <div>
                         <DraftIcon id={draft.id} title={draft.title} grid={draft.grid} />
                         &nbsp;
+                        &nbsp;
                     </div>
                 )}
             </ul>

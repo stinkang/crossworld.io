@@ -53,6 +53,11 @@ public class SolveRepository: ISolveRepository
             _context.SaveChanges();
         }
     }
+    
+    public Solve[] GetCompletedSolvesForUser(string userId)
+    {
+        return _context.Solves.Where(solve => solve.UserId == userId && solve.IsSolved == true).ToArray();
+    }
 }
 
 public interface ISolveRepository
@@ -62,4 +67,6 @@ public interface ISolveRepository
     void AddSolve(Solve solve);
     void UpdateSolve(Solve solve);
     void DeleteSolve(string id);
+    
+    Solve[] GetCompletedSolvesForUser(string userId);
 }

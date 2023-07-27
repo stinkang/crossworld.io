@@ -6,6 +6,8 @@ export class CrosswordModel {
     clues: TestCrosswordClues[];
     author: string;
     title: string;
+    isAnonymous: boolean;
+    userId: string;
     
     constructor() {
         this.grid = [];
@@ -13,5 +15,7 @@ export class CrosswordModel {
         this.clues = [];
         this.author = "";
         this.title = "";
+        this.isAnonymous = false;
+        this.userId = "";
     }
 }

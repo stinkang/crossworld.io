@@ -6,22 +6,11 @@ import { Modal, Button } from 'react-bootstrap';
 import Grid from '../Grid';
 import GridControls from './GridControls';
 import EditableSpan from '../common/EditableSpan';
-import FileUploader from '../../components/Upload/FileUploader';
-import {
-  AiFillFileAdd,
-  AiFillFileExcel,
-  AiFillDatabase,
-  AiFillCaretDown,
-  AiFillCaretUp,
-  AiFillControl,
-  AiFillStar,
-  AiFillCloseCircle,
-  AiFillCheckCircle
-} from 'react-icons/ai';
 
 import GridObject from '../../lib/wrappers/GridWrapper';
 import * as gameUtils from '../../lib/gameUtils';
 import FullScreenModal from './EditorModal';
+import PublishModal from "./PublishModal";
 
 if (typeof window !== 'undefined') {
   window.requestIdleCallback =
@@ -112,6 +101,10 @@ export default class Editor extends Component {
       direction: gameUtils.getOppositeDirection(prevState.direction),
     }));
   };
+  
+  handleChangeAnonimity = (event) => {
+    this.props.onChangeAnonimity(event.target.checked);
+  }
 
   handleSelectClue = (direction, number) => {
     this.refs.gridControls.selectClue(direction, number);
@@ -158,6 +151,10 @@ export default class Editor extends Component {
     this.setState((prevState) => ({
       frozen: !prevState.frozen,
     }));
+  };
+  
+  handleUpdateIsAnonymous = (event) => {
+    this.props.onUpdateIsAnonymous(event.target.checked);
   };
 
   handleUploadSuccess = (puzzle, filename = '') => {
@@ -421,9 +418,10 @@ export default class Editor extends Component {
                 </button> */}
                 &nbsp;
                 &nbsp;
-                <Button className="publish-button" variant="primary" onClick={this.handlePublish}>
-                  Publish
-                </Button>
+                <PublishModal
+                    onUpdateIsAnonymous={this.handleUpdateIsAnonymous}
+                    onPublish={this.handlePublish}
+                />
               </Flex>
             </Flex>
           </Flex>

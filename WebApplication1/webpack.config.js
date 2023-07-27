@@ -6,6 +6,7 @@ module.exports = {
         compose: './Content/components/Compose/index.js',
         crosswords: './Content/components/Crosswords/index.js',
         solve: './Content/components/Solve/index.js',
+        users: './Content/components/Users/index.js',
     },
     output: {
         filename: '[name].js',

@@ -16,8 +16,9 @@ export default class Puzzle extends EventEmitter {
           this.data = data;
           this.emit('ready');
         }
-    );
-    
+    ).catch((error) => {
+      console.error('Error:', error);
+    });
   }
 
   toGame() {
