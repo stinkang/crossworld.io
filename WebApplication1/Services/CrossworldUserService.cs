@@ -27,6 +27,12 @@ namespace CrossWorldApp.Services
         public async Task<CrossworldUser> GetUserWithDraftsAsync(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+            
             user.Drafts = _draftRepo.GetDraftsForUser(userId).ToList();
             return user;
         }
@@ -50,6 +56,13 @@ namespace CrossWorldApp.Services
             var user = await GetUserWithSolvesAsync(userId);
             return user.Solves.FirstOrDefault(s => s.TestCrosswordId == crosswordId);
         }
+        
+        public async Task<CrossworldUser> GetUserByUserNameWithTestCrosswordsAsync(string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+            user.PublishedTestCrosswords = _testCrosswordRepository.GetPublishedCrosswordsForUser(user.Id).ToList();
+            return user;
+        }
     }
 
     public interface ICrossworldUserService
@@ -58,6 +71,8 @@ namespace CrossWorldApp.Services
         Task<CrossworldUser> GetUserWithSolvesAsync(string userId);
         
         Task<CrossworldUser> GetUserWithTestCrosswordsAsync(string userId);
+        
+        Task<CrossworldUser> GetUserByUserNameWithTestCrosswordsAsync(string userName);
         
         Task<Solve> UserSolveForCrossword(string userId, int crosswordId);
     }

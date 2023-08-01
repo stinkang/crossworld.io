@@ -11,7 +11,7 @@
 .action-menu--list {
   position: absolute;
   top: 100%;
-  background-color: var(--main-gray-3);
+  background-color: #dddddd;
   display: none;
   z-index: 13;
 }
@@ -35,7 +35,7 @@
 
 .action-menu--list--action:hover {
   color: #111;
-  background-color: #dddddd;
+  background-color: lightgray;
 }
 
 .toolbar--mobile--top .action-menu--list--action {

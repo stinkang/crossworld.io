@@ -69,6 +69,10 @@ public class CrossWorldDbContext : IdentityDbContext<CrossworldUser>
             .HasMany(t => t.Solves)
             .WithOne(s => s.TestCrossword) // No navigation property in CrosswordSolve
             .HasForeignKey(s => s.TestCrosswordId); // Name of the foreign key property
+        
+        modelBuilder.Entity<TestCrossword>()
+            .Property(e => e.CreatedAt)
+            .HasDefaultValueSql("getutcdate()");
     }
 
     // ... other properties and methods ...

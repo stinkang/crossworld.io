@@ -153,20 +153,26 @@ export default class FileUploader extends Component {
   }
 
   render() {
-    // const {v2} = this.props;
+    const {v2} = this.props;
     return (
-      <Dropzone onDrop={this.onDrop.bind(this)}>
-        {({ getRootProps, getInputProps, isDragActive }) => (
-          <div 
-            {...getRootProps()} 
-            style={isDragActive ? { outline: '3px solid var(--main-blue)', outlineOffset: '-10px' } : {}}
-            className={`file-uploader ${isDragActive ? 'drag-active' : ''}`}
-          >
-            <input {...getInputProps()} />
-            <MdFileUpload />
-          </div>
-        )}
-      </Dropzone>
+        <Dropzone
+            className="file-uploader"
+            onDrop={this.onDrop.bind(this)}
+            activeStyle={{
+              outline: '3px solid var(--main-blue)',
+              outlineOffset: '-10px',
+            }}
+        >
+          {({ getRootProps, getInputProps }) => (
+              <div {...getRootProps()} className={`file-uploader--wrapper ${v2 ? 'v2' : ''}`}>
+                <input {...getInputProps()} />
+                <div className="file-uploader--box">
+                  <MdFileUpload className="file-uploader--box--icon" />
+                  Import .puz or .ipuz file
+                </div>
+              </div>
+          )}
+        </Dropzone>
     );
   }
 }

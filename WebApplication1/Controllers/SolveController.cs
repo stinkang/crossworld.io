@@ -47,20 +47,26 @@ public class SolveController : Controller
         var user = await _userManager.GetUserAsync(User);
         var crossword = _testCrosswordRepository.GetTestCrosswordById(crosswordId);
         
-        if (crossword == null || user == null)
+        if (crossword == null)
         {
             return NotFound();
         }
 
-        var solve = await _userService.UserSolveForCrossword(userId, crosswordId);
-        
+        Solve solve = null;
+
+        if (user != null)
+        {
+            solve = await _userService.UserSolveForCrossword(userId, crosswordId);
+        }
+
         if (solve == null)
         {
             solve = new Solve
             {
                 Id = Guid.NewGuid().ToString(),
                 TestCrosswordId = crossword.Id,
-                User = user,
+                UserId = user == null ? null : user.Id,
+                UserName = user == null ? "" : user.UserName,
                 IsCoOp = false,
                 IsSolved = false,
                 UsedHints = false,
@@ -76,10 +82,10 @@ public class SolveController : Controller
     [HttpGet]
     public async Task<IActionResult> Edit(string id)
     {
-        var user = await _userService.GetUserWithDraftsAsync(_userManager.GetUserId(User));
+        //var user = await _userManager.GetUserAsync(User);
         var solve = _solveRepository.GetSolveById(id);
         
-        if (solve == null || user == null)
+        if (solve == null)
         {
             return NotFound();
         }
@@ -107,9 +113,28 @@ public class SolveController : Controller
         var user = await _userService.GetUserWithDraftsAsync(_userManager.GetUserId(User));
         var solve = _solveRepository.GetSolveById(viewModel.SolveId);
         
-        if (solve == null || user == null)
+        if (solve == null)
         {
             return Json(new { error = "not found" });
+        }
+
+        if (user == null)
+        {
+            return Json(new { error = "not authorized" });
+        }
+        
+        // TODO: Allow multiple users to be recorded on one solve
+            
+        // when someone who's logged in initiated the solve
+        // we're just not going to worry about non-logged in people's initiated solves for now.
+        if (solve.User != null)
+        {
+            if (solve.User.Id != user.Id)
+            {
+                // we don't have the rights to overwrite this solve, even though our client wants to, because
+                // someone else sent this crossword to us.
+                return Json(new { error = "not authorized" });
+            }
         }
         
         solve.IsSolved = viewModel.IsSolved;

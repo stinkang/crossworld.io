@@ -9,7 +9,7 @@ import * as powerups from '../../lib/powerups';
 import Player from '../Player';
 import Toolbar from '../Toolbar';
 import {toArr} from '../../lib/jsUtils';
-import {toHex, darken, GREENISH} from '../../lib/colors';
+import {toHex, darken, lighten, GREENISH} from '../../lib/colors';
 
 // component for gameplay -- incl. grid/clues & toolbar
 export default class Game extends Component {
@@ -275,15 +275,15 @@ export default class Game extends Component {
     const {screenWidth} = this.state;
     const themeStyles = {
       clueBarStyle: {
-        backgroundColor: toHex(themeColor),
+        backgroundColor: "transparent",
       },
       gridStyle: {
         cellStyle: {
           selected: {
-            backgroundColor: myColor,
+            backgroundColor: "var(--light-blue)",
           },
           highlighted: {
-            backgroundColor: toHex(darken(themeColor)),
+            backgroundColor: "var(--lighter-blue)",
           },
           frozen: {
             backgroundColor: toHex(GREENISH),
@@ -349,6 +349,7 @@ export default class Game extends Component {
       <Toolbar
         v2
         gid={this.props.gid}
+        path={this.props.gameModel.path}
         mobile={mobile}
         startTime={startTime}
         pausedTime={pausedTime}
@@ -360,8 +361,8 @@ export default class Game extends Component {
         solved={solved}
         vimInsert={vimInsert}
         onStartClock={this.handleStartClock}
-        onPauseClock={this.handlePauseClock}
-        onResetClock={this.handleResetClock}
+        // onPauseClock={this.handlePauseClock}
+        // onResetClock={this.handleResetClock}
         onCheck={this.handleCheck}
         onReveal={this.handleReveal}
         onReset={this.handleReset}

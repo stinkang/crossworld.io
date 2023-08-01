@@ -58,6 +58,11 @@ public class SolveRepository: ISolveRepository
     {
         return _context.Solves.Where(solve => solve.UserId == userId && solve.IsSolved == true).ToArray();
     }
+    
+    public Solve[] GetCompletedSolvesForCrossword(int crosswordId)
+    {
+        return _context.Solves.Where(solve => solve.TestCrosswordId == crosswordId && solve.IsSolved == true).ToArray();
+    }
 }
 
 public interface ISolveRepository
@@ -67,6 +72,7 @@ public interface ISolveRepository
     void AddSolve(Solve solve);
     void UpdateSolve(Solve solve);
     void DeleteSolve(string id);
-    
     Solve[] GetCompletedSolvesForUser(string userId);
+    
+    Solve[] GetCompletedSolvesForCrossword(int crosswordId);
 }

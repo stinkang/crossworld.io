@@ -22,6 +22,7 @@ namespace CrossWorldApp.Controllers
         private readonly ICrossworldUserService _userService;
         private readonly ITestCrosswordRepository _crosswordRepository;
         private readonly ISolveRepository _solveRepository;
+        private readonly SignInManager<CrossworldUser> _signInManager;
 
 
         public UsersController(
@@ -29,7 +30,8 @@ namespace CrossWorldApp.Controllers
             UserManager<CrossworldUser> userManager,
             ICrossworldUserService userService,
             ITestCrosswordRepository crosswordRepository,
-            ISolveRepository solveRepository
+            ISolveRepository solveRepository,
+            SignInManager<CrossworldUser> signInManager
             )
         {
             _context = context;
@@ -37,6 +39,7 @@ namespace CrossWorldApp.Controllers
             _userService = userService;
             _crosswordRepository = crosswordRepository;
             _solveRepository = solveRepository;
+            _signInManager = signInManager;
         }
 
         // GET: Users
@@ -188,7 +191,7 @@ namespace CrossWorldApp.Controllers
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed()
         {
             if (_context.Users == null)
             {
@@ -196,29 +199,32 @@ namespace CrossWorldApp.Controllers
             }
             
             var currentUser = await _userManager.GetUserAsync(User);
-            if (currentUser == null || currentUser.Id != id)
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
-            var user = await _context.Users.FindAsync(id);
-            if (user != null)
-            {
-                _context.Users.Remove(user);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-        
-        [HttpGet]
-        [Route("User/Profile/{id}")]
-        public async Task<IActionResult> Profile(string id)
-        {
-            var currentUser = await _userManager.GetUserAsync(User);
             if (currentUser == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
+            
+            await _signInManager.SignOutAsync();
+            
+            _context.Users.Remove(currentUser);
+            _context.TestCrosswords.RemoveRange(_context.TestCrosswords.Where(c => c.UserId == currentUser.Id));
+            _context.Solves.RemoveRange(_context.Solves.Where(s => s.UserId == currentUser.Id));
+            _context.Drafts.RemoveRange(_context.Drafts.Where(d => d.UserId == currentUser.Id));
+
+            await _context.SaveChangesAsync();
+            
+            return RedirectToAction("Index", "Crosswords");
+        }
+        
+        [HttpGet]
+        [Route("User/Profile/{userName}")]
+        public async Task<IActionResult> Profile(string userName)
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+            // if (currentUser == null)
+            // {
+            //     return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            // }
 
             // if (currentUser.Id == id)
             // {
@@ -228,12 +234,12 @@ namespace CrossWorldApp.Controllers
             //     }
             // }
 
-            var profileUser = await _userService.GetUserWithTestCrosswordsAsync(id);
+            var profileUser = await _userService.GetUserByUserNameWithTestCrosswordsAsync(userName);
 
             var viewModel = new ProfileViewModel
             {
                 UserName = profileUser.UserName,
-                CompletedCrosswords = _crosswordRepository.GetCompletedCrosswordsForUser(id).ToList(),
+                CompletedCrosswords = _crosswordRepository.GetCompletedCrosswordsForUser(profileUser.Id).ToList(),
                 PublishedCrosswords = profileUser.PublishedTestCrosswords.ToList()
             };
 

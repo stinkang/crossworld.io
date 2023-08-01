@@ -68,7 +68,7 @@ public class AccountController : Controller
             // Sign the user in and redirect them to the home page
             await _signInManager.SignInAsync(user, isPersistent: false);
 
-            return RedirectToAction("Home", "Index");
+            return RedirectToAction("Index", "Crosswords");
         }
 
         // If we got this far, something failed, so redisplay the form with error messages

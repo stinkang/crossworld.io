@@ -34,7 +34,7 @@ public class DraftsController : Controller
         var user = await _userService.GetUserWithDraftsAsync(_userManager.GetUserId(User));
         if (user == null)
         {
-            return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            return RedirectToAction("Login", "Account");
         }
 
         var viewModel = _draftService.GetIndexViewModel(user.Drafts);

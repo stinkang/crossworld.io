@@ -68,6 +68,12 @@ public class TestCrosswordRepository: ITestCrosswordRepository
             .Include(crossword => crossword.User)
             .FirstOrDefault(crossword => crossword.Id == id);
     }
+    
+    public TestCrossword[] GetTestCrosswordsWithSolves()
+    {
+        return _context.TestCrosswords.Include(crossword => crossword.Solves).ToArray();
+    }
+
 }
 
 public interface ITestCrosswordRepository
@@ -83,4 +89,6 @@ public interface ITestCrosswordRepository
     TestCrossword[] GetCompletedCrosswordsForUser(string userId);
 
     TestCrossword GetTestCrosswordWithUser(int id);
+
+    TestCrossword[] GetTestCrosswordsWithSolves();
 }

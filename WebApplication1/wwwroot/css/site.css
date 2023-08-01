@@ -20,24 +20,126 @@ body {
     color: var(--color);
 }
 
-.navbar, .navbar-brand, .navbar-nav .nav-link {
+.navbar, .navbar-nav .nav-link {
     background-color: var(--background-color);
-    color: var(--color) !important;
+    color: gray !important;
     transition: background-color 0s;
+}
+
+.navbar-brand {
+    background-color: var(--background-color);
+    color: gray !important;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 :root[data-theme="light"] {
     /* your light theme styles */
     --background-color: white;
     --color: black;
+    --lighter-blue: #b7d5f2;
+    --light-blue: #7bb1e6;
+    --green: #43A047;
 }
 
 :root[data-theme="dark"] {
     /* your dark theme styles */
     --background-color: black;
     --color: white;
+    --lighter-blue: #b7d5f2;
+    --light-blue: #7bb1e6;
+    --green: #43A047;
 }
 
 .small-font {
     font-size: 8px; /* you can adjust the pixel size to make it smaller or larger */
+}
+
+a {
+    color: #7bb1e6;
+}
+
+.account-nav-item {
+    color: gray;
+    background-color: transparent;
+    border: 1px solid var(--background-color);
+}
+
+
+.account-nav-item:hover {
+    color: gray;
+    border: 1px solid gray;
+}
+
+.account-nav-item:focus {
+    color: var(--background-color);
+    background-color: gray;
+}
+
+.account-nav-item.active {
+    color: var(--background-color) !important;
+    background-color: gray !important;
+}
+
+.password-text {
+    color: gray;
+    font-size: 16px;
+    background-color: var(--background-color);
+}
+
+input[type=text] {
+    background-color: var(--background-color);
+    color: var(--color);
+}
+
+input[type=text]:focus {
+    background-color: var(--background-color);
+    color: var(--color);
+}
+
+input[type=password] {
+    background-color: var(--background-color);
+    color: var(--color);
+}
+
+input[type=password]:focus {
+    background-color: var(--background-color);
+    color: var(--color);
+}
+
+input[type=password].active {
+    background-color: var(--background-color);
+    color: var(--color);
+}
+
+input.form-control.valid {
+    background-color: var(--background-color) !important;
+    color: var(--color) !important;
+}
+
+input.form-control.invalid {
+    background-color: var(--background-color) !important;
+    color: red !important;
+}
+
+.account-button {
+    color: gray;
+    background-color: transparent;
+    border: 1px solid var(--background-color);
+}
+
+.account-button:hover {
+    color: var(--background-color);
+    border: 1px solid gray;
+    background-color: gray;
+}
+
+.account-button:focus {
+    color: var(--background-color);
+    background-color: gray;
+}
+
+.account-button.active {
+    color: var(--background-color) !important;
+    background-color: gray !important;
 }

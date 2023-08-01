@@ -7,4 +7,6 @@ export class Solve {
     isSolved: boolean;
     isCoOp: boolean;
     UsedHints: boolean;
+    UserName: string;
+    UserId: string;
 }

@@ -344,15 +344,6 @@ export default class Game extends EventEmitter {
         sender: username,
       },
     });
-    this.addEvent({
-      timestamp: SERVER_TIME,
-      type: 'sendChatMessage', // send to fencing too
-      params: {
-        message: text,
-        id,
-        sender: username,
-      },
-    });
   }
 
   async initialize(rawGame, {battleData} = {}) {

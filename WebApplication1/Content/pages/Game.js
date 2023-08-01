@@ -222,10 +222,7 @@ export default class Game extends Component {
   }
 
   get userColor() {
-    const color =
-      this.game.users[this.props.id]?.color || localStorage.getItem(this.userColorKey) || rand_color();
-    localStorage.setItem(this.userColorKey, color);
-    return color;
+    return "#7bb1e6";
   }
 
   handleToggleChat = () => {
@@ -389,7 +386,7 @@ export default class Game extends Component {
     if (!game || !game.info) return '';
     return game.info.title;
   }
-
+  
   renderContent() {
     //const powerups = _.get(this.state.powerups, this.state.team);
 

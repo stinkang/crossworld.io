@@ -22,7 +22,7 @@
     /*optional*/
     font-family: var(--bs-body-font-family);
     /*input has OS specific font-family*/
-    color: #0D6EFD;
+    color: var(--light-blue);
     text-decoration: underline;
     cursor: pointer;
 }
@@ -42,20 +42,87 @@
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* adjust the 250px to fit your needs */ /* adjust the 250px to fit your needs */
+    grid-template-columns: 1fr;
     grid-row-gap: 100px;
-    /* gap: 10px; adjust the gap between items */
+    place-items: center;
+}
+
+@media (min-width: 1200px) { /* adjust this value according to your needs */
+    .grid-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    /* and wide items span both columns */
+    .grid-item-wide {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 600px) { /* adjust this value according to your needs */
+    .icon-cell-black {
+        height: 20px;
+        width: 20px;
+        border: 1px solid black;
+        background-color: black;
+        color: black;
+    }
+
+    .icon-cell-white {
+        height: 20px;
+        width: 20px;
+        border: 1px solid black;
+        background-color: white;
+        color: white;
+    }
+
+    .grid-item-wide {
+        /* wide grid items span one column by default*/
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 450px) { /* adjust this value according to your needs */
+    .icon-cell-black {
+        height: 15px;
+        width: 15px;
+        border: 1px solid black;
+        background-color: black;
+        color: black;
+    }
+
+    .icon-cell-white {
+        height: 15px;
+        width: 15px;
+        border: 1px solid black;
+        background-color: white;
+        color: white;
+    }
+
+    .grid-item-wide {
+        /* wide grid items span one column by default*/
+        grid-column: span 1;
+    }
 }
 
 .grid-item {
     /* Style for individual items, if needed */
 }
 
+
 .icon-text {
     font-style: italic;
     color: gray;
 }
 
+.title-text {
+    font-style: normal;
+}
+
 .crossword-icon-border {
     border: 8px solid black;
+}
+
+.leaderboard-text {
+    font-size: 12px;
+    font-weight: 600;
 }

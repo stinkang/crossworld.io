@@ -56,8 +56,8 @@ if (typeof window !== 'undefined') {
  * */
 
 export default class Editor extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       selected: {
         r: 0,
@@ -65,6 +65,7 @@ export default class Editor extends Component {
       },
       direction: 'across',
       frozen: false,
+      isCompleted: false
     };
     this.prvNum = {};
     this.prvIdleID = {};
@@ -77,6 +78,19 @@ export default class Editor extends Component {
     const grid = new GridObject(this.props.grid);
     grid.assignNumbers();
     return grid;
+  }
+  
+  get publishable() {
+    const cluesFinished = this.props.clues.across.every((clue) => clue !== '')
+        && this.props.clues.down.every((clue) => clue !== '');
+    const gridFinished = this.grid.grid.every((row) => row.every((cell) => cell.black || cell.value !== ''));
+    return cluesFinished && gridFinished;
+  }
+  
+  componentDidMount() {
+    this.setState(() => ({
+      isCompleted: this.publishable
+    }));
   }
 
   /* Callback fns, to be passed to child components */
@@ -113,18 +127,27 @@ export default class Editor extends Component {
   handleUpdateGrid = (r, c, value) => {
     this.props.onUpdateGrid(r, c, value);
     this.props.onChange();
+    this.setState(() => ({
+      isCompleted: this.publishable
+    }));
   };
 
   handlePressPeriod = () => {
     const {selected} = this.state;
     this.props.onFlipColor(selected.r, selected.c);
     this.props.onChange();
+    this.setState(() => ({
+      isCompleted: this.publishable
+    }));
   };
 
   handleChangeClue = (value) => {
     const {direction} = this.state;
     this.props.onUpdateClue(this.selectedParent.r, this.selectedParent.c, direction, value);
     this.props.onChange();
+    this.setState(() => ({
+      isCompleted: this.publishable
+    }));
   };
 
   handleAutofill = () => {
@@ -159,6 +182,9 @@ export default class Editor extends Component {
 
   handleUploadSuccess = (puzzle, filename = '') => {
     this.props.onUploadSuccess(puzzle, filename);
+    this.setState(() => ({
+      isCompleted: this.publishable
+    }));
   };
 
   handleUploadFail = () => {
@@ -350,7 +376,7 @@ export default class Editor extends Component {
   }
 
   render() {
-    const {selected, direction, frozen} = this.state;
+    const {selected, direction, frozen, isCompleted} = this.state;
     return (
       <Flex className="editor--main--wrapper">
         <GridControls
@@ -403,6 +429,9 @@ export default class Editor extends Component {
                   onChangeRows={this.handleChangeRows}
                   onChangeColumns={this.handleChangeColumns}
                   onUpdateTitle={this.handleUpdateTitle}
+                  onExportClick={this.handleExportClick}
+                  onUploadSuccess={this.handleUploadSuccess}
+                  onUploadFail={this.handleUploadFail}
                   grid={this.grid}
                   title={this.title}
                 />
@@ -418,10 +447,15 @@ export default class Editor extends Component {
                 </button> */}
                 &nbsp;
                 &nbsp;
-                <PublishModal
+                {isCompleted ? <PublishModal
                     onUpdateIsAnonymous={this.handleUpdateIsAnonymous}
                     onPublish={this.handlePublish}
-                />
+                    onUpdateTitle={this.handleUpdateTitle}
+                    title={this.title}
+                /> : <div className={"publish-text"}>
+                  Fill in all the squares <br/>
+                  and clues to publish!
+                </div>}
               </Flex>
             </Flex>
           </Flex>

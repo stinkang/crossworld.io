@@ -25,6 +25,15 @@ export const darken = (number) => {
   return num({r, g, b});
 };
 
+export const lighten = (number) => {
+  const rgbColor = rgb(number);
+  const p = 1.05;
+  const r = Math.floor(rgbColor.r * p);
+  const g = Math.floor(rgbColor.g * p);
+  const b = Math.floor(rgbColor.b * p);
+  return num({r, g, b});
+};
+
 export const lightenHsl = (string) => {
   if (!_.startsWith(string, 'hsl(')) {
     return '';

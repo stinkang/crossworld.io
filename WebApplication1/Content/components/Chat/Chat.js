@@ -29,7 +29,7 @@ export default class Chat extends Component {
 
   handleUpdateDisplayName = (username) => {
     if (!this.usernameInput?.current?.focused) {
-      username = username || nameGenerator();
+      username = username || "Guest";
     }
     const {id} = this.props;
     this.props.onUpdateDisplayName(id, username);
@@ -62,19 +62,6 @@ export default class Chat extends Component {
 
   handleToggleChat = () => {
     this.props.onToggleChat();
-  };
-
-  get url() {
-    return `${window.location.protocol}//${window.location.host}/beta${this.props.path}`;
-  }
-
-  handleCopyClick = () => {
-    navigator.clipboard.writeText(this.url);
-    // `${window.location.host}/beta${this.props.path}`);
-    let link = document.getElementById('pathText');
-    link.classList.remove('flashBlue');
-    void link.offsetWidth;
-    link.classList.add('flashBlue');
   };
 
   focus = () => {
@@ -128,8 +115,8 @@ export default class Chat extends Component {
 
     return (
       <div className="chat--header">
-        <div className="chat--header--title">{title}</div>
-        <div className="chat--header--subtitle">{type && `${type} | By ${author}`}</div>
+        {/*<div className="chat--header--title">{title}</div>*/}
+        {/*<div className="chat--header--subtitle">{type && `${type} | By ${author}`}</div>*/}
         {desc && (
           <div className="chat--header--description">
             <strong>Note: </strong>
@@ -285,7 +272,7 @@ export default class Chat extends Component {
   }
 
   renderChatSubheader() {
-    if (this.props.subheader) return this.props.subheader;
+    //if (this.props.subheader) return this.props.subheader;
     const users = this.props.users;
 
     return (
@@ -301,8 +288,6 @@ export default class Chat extends Component {
       <Flex column grow={1}>
         {this.renderToolbar()}
         <div className="chat">
-          {this.renderChatHeader()}
-          {this.renderChatSubheader()}
           <div
             ref={(el) => {
               if (el) {
@@ -311,28 +296,12 @@ export default class Chat extends Component {
             }}
             className="chat--messages"
           >
-            <div className="chat--message chat--system-message">
-              <div>
-                <i>
-                  Game created! Share the link to play with your friends:
-                  <wbr />
-                </i>
-                <b id="pathText" style={{marginLeft: '5px'}}>
-                  {this.url}
-                </b>
-
-                <i
-                  className="fa fa-clone copyButton"
-                  title="Copy to Clipboard"
-                  onClick={this.handleCopyClick}
-                />
-              </div>
-            </div>
             {messages.map((message, i) => (
               <div key={i}>{this.renderMessage(message)}</div>
             ))}
           </div>
           {this.renderChatBar()}
+          {this.renderChatSubheader()}
         </div>
       </Flex>
     );

@@ -10,6 +10,20 @@ import Popup from './Popup';
 import {isMobile} from '../../lib/jsUtils';
 
 export default class Toolbar extends Component {
+
+  get url() {
+    return `${window.location.protocol}//${window.location.host}/solve${this.props.path}`;
+  }
+
+  handleCopyClick = () => {
+    navigator.clipboard.writeText(this.url);
+    // `${window.location.host}/beta${this.props.path}`);
+    let link = document.getElementById('pathText');
+    link.classList.remove('flashBlue');
+    void link.offsetWidth;
+    link.classList.add('flashBlue');
+  };
+  
   handleBlur = () => {
     this.props.onRefocus();
   };
@@ -61,24 +75,20 @@ export default class Toolbar extends Component {
   };
 
   renderClockControl() {
-    const {startTime, onStartClock, onPauseClock} = this.props;
+    const {startTime } = this.props;
     return startTime ? (
       <button
         className="toolbar--btn pause"
         tabIndex={-1}
         onMouseDown={this.handleMouseDown}
-        onClick={onPauseClock}
       >
-        Pause Clock
       </button>
     ) : (
       <button
         className="toolbar--btn start"
         tabIndex={-1}
         onMouseDown={this.handleMouseDown}
-        onClick={onStartClock}
       >
-        Start Clock
       </button>
     );
   }
@@ -90,9 +100,12 @@ export default class Toolbar extends Component {
           label="Check"
           onBlur={this.handleBlur}
           actions={{
-            Square: this.check.bind(this, 'square'),
-            Word: this.check.bind(this, 'word'),
-            Puzzle: this.check.bind(this, 'puzzle'),
+            "Check Square": this.check.bind(this, 'square'),
+            "Check Word": this.check.bind(this, 'word'),
+            "Check Puzzle": this.check.bind(this, 'puzzle'),
+            "Reveal Square": this.reveal.bind(this, 'square'),
+            "Reveal Word": this.reveal.bind(this, 'word'),
+            "Reveal Puzzle": this.reveal.bind(this, 'puzzle')
           }}
         />
       </div>
@@ -149,6 +162,19 @@ export default class Toolbar extends Component {
           Autocheck: this.props.onToggleAutocheck,
         }}
       />
+    );
+  }
+
+
+  renderAddFriendsMenu() {
+    return (
+        <ActionMenu
+            label="Add Friends"
+            onBlur={this.handleBlur}
+            actions={{
+              'Copy Link': this.handleCopyClick
+            }}
+        />
     );
   }
 
@@ -420,27 +446,24 @@ export default class Toolbar extends Component {
 
     if (mobile) {
       return (
-        <Flex className="toolbar--mobile" vAlignContent="center">
-          <Flex className="toolbar--mobile--top" grow={1} vAlignContent="center">
-            {/*<Link to="/">DFAC</Link>{' '}*/}
-            <Clock
-              v2={this.props.v2}
-              startTime={startTime}
-              stopTime={stopTime}
-              pausedTime={pausedTime}
-              replayMode={replayMode}
-              isPaused={this.props.isPaused || !startTime}
-              onStart={onStartClock}
-              onPause={onPauseClock}
-            />
-            {!solved && !replayMode && this.renderCheckMenu()}
-            {!solved && !replayMode && this.renderRevealMenu()}
-            {solved && !replayMode && this.renderReplayLink()}
-            {this.renderColorAttributionToggle()}
-            {this.renderListViewButton()}
-            {this.renderChatButton()}
-          </Flex>
-        </Flex>
+          <div>
+            Please visit CrossWorld! on a desktop browser to play. Mobile app coming soon!
+          </div>
+        // <Flex className="toolbar--mobile" vAlignContent="center">
+        //   <Flex className="toolbar--mobile--top" grow={1} vAlignContent="center">
+        //     {/*<Link to="/">DFAC</Link>{' '}*/}
+        //     <Clock
+        //       v2={this.props.v2}
+        //       startTime={startTime}
+        //       stopTime={stopTime}
+        //       pausedTime={pausedTime}
+        //       replayMode={replayMode}
+        //       isPaused={this.props.isPaused || !startTime}
+        //     />
+        //     {!solved && !replayMode && this.renderCheckMenu()}
+        //     {this.renderChatButton()}
+        //   </Flex>
+        // </Flex>
       );
     }
 
@@ -454,19 +477,11 @@ export default class Toolbar extends Component {
             stopTime={stopTime}
             pausedTime={pausedTime}
             isPaused={this.props.isPaused || !startTime}
-            onStart={onStartClock}
-            onPause={onPauseClock}
           />
         </div>
         {!solved && !replayMode && this.renderCheckMenu()}
-        {!solved && !replayMode && this.renderRevealMenu()}
-        {!solved && !replayMode && <div className="toolbar--menu reset">{this.renderResetMenu()}</div>}
-        {solved && !replayMode && this.renderReplayLink()}
-        {this.renderColorAttributionToggle()}
-        {this.renderListViewButton()}
-        {!replayMode && this.renderPencil()}
-        {!solved && !replayMode && this.renderAutocheck()}
         {!replayMode && this.renderExtrasMenu()}
+        {this.renderAddFriendsMenu()}
         {!replayMode && this.renderInfo()}
       </div>
     );

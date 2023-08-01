@@ -20,6 +20,8 @@ public class Solve
     
     [ForeignKey("UserId")]
     public CrossworldUser? User { get; set; }
+
+    public string? UserName { get; set; }
     
     [NotMapped]
     public List<List<string>> SolveGrid { get; set; }

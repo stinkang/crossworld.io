@@ -6,7 +6,7 @@
 }
 
 .editable-span:focus {
-  background-color: rgba(255, 255, 255, 0.99);
+  background-color: var(--background-color);
   outline: none;
 }
 

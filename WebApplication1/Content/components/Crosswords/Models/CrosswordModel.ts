@@ -1,4 +1,5 @@
 ﻿import {TestCrosswordClues} from "../../Compose/Models/TestCrosswordClues";
+import {Solve} from "../../Solve/Models/Solve";
 
 export class CrosswordModel {
     id: string;

@@ -39,14 +39,40 @@ namespace CrossWorldApp.Controllers
         }
 
         // GET: Crosswords
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 0, int pageSize = 10)
         {
-              return _context.TestCrosswords != null ? 
-                          View(new CrosswordsIndexViewModel
-                          {
-                              Crosswords = await _context.TestCrosswords.ToListAsync()
-                          }) :
-                          Problem("Entity set 'CrossWorldDbContext.TestCrosswords'  is null.");
+            if (_context.TestCrosswords == null)
+            {
+                return Problem("Entity set 'CrossWorldDbContext.TestCrosswords'  is null.");
+            }
+
+            var crosswords = _testCrosswordRepository.GetTestCrosswordsWithSolves()
+                .OrderByDescending(crosswords => crosswords.CreatedAt) 
+                .Skip(page * pageSize)
+                .Take(pageSize);
+            
+            var crosswordViewModels = crosswords
+                .Select(crossword => new CrosswordIconViewModel(crossword));
+              
+            return View(new CrosswordsIndexViewModel { Crosswords = crosswordViewModels });
+        }
+        
+        public async Task<JsonResult> CrosswordPage(int page = 0, int pageSize = 10)
+        {
+            if (_context.TestCrosswords == null)
+            {
+                return Json(new { error = "Crosswords are null" });
+            }
+
+            var crosswords = _testCrosswordRepository.GetTestCrosswordsWithSolves()
+                .OrderByDescending(crosswords => crosswords.CreatedAt) 
+                .Skip(page * pageSize)
+                .Take(pageSize);
+            
+            var crosswordViewModels = crosswords
+                .Select(crossword => new CrosswordIconViewModel(crossword));
+
+            return Json(new { crosswordViewModels });
         }
 
         // GET: Crosswords/Details/5

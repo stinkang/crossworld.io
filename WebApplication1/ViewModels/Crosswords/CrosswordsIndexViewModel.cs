@@ -4,5 +4,5 @@ namespace CrossWorldApp.ViewModels.Crosswords;
 
 public class CrosswordsIndexViewModel
 {
-    public IEnumerable<TestCrossword> Crosswords { get; set; }
+    public IEnumerable<CrosswordIconViewModel> Crosswords { get; set; }
 }

@@ -15,9 +15,13 @@ export const ProfileView = (props: ProfileViewProps) => {
     return (
         <div>
             <h1>{props.userName}</h1>
+            &nbsp;
+            &nbsp;
+            &nbsp;
             <Flex>
                 <div>
-                    <h2>Published Crosswords</h2>
+                    <h3>Published Crosswords</h3>
+                    &nbsp;
                     <ul>
                         {props.publishedCrosswords.map((crossword) => {
                             return <div>
@@ -29,7 +33,8 @@ export const ProfileView = (props: ProfileViewProps) => {
                     </ul>
                 </div>
                 <div>
-                    <h2>Completed Crosswords</h2>
+                    <h3>Completed Crosswords</h3>
+                    &nbsp;
                     <ul>
                         {props.completedCrosswords.map((crossword) => {
                             return <div>

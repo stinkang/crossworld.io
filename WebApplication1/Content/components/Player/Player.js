@@ -429,32 +429,34 @@ export default class Player extends Component {
         );
       }
       return (
-        <div className="player--mobile--wrapper mobile">
-          <MobileGridControls
-            enablePan
-            ref="mobileGridControls"
-            onPressEnter={onPressEnter}
-            onPressPeriod={onPressPeriod}
-            selected={selected}
-            direction={direction}
-            onSetDirection={this._setDirection}
-            onChangeDirection={this._changeDirection}
-            canSetDirection={this._canSetDirection}
-            onSetSelected={this._setSelected}
-            updateGrid={updateGrid}
-            size={size}
-            grid={grid}
-            clues={clues}
-            onSetCursorLock={this.handleSetCursorLock}
-            enableDebug={window.location.search.indexOf('debug') !== -1}
-          >
-            <div className="player--mobile" ref={this.mobileContainer}>
-              <div className={`player--mobile--grid${frozen ? ' frozen' : ''}`}>
-                <Grid ref="grid" {...gridProps} />
-              </div>
-            </div>
-          </MobileGridControls>
-        </div>
+          <div>
+          </div>
+        // <div className="player--mobile--wrapper mobile">
+        //   <MobileGridControls
+        //     enablePan
+        //     ref="mobileGridControls"
+        //     onPressEnter={onPressEnter}
+        //     onPressPeriod={onPressPeriod}
+        //     selected={selected}
+        //     direction={direction}
+        //     onSetDirection={this._setDirection}
+        //     onChangeDirection={this._changeDirection}
+        //     canSetDirection={this._canSetDirection}
+        //     onSetSelected={this._setSelected}
+        //     updateGrid={updateGrid}
+        //     size={size}
+        //     grid={grid}
+        //     clues={clues}
+        //     onSetCursorLock={this.handleSetCursorLock}
+        //     enableDebug={window.location.search.indexOf('debug') !== -1}
+        //   >
+        //     <div className="player--mobile" ref={this.mobileContainer}>
+        //       <div className={`player--mobile--grid${frozen ? ' frozen' : ''}`}>
+        //         <Grid ref="grid" {...gridProps} />
+        //       </div>
+        //     </div>
+        //   </MobileGridControls>
+        // </div>
       );
     }
 
@@ -550,7 +552,7 @@ export default class Player extends Component {
               {this.props.optimisticCounter ? <>{this.props.optimisticCounter} ahead</> : <>Synced</>}
             </div>
             <div>
-              <ConnectionStats />
+              {/*<ConnectionStats />*/}
             </div>
           </div>
         )}

@@ -94,11 +94,11 @@
 }
 
 .editor--main--clues--list--scroll--clue.selected {
-  background-color: rgb(44, 174, 255);
+  background-color: var(--light-blue);;
 }
 
 .editor--main--clues--list--scroll--clue.half-selected {
-  border-left: 5px solid lightskyblue;
+  border-left: 5px solid var(--light-blue);;
 }
 
 .editor--main--clues--list--scroll--clue--number {
@@ -165,22 +165,46 @@
 }
 
 .publish-button {
-  background-color: rgb(3, 183, 3);
-  color: white;
-  border: 1px solid  rgb(3, 183, 3);
+  background-color: transparent;
+  color: var(--green);
+  border: 1px solid var(--green);
 }
 
 .publish-button:hover {
-  background-color: #45a049; /* Darker green on hover */
-  border: 1px solid #45a049;
+  background-color: var(--green); /* Darker green on hover */
+  border: 1px solid transparent;
+  color: var(--background-color);
+}
+
+.publish-button:focus {
+  background-color: var(--green); /* Darker green on hover */
+  border: 1px solid transparent;
+  color: var(--background-color);
 }
 
 .settings-button {
-  background-color: rgb(44, 174, 255);
-  color: white;
-  border: 1px solid  rgb(44, 174, 255);
+  background-color: transparent;
+  color: var(--light-blue);;
+  border: 1px solid var(--light-blue);
+}
+
+.settings-button:hover {
+  background-color: var(--light-blue);
+  color: var(--background-color);
+  border: 1px solid transparent;
+}
+
+.settings-button:focus {
+  background-color: var(--light-blue);
+  color: var(--background-color);
+  border: 1px solid transparent;
 }
 
 .spacer {
   flex-grow: 1;
+}
+
+.publish-text {
+    font-size: 14px;
+    color: gray;
 }

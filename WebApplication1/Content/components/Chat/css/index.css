@@ -5,7 +5,7 @@
   padding-top: 10px;
   padding-left: 25px;
   padding-right: 25px;
-  border-left: 1px solid #e2e2e2;
+  /*border-left: 1px gray;*/
   min-width: 300px;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
 }
 
 .chat--header {
-  border-bottom: 1px solid #e2e2e2;
+  /*border-bottom: 1px solid #e2e2e2;*/
   padding-bottom: 5px;
   display: flex;
   flex-shrink: 0;
@@ -70,6 +70,7 @@
 .chat--users--present {
   padding: 5px;
   margin-bottom: 5px;
+  margin-top: 0px;
 }
 
 .chat--users--present > span {
@@ -92,7 +93,7 @@
   flex-grow: 1;
   flex-basis: 1px;
   padding-bottom: 20px;
-  border-top: 1px solid #e2e2e2;
+  /*border-top: 1px solid #e2e2e2;*/
 }
 
 .chat--message {
@@ -105,24 +106,24 @@
 }
 
 .chat--system-message {
-  color: var(--main-gray-1);
+  color: gray;
   margin: 5px;
 }
 
 .chat--message--timestamp {
   white-space: nowrap;
   margin-left: 10px;
-  color: var(--main-gray-2);
+  color: grey;
   /* background-color: var(--main-gray-1); */
 }
 
 .chat--message--timestamp::selection {
-  color: var(--main-gray-1);
+  color: darkgrey;
   background-color: highlight;
 }
 
 .chat--message:hover .chat--message--timestamp {
-  color: var(--main-gray-1);
+  color: darkgrey;
 }
 
 .chat--message--content {
@@ -145,12 +146,13 @@
 
 .chat--bar {
   width: 100%;
-  padding: 20px 0px 20px 0px;
+  padding: 20px 0px 0px 0px;
   position: relative;
 }
 
 .chat--bar--input {
   width: 100%;
+  background-color: lightgray;
 }
 
 .chat--bar--input--mobile {
@@ -158,6 +160,7 @@
   border: 1px solid #dddddd;
   height: 24px;
   font-size: 14px;
+  background-color: lightgray;
 }
 
 .copyButton {
@@ -176,9 +179,9 @@
 }
 @keyframes flash-blue-keyframes {
   0% {
-    color: var(--main-blue);
+    color: var(--light-blue);
   }
   100% {
-    color: var(--main-gray-1);
+    color: grey;
   }
 }

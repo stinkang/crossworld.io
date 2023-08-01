@@ -26,6 +26,7 @@
 .clues--list--title {
   font-weight: bold;
   font-size: 14px;
+  color: gray;
 }
 
 .clues--list--scroll {
@@ -33,7 +34,7 @@
   flex-basis: 570px;
   flex-grow: 1;
   overflow-y: auto;
-  border-top: 1px solid #e2e2e2;
+  /*border-top: 1px solid #e2e2e2;*/
   margin-top: 5px;
   padding-right: 10px;
 }
@@ -52,11 +53,12 @@
 }
 
 .clues--list--scroll--clue.selected {
-  background-color: var(--main-blue-3);
+  background-color: var(--light-blue);
+  color: black;
 }
 
 .clues--list--scroll--clue.half-selected {
-  border-left: 5px solid var(--main-blue-3);
+  border-left: 5px solid var(--light-blue);
 }
 
 .clues--list--scroll--clue--number {

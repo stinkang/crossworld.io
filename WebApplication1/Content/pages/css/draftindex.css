@@ -22,11 +22,11 @@
     /*optional*/
     font-family: var(--bs-body-font-family);
     /*input has OS specific font-family*/
-    color: #0D6EFD;
+    color: var(--light-blue);
     text-decoration: underline;
     cursor: pointer;
 }
 
 .modal-content {
-    background-color: var(--background-color);
+    background-color: gray;
 }

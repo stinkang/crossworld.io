@@ -17,7 +17,7 @@ const ConnectionStats: React.FC<{}> = () => {
     };
   }, []);
 
-  if (connectionStatus) {
+/*  if (connectionStatus) {
     return (
       <div>
         <div>
@@ -31,7 +31,7 @@ const ConnectionStats: React.FC<{}> = () => {
       </div>
     );
   }
-  return <div>Not connected</div>;
+  return <div>Not connected</div>;*/
 };
 
 export default ConnectionStats;

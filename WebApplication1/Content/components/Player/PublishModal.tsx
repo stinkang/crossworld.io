@@ -16,6 +16,10 @@ const PublishModal = (props) => {
     const handlePublish = () => {
         props.onPublish();
     };
+    
+    const handleUpdateTitle = (event) => {
+        props.onUpdateTitle(event);
+    };
 
     return (
         <>
@@ -25,7 +29,18 @@ const PublishModal = (props) => {
             <Modal show={show} onHide={handleClose} centered>
                 <Modal.Body style={{maxWidth: '25vw', margin: '0 auto'}}>
                     <Flex>
+                        <div>Title: </div>
+                        &nbsp;
+                        <input
+                            type="text"
+                            defaultValue={props.title}
+                            onChange={handleUpdateTitle}
+                        />
+                    </Flex>
+                    &nbsp;
+                    <Flex>
                         <div>Publish Anonymously?: </div>
+                        &nbsp;
                         &nbsp;
                         <input
                             type="checkbox"
@@ -33,9 +48,12 @@ const PublishModal = (props) => {
                             onChange={handleUpdateIsAnonymous}
                         />
                     </Flex>
-                    <Button className="publish-button" variant="primary" onClick={handlePublish}>
-                        Publish
-                    </Button>
+                    &nbsp;
+                    <Flex>
+                        <Button className="publish-button" variant="primary" onClick={handlePublish}>
+                            Publish
+                        </Button>
+                    </Flex>
                 </Modal.Body>
             </Modal>
         </>

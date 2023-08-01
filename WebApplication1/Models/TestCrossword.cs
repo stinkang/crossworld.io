@@ -11,6 +11,8 @@ namespace CrossWorldApp.Models
         [Key]
         public int Id { get; set; }
         
+        public DateTime CreatedAt { get; set; }
+        
         public bool IsAnonymous { get; set; }
 
         public string Title { get; set; }
