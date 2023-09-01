@@ -1,6 +1,6 @@
 import './css/clock.css';
 import React, {Component} from 'react';
-import {getTime} from '../../store/firebase';
+import {getTime} from '../../store/firebaseConfig';
 import {MAX_CLOCK_INCREMENT} from '../../lib/timing';
 
 export const formatMilliseconds = (ms) => {

@@ -55,7 +55,7 @@ namespace CrossWorldApp.Repositories
     public interface IDraftRepository
     {
         Draft[] GetDraftsForUser(string userId);
-        Draft GetDraftById(string id);
+        Draft? GetDraftById(string id);
         void AddDraft(Draft draft);
         void UpdateDraft(Draft draft);
         void DeleteDraft(string id);

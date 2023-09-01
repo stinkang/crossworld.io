@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import Confetti from 'react-confetti';
 
 export default class extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       done: false,
       numberOfPieces: 200,
     };
+    this.props = props;
   }
 
   componentDidMount() {
@@ -16,6 +17,7 @@ export default class extends Component {
         numberOfPieces: 0,
       });
     }, 7000);
+    this.props.onSolve();
   }
 
   render() {

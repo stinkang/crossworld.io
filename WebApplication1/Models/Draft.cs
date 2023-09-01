@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -51,6 +50,52 @@ namespace CrossWorldApp.Models
             {
                 Clues = JsonConvert.DeserializeObject<TestCrosswordClues>(value);
             }
+        }
+
+        public Draft(CrossworldUser? user)
+        {
+            Id = Guid.NewGuid().ToString();
+            User = user;
+            Grid = new List<List<string>>
+            {
+                new List<string> { " ", " ", " " },
+                new List<string> { " ", " ", " " },
+                new List<string> { " ", " ", " " }
+            };
+            Clues = new TestCrosswordClues
+            {
+                Across = new List<string?>
+                {
+                    null,
+                    "",
+                    null,
+                    null,
+                    "",
+                    ""
+                },
+                Down = new List<string?>
+                {
+                    null,
+                    "",
+                    "",
+                    ""
+                }
+            };
+            Title = "Untitled";
+        }
+
+        public Draft()
+        {
+            Id = "";
+            User = null;
+            Grid = new List<List<string>>
+            {
+                new List<string> { " ", " ", " " },
+                new List<string> { " ", " ", " " },
+                new List<string> { " ", " ", " " }
+            };
+            Clues = new TestCrosswordClues();
+            Title = "Untitled";
         }
     }
 }

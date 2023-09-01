@@ -13,9 +13,13 @@ export function CrosswordIcon(props: CrosswordIconViewModel) {
         let totalMinutes = Math.floor(totalSeconds / 60);
         let hours = Math.floor(totalMinutes / 60);
 
-        let seconds = totalSeconds % 60;
-        let minutes = totalMinutes % 60;
-        let ms = milliseconds % 1000;
+        let seconds = (totalSeconds % 60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+        let minutes = (totalMinutes % 60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+        let ms = (milliseconds % 1000).toLocaleString('en-US', {minimumIntegerDigits: 3, useGrouping:false});
+        
+        if (hours == 0) {
+            return `${minutes}:${seconds}:${ms}`;
+        }
 
         return `${hours}:${minutes}:${seconds}:${ms}`;
     }
@@ -25,8 +29,11 @@ export function CrosswordIcon(props: CrosswordIconViewModel) {
 
     const leaderboard = leaderboardItems
         .map((solve, index) =>
-            <div key={solve.userId}>
-                {index + 1}. <a href={"/User/Profile/" + solve.userName}>{solve.userName}</a> - {formatTime(solve.millisecondsElapsed)}
+            <div className="solver-text" key={index}>
+                {index + 1}. {
+                    solve.userName !== "" ?
+                        <a href={"/User/Profile/" + solve.userName}>{solve.userName}</a>
+                        : "guest" } - {formatTime(solve.millisecondsElapsed)}
             </div>
         );
     
@@ -36,10 +43,11 @@ export function CrosswordIcon(props: CrosswordIconViewModel) {
             <Flex>
                 <button type="submit" style={{background: "none", border: "none", padding: "0", margin: "0"}}>
                     <div className="crossword-icon-border">
-                        {grid.map(row =>
-                            <Flex column={false}>{row.map(cell =>
+                        {grid.map((row, rowIndex) =>
+                            <Flex key={rowIndex} column={false}>{row.map((cell, cellIndex) =>
                                 cell === '.' ?
-                                    <div className={"icon-cell-black"}></div> : <div className={"icon-cell-white"}></div>
+                                    <div key={`${rowIndex}-${cellIndex}`} className={"icon-cell-black"}></div> :
+                                    <div key={`${rowIndex}-${cellIndex}`} className={"icon-cell-white"}></div>
                             )}</Flex>
                         )}
                     </div>
@@ -48,14 +56,14 @@ export function CrosswordIcon(props: CrosswordIconViewModel) {
                 &nbsp;
                 &nbsp;
                 <Flex column className="icon-text">
-                    <h6 className={"title-text"}>
+                    <h5 className={"title-text"}>
                         {props.title}
-                    </h6>
+                    </h5>
                     { props.isAnonymous === true ?
                         <div>
                             By Anonymous
                         </div> :
-                        <div>
+                        <div className={"author-text"}>
                             By <a href={"/User/Profile/" + props.author}>{props.author}</a>
                         </div>
                     }

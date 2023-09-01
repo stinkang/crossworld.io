@@ -378,6 +378,7 @@ export default class Game extends Component {
         }}
         onRefocus={this.handleRefocus}
         unreads={this.props.unreads}
+        title={this.props.title}
       />
     );
   }
@@ -395,7 +396,7 @@ export default class Game extends Component {
         >
           {this.renderPlayer()}
         </Flex>
-        {this.game.solved && <Confetti />}
+        {this.game.solved && <Confetti onSolve={this.handleSaveSolve}/>}
       </Flex>
     );
   }

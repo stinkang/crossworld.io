@@ -1,5 +1,5 @@
 import EventEmitter from 'events';
-import firebase, {db, SERVER_TIME, getTime} from '../store/firebase';
+import firebase, {db, SERVER_TIME, getTime} from '../store/firebaseConfig';
 import getLocalId from '../localAuth';
 import {rand_color} from '../lib/jsUtils';
 

@@ -118,18 +118,13 @@ public class SolveController : Controller
             return Json(new { error = "not found" });
         }
 
-        if (user == null)
-        {
-            return Json(new { error = "not authorized" });
-        }
-        
         // TODO: Allow multiple users to be recorded on one solve
             
         // when someone who's logged in initiated the solve
         // we're just not going to worry about non-logged in people's initiated solves for now.
         if (solve.User != null)
         {
-            if (solve.User.Id != user.Id)
+            if (user != null && solve.User.Id != user.Id)
             {
                 // we don't have the rights to overwrite this solve, even though our client wants to, because
                 // someone else sent this crossword to us.
@@ -158,8 +153,7 @@ public class SolveController : Controller
             ViewData["userName"] = user.UserName;
         }
         ViewData["id"] = id;
-        
-        
+
         return View();
     }
 }

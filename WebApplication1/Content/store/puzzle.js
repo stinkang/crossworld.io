@@ -1,6 +1,6 @@
 import EventEmitter from 'events';
 import _ from 'lodash';
-import {db, getTime} from './firebase';
+import {db, getTime} from './firebaseConfig';
 import {makeGrid} from '../lib/gameUtils';
 
 // a wrapper class that models Puzzle

@@ -21,6 +21,7 @@ export default class MobileGridControls extends GridControls {
       anchors: [],
       transform: {scale: 1, translateX: 0, translateY: 0},
       dbgstr: undefined,
+      hasMounted: false
     };
     this.prvInput = '';
     this.inputRef = React.createRef();
@@ -39,6 +40,10 @@ export default class MobileGridControls extends GridControls {
       this.fitOnScreen(true);
     }
   }
+  
+    componentDidMount() {
+      this.setState({hasMounted: true});
+    }
 
   fitOnScreen(fitCurrentClue) {
     if (!fitCurrentClue && this.state.lastFitOnScreen > Date.now() - 100) return;
@@ -325,7 +330,7 @@ export default class MobileGridControls extends GridControls {
           flexShrink: 1,
           flexBasis: 1,
         }}
-        className="mobile-grid-controls--grid-content"
+        className={ this.state.hasMounted ? "mobile-grid-controls--grid-content-mounted": "mobile-grid-controls--grid-content"}
         ref={(e) => {
           if (!e) return;
           e.addEventListener('touchstart', this.handleTouchStart, {passive: false});

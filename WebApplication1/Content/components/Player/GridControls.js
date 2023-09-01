@@ -358,8 +358,8 @@ export default class GridControls extends Component {
   // Returns true if the letter was successfully deleted
   delete() {
     const {r, c} = this.props.selected;
-    if (this.props.grid[r][c].value !== '' && !this.props.grid[r][c].good) {
-      this.props.updateGrid(r, c, '');
+    if (this.props.grid[r][c].value !== ' ' && !this.props.grid[r][c].good) {
+      this.props.updateGrid(r, c, ' ');
       return true;
     }
     return false;
@@ -369,7 +369,7 @@ export default class GridControls extends Component {
     if (!this.delete() && !shouldStay) {
       const cell = this.goToPreviousCell();
       if (cell) {
-        this.props.updateGrid(cell.r, cell.c, '');
+        this.props.updateGrid(cell.r, cell.c, ' ');
       }
     }
   }

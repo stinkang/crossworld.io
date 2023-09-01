@@ -89,3 +89,9 @@
 .toggle-mobile .fa.toggle-mobile--off {
   opacity: 0.3;
 }
+
+.display-name-modal .modal-content {
+  color: var(--color);
+  background-color: var(--background-color) !important;
+  border: 1px solig var(--gray) !important;
+}

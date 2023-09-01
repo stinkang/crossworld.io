@@ -186,8 +186,8 @@ const reducers = {
         scopeGrid[i][j]
           ? {
               ...cell,
-              good: cell.value !== '' && cell.value === solution[i][j],
-              bad: cell.value !== '' && cell.value !== solution[i][j],
+              good: cell.value !== ' ' && cell.value === solution[i][j],
+              bad: cell.value !== ' ' && cell.value !== solution[i][j],
               pencil: false,
             }
           : cell

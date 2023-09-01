@@ -47,14 +47,16 @@ namespace CrossWorldApp.Controllers
             }
 
             var crosswords = _testCrosswordRepository.GetTestCrosswordsWithSolves()
-                .OrderByDescending(crosswords => crosswords.CreatedAt) 
+                .OrderByDescending(crosswords => crosswords.CreatedAt)
                 .Skip(page * pageSize)
                 .Take(pageSize);
-            
+
             var crosswordViewModels = crosswords
                 .Select(crossword => new CrosswordIconViewModel(crossword));
-              
-            return View(new CrosswordsIndexViewModel { Crosswords = crosswordViewModels });
+            
+            var viewModel = new CrosswordsIndexViewModel { Crosswords = crosswordViewModels, IsLoggedIn = User.Identity.IsAuthenticated };
+
+            return View(viewModel);
         }
         
         public async Task<JsonResult> CrosswordPage(int page = 0, int pageSize = 10)

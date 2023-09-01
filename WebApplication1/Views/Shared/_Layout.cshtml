@@ -20,14 +20,17 @@
             }
         })();
       </script>
-
+        <script>
+            !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+            posthog.init('phc_lVkNFwzsPDTr1nRsoAeavKKYRGSAj5eyzKEb0sXqGn7',{api_host:'https://app.posthog.com'})
+        </script>
 </head>
 <body>
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                CrossWorld! @*<img src="~/path-to-your-image/image.png" alt="Logo" style="height:30px;">*@
+                CrossWorld!
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -38,24 +41,27 @@
                     <!-- Keep your other links here -->
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    Dark Mode
-                    &nbsp;
-                    <label class="switch">
-                        <input type="checkbox" id="darkModeSwitch"/>
-                        <span class="slider round"></span>
-                    </label>
+                    <li class="nav-item">
+                        <div class="nav-link">
+                            Dark Mode
+                            <label class="switch">
+                                <input type="checkbox" id="darkModeSwitch"/>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </li>
                 </ul>
-                &nbsp;
-                &nbsp;
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Drafts" asp-action="Index">Drafts</a>
                     </li>
                 </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        @await Html.PartialAsync("_LoginPartial")
+                    </li>
+                </ul>
             </div>
-            &nbsp;
-            @await Html.PartialAsync("_LoginPartial")
-            &nbsp;
         </div>
     </nav>
 </header>
@@ -67,8 +73,11 @@
 
 <footer class="footer text-muted">
     <div class="container">
-        &copy; 2023 - CrossWorld! - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> - <a asp-area="" asp-controller="Home"
-                                                                                                                     asp-action="About">About</a>
+        &copy; 2023 - CrossWorld! - 
+        <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> - 
+        <a asp-area="" asp-controller="Home" asp-action="About">About</a> - 
+        <a asp-area="" asp-controller="Home" asp-action="Acknowledgements">Ack's</a> - 
+        <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
     </div>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>

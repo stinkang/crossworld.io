@@ -23,13 +23,15 @@
 .popup-menu--content {
   position: absolute;
   font-size: 14px;
-  top: 100%;
-  background-color: darkgrey;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-color: var(--gray);
   padding: 20px;
   display: none;
   z-index: 12;
-  width: 40%;
-  color: #000;
+  width: 50%;
+  color: var(--background-color);
 }
 
 .popup-menu--content ul {
@@ -63,4 +65,9 @@
 
 .toolbar--mobile--top .popup-menu--list--popup {
   padding: 5px;
+}
+
+.copied-message {
+  color: var(--green);
+  font-size: 12px;
 }

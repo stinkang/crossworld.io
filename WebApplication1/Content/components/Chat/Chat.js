@@ -29,7 +29,7 @@ export default class Chat extends Component {
 
   handleUpdateDisplayName = (username) => {
     if (!this.usernameInput?.current?.focused) {
-      username = username || "Guest";
+      username = username || "guest";
     }
     const {id} = this.props;
     this.props.onUpdateDisplayName(id, username);

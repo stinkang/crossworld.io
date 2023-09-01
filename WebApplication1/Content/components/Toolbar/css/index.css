@@ -5,19 +5,19 @@ code {
 
 .toolbar {
   font-size: 16pt;
-  padding: 15px 10px 13px 50px;
+  padding: 15px 10px 13px 20px;
   min-height: 20px;
 
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   position: relative;
   text-align: center;
 }
 
 .toolbar button {
-  color: darkgray;
+  color: var(--gray);
   padding: 7px 10px 7px 10px;
   border-radius: 5px;
   background-color: transparent;
@@ -27,7 +27,7 @@ code {
 }
 
 .toolbar button:hover {
-  background-color: lightgray;
+  background-color: var(--gray);
   color: black;
 }
 
@@ -78,7 +78,7 @@ code {
 
 .toolbar--info {
   cursor: pointer;
-  background-color:
+  background-color: transparent;
 }
 
 .toolbar--pencil.on .fa-pencil {
@@ -99,11 +99,20 @@ code {
 
 .toolbar--mobile {
   height: 48px;
-  background-color: #7bb1e6;
+  background-color: transparent;
   justify-content: space-between;
   font-size: 14pt;
-  color: white;
+  color: var(--gray);
 }
+
+.toolbar--mobile-expanded {
+  height: 48px;
+  background-color: transparent;
+  justify-content: space-between;
+  font-size: 14pt;
+  color: var(--gray);
+}
+
 
 .toolbar--mobile a:first-child {
   color: white;
@@ -115,10 +124,14 @@ code {
 .toolbar--mobile button {
   background-color: transparent;
   border: none;
-  padding: 16px;
-  color: white;
+  /*padding: 16px;*/
+  color: var(--gray);
   font-size: 14px;
   height: 48px;
+}
+
+.title {
+  margin-bottom: 0 !important;
 }
 
 .toolbar--mobile svg {
@@ -133,5 +146,18 @@ code {
 }
 
 .toolbar--mobile .clock {
-  color: yellow;
+  color: #ffc000;
+  font-size: 14px;
+}
+
+.expand-button-div {
+  float: right;
+}
+
+.expand-button {
+  padding: 0 !important;
+}
+
+.MuiIconButton-root {
+  color: var(--gray) !important;
 }

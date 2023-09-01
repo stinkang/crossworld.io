@@ -1,6 +1,6 @@
 // import {gameWords} from './lib/names';
 // import {makeGrid} from './lib/gameUtils';
-import firebase, {getTime} from './store/firebase';
+import firebase, {getTime} from './store/firebaseConfig';
 // // eslint-disable-next-line import/no-cycle
 // import {GameModel, PuzzleModel} from './store';
 

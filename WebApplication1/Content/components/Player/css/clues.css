@@ -26,7 +26,7 @@
 .clues--list--title {
   font-weight: bold;
   font-size: 14px;
-  color: gray;
+  color: var(--gray);
 }
 
 .clues--list--scroll {
@@ -54,7 +54,7 @@
 
 .clues--list--scroll--clue.selected {
   background-color: var(--light-blue);
-  color: black;
+  color: white;
 }
 
 .clues--list--scroll--clue.half-selected {

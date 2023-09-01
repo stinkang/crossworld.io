@@ -1,16 +1,14 @@
-﻿
+﻿@model CrossWorldApp.ViewModels.Drafts.EditViewModel;
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
 <body>
-    <div id="composition-root"></div>
-    <script src="~/dist/compose.js"></script>
+    <div id="draft-editor-root"></div>
+    <script src="~/dist/drafts.js"></script>
     <script type="text/javascript">
         (function () {
-            window.InitComposition({
-                cid: "@ViewData["id"]"
-            });
+            window.InitDraftEditor(@Html.Raw(Json.Serialize(Model)));
         })();
     </script>
 </body>

@@ -29,30 +29,20 @@ const f = () => ({
     });
   },
 
-  fromComposition: (composition) => {
-    const {info, grid: compositionGrid, clues: compositionClues, circles = []} = composition;
+  fromCompState: (compState) => {
+    const {info = { author: "", title: "" }, title, grid: compositionGrid, clues: compositionClues, circles = []} = compState;
 
     const grid = compositionGrid.map((row) =>
-      row.map(({value, pencil}) => ({
+      row.map(value => ({
         black: value === '.',
         value: value === '.' ? '' : value,
-        pencil,
+        pencil: false,
         number: null,
       }))
     );
     new GridObject(grid).assignNumbers();
-
-    const unalignedClues = {
-      across: [],
-      down: [],
-    };
-    compositionClues.forEach(({r, c, dir, value}) => {
-      const num = grid[r][c].number;
-      if (num) {
-        unalignedClues[dir][num] = value;
-      }
-    });
-    const clues = new GridObject(grid).alignClues(unalignedClues);
+    const clues = new GridObject(grid).alignClues(compositionClues);
+    info.title = title;
 
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
     return intermediate({

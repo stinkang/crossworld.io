@@ -1,11 +1,13 @@
 ﻿import React, {useEffect, useRef, useState} from 'react';
 import {CrosswordIcon} from "./CrosswordIcon";
 import {CrosswordIconViewModel} from "./Models/CrosswordIconViewModel";
+import {LoginModal} from "./LoginModal";
 import './css/crosswords.css';
 
 export interface CrosswordsIndexOptions {
     crosswords: CrosswordIconViewModel[];
-}
+    isLoggedIn: boolean;
+}  
 
 export function CrosswordsIndex(props: CrosswordsIndexOptions) {
     const [crosswords, setCrosswords] = useState(props.crosswords);
@@ -49,20 +51,25 @@ export function CrosswordsIndex(props: CrosswordsIndexOptions) {
     }, [loadMoreCrosswords]);
     
     return (
-        <div className="grid-container" ref={containerRef}>
-            { crosswords.map(crossword =>
-                <div className={crossword.grid.length >= 10 ? "grid-item-wide" : "grid-item"}>
-                    <CrosswordIcon
-                        author={crossword.author} 
-                        id={crossword.id}
-                        title={crossword.title}
-                        grid={crossword.grid}
-                        userId={crossword.userId}
-                        isAnonymous={crossword.isAnonymous}
-                        solves={crossword.solves}
-                    />
-                </div>
-            )}
+        <div>
+            {!props.isLoggedIn &&
+                <LoginModal />
+            }
+            <div className="grid-container" ref={containerRef}>
+                { crosswords.map(crossword =>
+                    <div key={crossword.id} className={crossword.grid.length >= 10 ? "grid-item-wide" : "grid-item"}>
+                        <CrosswordIcon
+                            author={crossword.author}
+                            id={crossword.id}
+                            title={crossword.title}
+                            grid={crossword.grid}
+                            userId={crossword.userId}
+                            isAnonymous={crossword.isAnonymous}
+                            solves={crossword.solves}
+                        />
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

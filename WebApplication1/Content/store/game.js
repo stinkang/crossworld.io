@@ -5,7 +5,7 @@ import * as uuid from 'uuid';
 import _ from 'lodash';
 // import {getSocket} from '../sockets/getSocket';
 import {emitAsync} from '../sockets/emitAsync';
-import {db, SERVER_TIME} from './firebase';
+import {db, SERVER_TIME} from './firebaseConfig';
 import Puzzle from './puzzle';
 import * as colors from '../lib/colors';
 

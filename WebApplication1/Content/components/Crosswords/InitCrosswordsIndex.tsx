@@ -5,7 +5,7 @@ import { CrosswordsIndexOptions } from "./CrosswordsIndex";
 
 export const InitCrosswordsIndex = (options: CrosswordsIndexOptions) => {
     ReactDOM.render(
-        <CrosswordsIndex crosswords={options.crosswords} />,
+        <CrosswordsIndex crosswords={options.crosswords} isLoggedIn={options.isLoggedIn} />,
         document.getElementById('crosswords-index-root')
     );
 };

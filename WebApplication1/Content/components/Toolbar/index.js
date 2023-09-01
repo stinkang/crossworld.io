@@ -1,5 +1,5 @@
 import './css/index.css';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {MdBorderAll, MdChatBubble, MdList, MdSlowMotionVideo} from 'react-icons/md';
 import {RiPaintFill, RiPaintLine} from 'react-icons/ri';
 import Flex from 'react-flexview';
@@ -9,14 +9,35 @@ import ActionMenu from './ActionMenu';
 import Popup from './Popup';
 import {isMobile} from '../../lib/jsUtils';
 
-export default class Toolbar extends Component {
+import { Collapse, IconButton } from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
+export default class Toolbar extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        isExpanded: false,
+        showCopiedMessage: false,
+      }
+    }
+    
+    handleExpandClick = () => {
+        this.setState({isExpanded: !this.state.isExpanded});
+    };
+    
   get url() {
     return `${window.location.protocol}//${window.location.host}/solve${this.props.path}`;
   }
 
   handleCopyClick = () => {
-    navigator.clipboard.writeText(this.url);
+    navigator.clipboard.writeText(this.url).then(() => {
+      this.setState({showCopiedMessage: true});
+      setTimeout(() => { this.setState({showCopiedMessage: false}); }, 3000); // Hide after 3 seconds
+    }).catch(err => {
+      console.error('Failed to copy link: ' + err);
+    });
+    
     // `${window.location.host}/beta${this.props.path}`);
     let link = document.getElementById('pathText');
     link.classList.remove('flashBlue');
@@ -168,13 +189,16 @@ export default class Toolbar extends Component {
 
   renderAddFriendsMenu() {
     return (
-        <ActionMenu
-            label="Add Friends"
-            onBlur={this.handleBlur}
-            actions={{
-              'Copy Link': this.handleCopyClick
-            }}
-        />
+        <div>
+          <ActionMenu
+              label="Add Friends"
+              onBlur={this.handleBlur}
+              actions={{
+                'Copy Link': this.handleCopyClick
+              }}
+          />
+          {this.state.showCopiedMessage && <div className="copied-message">Copied!</div>}
+        </div>
     );
   }
 
@@ -445,30 +469,40 @@ export default class Toolbar extends Component {
     } = this.props;
 
     if (mobile) {
-      return (
-          <div>
-            Please visit CrossWorld! on a desktop browser to play. Mobile app coming soon!
-          </div>
-        // <Flex className="toolbar--mobile" vAlignContent="center">
-        //   <Flex className="toolbar--mobile--top" grow={1} vAlignContent="center">
-        //     {/*<Link to="/">DFAC</Link>{' '}*/}
-        //     <Clock
-        //       v2={this.props.v2}
-        //       startTime={startTime}
-        //       stopTime={stopTime}
-        //       pausedTime={pausedTime}
-        //       replayMode={replayMode}
-        //       isPaused={this.props.isPaused || !startTime}
-        //     />
-        //     {!solved && !replayMode && this.renderCheckMenu()}
-        //     {this.renderChatButton()}
-        //   </Flex>
-        // </Flex>
-      );
+      return <div>
+        {this.state.isExpanded ?
+            <Flex className="toolbar--mobile" vAlignContent="center">
+              <Flex className="toolbar--mobile--top" grow={1} vAlignContent="center">
+                <h5 className={"title"}>{this.props.title}</h5>
+                <Clock
+                    v2={this.props.v2}
+                    startTime={startTime}
+                    stopTime={stopTime}
+                    pausedTime={pausedTime}
+                    replayMode={replayMode}
+                    isPaused={this.props.isPaused || !startTime}
+                />
+                {!solved && !replayMode && this.renderCheckMenu()}
+                {!replayMode && this.renderExtrasMenu()}
+                {this.renderAddFriendsMenu()}
+                {this.renderChatButton()}
+                <IconButton className="expand-button" onClick={this.handleExpandClick}>
+                  <ExpandLessIcon />
+                </IconButton>
+              </Flex>
+            </Flex> :
+            <div className="expand-button-div">
+              <IconButton className="expand-button" onClick={this.handleExpandClick}>
+                <ExpandMoreIcon />
+              </IconButton>
+            </div>
+        }
+      </div>;
     }
 
     return (
       <div className="toolbar">
+        <h3>{this.props.title}</h3>
         <div className="toolbar--timer">
           <Clock
             v2={this.props.v2}

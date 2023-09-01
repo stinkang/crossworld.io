@@ -1,0 +1,32 @@
+﻿
+.icon-cell-black {
+    height: 40px;
+    width: 40px;
+    border: 1px solid var(--black-square);
+    background-color: var(--black-square);
+    color: var(--black-square);
+}
+
+.icon-cell-white {
+    height: 40px;
+    width: 40px;
+    border: 1px solid var(--black-square);
+    background-color: var(--white-square);
+    color: white;
+}
+
+.link-button {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: var(--bs-body-font-family);
+    /*input has OS specific font-family*/
+    color: var(--light-blue);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.modal-content {
+    background-color: gray;
+}

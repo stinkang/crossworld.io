@@ -62,16 +62,16 @@ public class TestCrosswordRepository: ITestCrosswordRepository
         return completedCrosswords;
     }
     
-    public TestCrossword GetTestCrosswordWithUser(int id)
+    public TestCrossword? GetTestCrosswordWithUser(int id)
     {
         return _context.TestCrosswords
             .Include(crossword => crossword.User)
             .FirstOrDefault(crossword => crossword.Id == id);
     }
     
-    public TestCrossword[] GetTestCrosswordsWithSolves()
+    public IEnumerable<TestCrossword> GetTestCrosswordsWithSolves()
     {
-        return _context.TestCrosswords.Include(crossword => crossword.Solves).ToArray();
+        return _context.TestCrosswords.Include(crossword => crossword.Solves);
     }
 
 }
@@ -88,7 +88,7 @@ public interface ITestCrosswordRepository
     
     TestCrossword[] GetCompletedCrosswordsForUser(string userId);
 
-    TestCrossword GetTestCrosswordWithUser(int id);
+    TestCrossword? GetTestCrosswordWithUser(int id);
 
-    TestCrossword[] GetTestCrosswordsWithSolves();
+    IEnumerable<TestCrossword> GetTestCrosswordsWithSolves();
 }

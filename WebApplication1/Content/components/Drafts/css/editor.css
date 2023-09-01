@@ -1,0 +1,231 @@
+/* editor Styles */
+.editor--main {
+  margin-top: 20px;
+  display: flex;
+}
+
+.editor--main--clue-bar {
+  background-color: var(--main-blue-3);
+  padding: 10px 20px 10px 20px;
+  display: flex;
+  font-size: 15px;
+  height: 70px;
+  align-items: center;
+}
+
+.editor--main--clue-bar {
+  opacity: 2;
+}
+
+.editor--main--clue-bar--number {
+  font-weight: bold;
+  display: inline-block;
+}
+
+.editor--main--clue-bar--text {
+  display: inline-block;
+  overflow: auto;
+  max-width: 380px;
+  margin-left: 15px;
+  align-items: center;
+}
+
+.editor--main--clue-bar--text .editable-span {
+  padding: 5px;
+}
+
+.editor--main--left {
+  display: flex;
+  flex-direction: column;
+  align-items: auto;
+}
+
+.editor--main--left--grid {
+  margin-top: 10px;
+  position: relative;
+  border: 4px solid black;
+  color: #444;
+}
+
+.editor--right {
+  display: flex;
+  /* justify-content: space-between; */
+  flex-direction: column;
+}
+
+.editor--main--clues {
+  flex: 1;
+  display: flex;
+  padding: 0px 20px 0px 20px;
+}
+
+.editor--main--clues--list {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  padding-right: 10px;
+}
+
+.editor--main--clues--list--title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.editor--main--clues--list--scroll {
+  position: relative;
+  overflow-y: auto;
+  border-top: 1px solid #e2e2e2;
+  margin-top: 5px;
+  padding-right: 10px;
+}
+
+.editor--main--clues--list--scroll--clue {
+  display: flex;
+  flex-direction: row;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-left: 5px solid transparent;
+  cursor: pointer;
+}
+
+.editor--main--clues--list--scroll--clue.complete {
+  color: #888;
+}
+
+.editor--main--clues--list--scroll--clue.selected {
+  background-color: var(--light-blue);;
+}
+
+.editor--main--clues--list--scroll--clue.half-selected {
+  border-left: 5px solid var(--light-blue);;
+}
+
+.editor--main--clues--list--scroll--clue--number {
+  margin-left: 5px;
+  font-weight: 400;
+  line-height: 19px;
+  font-weight: bold;
+}
+
+.editor--main--clues--list--scroll--clue--text {
+  margin-left: 15px;
+}
+
+.editor--button {
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid var(--main-blue);
+  font-weight: bold;
+  color: var(--main-blue);
+  margin-top: 30px;
+  justify-self: center;
+}
+
+.editor--right--hints {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor--grid-size {
+  padding: 10px;
+  font-weight: bold;
+  color: var(--main-blue);
+  margin-top: 30px;
+  justify-content: left;
+}
+
+.icon-button {
+  background: none; /* Remove background */
+  border: none; /* Remove border */
+  width: 50px; /* Same size as before */
+  height: 50px; /* Same size as before */
+  color: black; /* White icon color */
+  cursor: pointer; /* Change cursor to pointer when hovering over the button */
+}
+
+.left--toolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.editor--grid-size {
+  position: relative; /* Establish a new positioning context for children */
+}
+
+.editor--input {
+  position: absolute; /* Position the input relative to the nearest positioned ancestor */
+  left: 100%; /* Position the input to the right edge of the button */
+  top: 0; /* Align the input with the top of the button */
+  z-index: 10; /* Ensure the input renders on top of other content */
+}
+
+.publish-button {
+  background-color: transparent;
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+
+.publish-button:hover {
+  background-color: var(--green); /* Darker green on hover */
+  border: 1px solid transparent;
+  color: var(--background-color);
+}
+
+.publish-button:focus {
+  background-color: var(--green); /* Darker green on hover */
+  border: 1px solid transparent;
+  color: var(--background-color);
+}
+
+.settings-button {
+  background-color: transparent;
+  color: var(--light-blue) !important;
+  border: 1px solid var(--light-blue);
+  margin-left: 5px !important;
+  padding: 0 0 0 0 !important;
+}
+
+.info-button {
+  background-color: transparent;
+  color: var(--light-blue) !important;
+  border: 1px solid var(--light-blue);
+  margin-left: 5px !important;
+  padding: 0 0 0 0 !important;
+  margin-bottom: auto !important;
+}
+
+.title {
+  margin-bottom: 0 !important;;
+}
+
+.export-button {
+  background-color: transparent;
+  color: var(--light-blue) !important;
+  border: 1px solid var(--light-blue);
+}
+
+.export-button:hover {
+  background-color: var(--light-blue);
+  color: var(--background-color);
+  border: 1px solid transparent;
+}
+
+.export-button:focus {
+  background-color: var(--light-blue);
+  color: var(--background-color);
+  border: 1px solid transparent;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.publish-text {
+    font-size: 14px;
+    color: var(--gray);
+}

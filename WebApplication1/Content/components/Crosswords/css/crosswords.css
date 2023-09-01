@@ -2,17 +2,17 @@
 .icon-cell-black {
     height: 40px;
     width: 40px;
-    border: 1px solid black;
-    background-color: black;
-    color: black;
+    border: 1px solid var(--black-square);
+    background-color: var(--black-square);
+    color: var(--black-square);
 }
 
 .icon-cell-white {
     height: 40px;
     width: 40px;
-    border: 1px solid black;
-    background-color: white;
-    color: white;
+    border: 1px solid var(--black-square);
+    background-color: var(--white-square);
+    color: var(--white-square);
 }
 
 .link-button {
@@ -110,12 +110,18 @@
 
 
 .icon-text {
-    font-style: italic;
-    color: gray;
+    /*font-style: italic;*/
+    color: var(--gray);
 }
+
 
 .title-text {
     font-style: normal;
+    color: var(--color);
+}
+
+.author-text {
+    color: var(--color);
 }
 
 .crossword-icon-border {
@@ -123,6 +129,37 @@
 }
 
 .leaderboard-text {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
+    font-style: italic;
+}
+
+.solver-text {
+    font-size: 14px;
+}
+
+.skip-button {
+    font-size: 14px;
+    background-color: var(--background-color);
+    color: var(--gray);
+    border: transparent;
+}
+
+.skip-button:hover {
+    font-size: 14px;
+    background-color: var(--background-color);
+    color: var(--gray);
+    border: transparent;
+}
+
+.login-modal-header {
+    border-bottom: none;
+}
+
+.login-modal-footer {
+    border-top: none;
+}
+
+.login-modal .modal-content {
+    border: 1px solid gray; /* Set the border color to gray */
 }

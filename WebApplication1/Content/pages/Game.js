@@ -29,6 +29,7 @@ export default class Game extends Component {
     window.addEventListener('resize', () => {
       this.setState({
         mobile: isMobile(),
+        userName: ""
       });
     });
   }
@@ -52,7 +53,11 @@ export default class Game extends Component {
   }
   
   get userName() {
-    return this.props.userName;
+    return this.state.userName;
+  }
+  
+  handleUpdateUserName = (userName) => {
+    this.setState({userName: userName});
   }
 
   get query() {
@@ -169,6 +174,7 @@ export default class Game extends Component {
 
   componentDidMount() {
     this.initializeGame();
+    this.handleUpdateUserName(this.props.userName);
   }
 
   componentWillUnmount() {
@@ -222,7 +228,7 @@ export default class Game extends Component {
   }
 
   get userColor() {
-    return "#7bb1e6";
+    return "var(--light-blue)";
   }
 
   handleToggleChat = () => {
@@ -339,6 +345,7 @@ export default class Game extends Component {
         team={this.state.team}
         unreads={this.unreads}
         solveId={this.gid}
+        title={this.getPuzzleTitle()}
       />
     );
   }
