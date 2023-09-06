@@ -1,13 +1,14 @@
 import './css/toolbar.css';
 import React, { useState } from 'react';
 import Flex from 'react-flexview';
-import { Modal } from 'react-bootstrap';
+import {Button, Modal} from 'react-bootstrap';
 import ActionMenu from './ActionMenu';
 
 import { IconButton } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import FileUploader from "../Upload/FileUploader";
+import PublishModal from "./PublishModal";
 
 export interface DraftingToolbarProps {
   handleToggleAutofill: () => void;
@@ -18,11 +19,15 @@ export interface DraftingToolbarProps {
   handleUpdateColumns: (event: any) => void;
   handleUpdateRows: (event: any) => void;
   handleUpdateTitle: (title: string) => void;
+  handleUpdateIsAnonymous: (event: any) => void;
   handlePublish: () => void;
+  handleChangeSymmetry: () => void;
   isMobile: boolean;
     rows: number;
     columns: number;
     title: string;
+    isCompleted: boolean;
+    symmetryOn: boolean;
 }
 
 interface DraftingToolbarState {
@@ -30,9 +35,11 @@ interface DraftingToolbarState {
   isShowingImportModal: boolean;
   isShowingChangeDimensionsModal: boolean;
   isShowingChangeTitleModal: boolean;
+  isShowingPublishModal: boolean;
     rows: number;
     columns: number;
     title: string;
+    symmetryOn: boolean;
 }
 
 export const DraftingToolbar = (
@@ -45,19 +52,25 @@ export const DraftingToolbar = (
         handleUpdateRows, 
         handleUpdateColumns, 
         handleUpdateTitle,
+        handleUpdateIsAnonymous,
+        handleChangeSymmetry,
         isMobile,
         rows,
         columns,
-        title
+        title,
+        isCompleted,
+        symmetryOn
     }: DraftingToolbarProps) => {
   const [state, setState] = useState<DraftingToolbarState>({
     isExpanded: false,
     isShowingImportModal: false,
     isShowingChangeDimensionsModal: false,
     isShowingChangeTitleModal: false,
+    isShowingPublishModal: false,
       rows: rows,
       columns: columns,
-      title: title
+      title: title,
+        symmetryOn: symmetryOn
   });
   
   const handleExpandClick = () => {
@@ -81,6 +94,12 @@ export const DraftingToolbar = (
     const handleToggleChangeTitle = () => {
         setState((prevState: DraftingToolbarState) => ({
             ...prevState, isShowingChangeTitleModal: !prevState.isShowingChangeTitleModal
+        }));
+    };
+  
+    const handleTogglePublish = () => {
+        setState((prevState: DraftingToolbarState) => ({
+            ...prevState, isShowingPublishModal: !prevState.isShowingPublishModal
         }));
     };
     
@@ -115,7 +134,7 @@ export const DraftingToolbar = (
               //'Save As': onToggleColorAttributionMode,
               'Import .PUZ file': handleToggleImport,
               'Export as .PUZ file': handleExport, 
-                'Publish to CrossWorld!': handlePublish,
+                'Publish to CrossWorld!': handleTogglePublish,
             }}
         />
     );
@@ -136,12 +155,14 @@ export const DraftingToolbar = (
     };
   
   const renderToolsMenu = () => {
+      const symmetryText = symmetryOn ? 'Turn Off Symmetry' : 'Turn On Symmetry';
     return (
         <ActionMenu
             label="Tools"
             onBlur={() => {}}
             actions={{
-                'Run Autofill': handleToggleAutofill
+            'Run AutoFill': handleToggleAutofill, 
+                [symmetryText]: handleChangeSymmetry,
             }}
         />
     );
@@ -172,7 +193,9 @@ export const DraftingToolbar = (
                   <div className="toolbar">
                       <Flex>
                           {renderFileMenu()}
+                          &nbsp;
                           {renderEditMenu()}
+                          &nbsp;
                           {renderToolsMenu()}
                       </Flex>
                       <Modal show={isShowingImportModal} onHide={handleToggleImport} centered>
@@ -189,6 +212,8 @@ export const DraftingToolbar = (
                                       type="number"
                                       defaultValue={rows}
                                         onChange={handleUpdateRowsInternal}
+                                      onInput={(e) => e.preventDefault()}
+                                      onKeyDown={(e) => e.preventDefault()}
                                   />
                               </Flex>
                               &nbsp;
@@ -199,6 +224,8 @@ export const DraftingToolbar = (
                                       type="number"
                                       defaultValue={columns}
                                       onChange={handleUpdateColumnsInternal}
+                                      onInput={(e) => e.preventDefault()}
+                                      onKeyDown={(e) => e.preventDefault()}
                                   />
                               </Flex>
                           </Modal.Body>
@@ -216,6 +243,40 @@ export const DraftingToolbar = (
                                 </Flex>
                             </Modal.Body>
                         </Modal>
+                      <Modal show={state.isShowingPublishModal} onHide={handleTogglePublish} centered>
+                          <Modal.Body style={{maxWidth: '25vw', margin: '0 auto'}}>
+                              <Flex>
+                                  <div>Title: </div>
+                                  &nbsp;
+                                  <input
+                                      type="text"
+                                      defaultValue={title}
+                                      onChange={handleUpdateTitleInternal}
+                                  />
+                              </Flex>
+                              &nbsp;
+                              <Flex>
+                                  <div>Publish Anonymously?: </div>
+                                  &nbsp;
+                                  &nbsp;
+                                  <input
+                                      type="checkbox"
+                                      defaultValue={0}
+                                      onChange={handleUpdateIsAnonymous}
+                                  />
+                              </Flex>
+                              &nbsp;
+                              <Flex>
+                                  {isCompleted ?
+                                  <Button className="publish-button" variant="primary" onClick={handlePublish}>
+                                      Publish
+                                  </Button> :
+                                      <div>
+                                          Fill in all the squares and clues to publish!
+                                      </div>}
+                              </Flex>
+                          </Modal.Body>
+                      </Modal>
                   </div>
               }
           </div>

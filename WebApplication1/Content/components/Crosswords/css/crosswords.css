@@ -47,7 +47,7 @@
     place-items: center;
 }
 
-@media (min-width: 1200px) { /* adjust this value according to your needs */
+@media (min-width: 1400px) { /* adjust this value according to your needs */
     .grid-container {
         grid-template-columns: 1fr 1fr;
     }

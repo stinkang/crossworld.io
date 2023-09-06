@@ -1,0 +1,7 @@
+[
+  {
+    "origin":  ["https://crossworld.io", "https://localhost:44315/"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  }
+]

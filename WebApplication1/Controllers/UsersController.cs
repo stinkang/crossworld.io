@@ -21,7 +21,6 @@ namespace CrossWorldApp.Controllers
         private readonly UserManager<CrossworldUser> _userManager;
         private readonly ICrossworldUserService _userService;
         private readonly ITestCrosswordRepository _crosswordRepository;
-        private readonly ISolveRepository _solveRepository;
         private readonly SignInManager<CrossworldUser> _signInManager;
 
 
@@ -38,7 +37,6 @@ namespace CrossWorldApp.Controllers
             _userManager = userManager;
             _userService = userService;
             _crosswordRepository = crosswordRepository;
-            _solveRepository = solveRepository;
             _signInManager = signInManager;
         }
 
@@ -67,24 +65,6 @@ namespace CrossWorldApp.Controllers
 
             return View(user);
         }
-
-/*        // GET: Users/GetByUID/5
-        [Route("Users/GetByUID/{uid}")]
-        public async Task<IActionResult> GetByUID(string uid)
-        {
-            if (uid == null)
-            {
-                return NotFound();
-            }
-    
-            var user = await _context.Users.FirstOrDefaultAsync(m => m.Uid == uid);
-            if (user == null)
-            {
-                return Json(new { exists = false, username = "" });
-            }
-
-            return Json(new { exists = true, username = user.Username, uid = user.Uid });
-        }*/
 
         // GET: Users/Create
         public IActionResult Create()
@@ -220,20 +200,6 @@ namespace CrossWorldApp.Controllers
         [Route("User/Profile/{userName}")]
         public async Task<IActionResult> Profile(string userName)
         {
-            var currentUser = await _userManager.GetUserAsync(User);
-            // if (currentUser == null)
-            // {
-            //     return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            // }
-
-            // if (currentUser.Id == id)
-            // {
-            //     var viewModel = new OwnProfileViewModel
-            //     {
-            //         
-            //     }
-            // }
-
             var profileUser = await _userService.GetUserByUserNameWithTestCrosswordsAsync(userName);
 
             var viewModel = new ProfileViewModel

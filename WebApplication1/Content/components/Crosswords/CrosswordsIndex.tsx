@@ -57,7 +57,7 @@ export function CrosswordsIndex(props: CrosswordsIndexOptions) {
             }
             <div className="grid-container" ref={containerRef}>
                 { crosswords.map(crossword =>
-                    <div key={crossword.id} className={crossword.grid.length >= 10 ? "grid-item-wide" : "grid-item"}>
+                    <div key={crossword.id} className={crossword.grid.length > 11 ? "grid-item-wide" : "grid-item"}>
                         <CrosswordIcon
                             author={crossword.author}
                             id={crossword.id}

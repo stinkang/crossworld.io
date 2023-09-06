@@ -22,13 +22,13 @@ body {
 
 .navbar, .navbar-nav .nav-link {
     background-color: var(--background-color);
-    color: gray !important;
+    color: var(--gray) !important;
     transition: background-color 0s;
 }
 
 .navbar-brand {
     background-color: var(--background-color);
-    color: gray !important;
+    color: var(--gray) !important;
     font-weight: bold;
     font-size: 20px;
 }
@@ -37,18 +37,24 @@ body {
     /* your light theme styles */
     --background-color: white;
     --color: black;
-    --lighter-blue: #b7d5f2;
-    --light-blue: #7bb1e6;
+    --lighter-blue: #a5c9ff;
+    --light-blue: #2980ff;
     --green: #43A047;
+    --black-square: black;
+    --white-square: white;
+    --gray: #838c94;
 }
 
 :root[data-theme="dark"] {
     /* your dark theme styles */
     --background-color: black;
     --color: white;
-    --lighter-blue: #b7d5f2;
-    --light-blue: #7bb1e6;
+    --lighter-blue: #a5c9ff;
+    --light-blue: #2980ff;
     --green: #43A047;
+    --black-square: black;
+    --white-square: white;
+    --gray: #838c94;
 }
 
 .small-font {
@@ -56,33 +62,34 @@ body {
 }
 
 a {
-    color: #7bb1e6;
+    color: var(--light-blue);
+    text-decoration: none; /* Remove the underline */
 }
 
 .account-nav-item {
-    color: gray;
+    color: var(--gray);
     background-color: transparent;
     border: 1px solid var(--background-color);
 }
 
 
 .account-nav-item:hover {
-    color: gray;
-    border: 1px solid gray;
+    color: var(--gray);
+    border: 1px solid var(--gray);
 }
 
 .account-nav-item:focus {
     color: var(--background-color);
-    background-color: gray;
+    background-color: var(--gray);
 }
 
 .account-nav-item.active {
     color: var(--background-color) !important;
-    background-color: gray !important;
+    background-color: var(--gray) !important;
 }
 
 .password-text {
-    color: gray;
+    color: var(--gray);
     font-size: 16px;
     background-color: var(--background-color);
 }
@@ -123,23 +130,27 @@ input.form-control.invalid {
 }
 
 .account-button {
-    color: gray;
+    color: var(--gray);
     background-color: transparent;
     border: 1px solid var(--background-color);
 }
 
 .account-button:hover {
     color: var(--background-color);
-    border: 1px solid gray;
-    background-color: gray;
+    border: 1px solid var(--gray);
+    background-color: var(--gray);
 }
 
 .account-button:focus {
     color: var(--background-color);
-    background-color: gray;
+    background-color: var(--gray);
 }
 
 .account-button.active {
     color: var(--background-color) !important;
-    background-color: gray !important;
+    background-color: var(--gray) !important;
+}
+
+.container-fluid {
+    justify-content: initial !important;
 }

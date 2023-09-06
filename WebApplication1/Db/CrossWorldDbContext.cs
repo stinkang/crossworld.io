@@ -5,7 +5,7 @@ using CrossWorldApp.Controllers;
 
 namespace CrossWorldApp;
 
-public class CrossWorldDbContext : IdentityDbContext<CrossworldUser>
+public class CrossWorldDbContext : IdentityDbContext<CrossworldUser>, ICrossWorldDbContext
 {
     public CrossWorldDbContext(DbContextOptions<CrossWorldDbContext> options)
         : base(options)

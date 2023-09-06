@@ -101,26 +101,6 @@ public class DraftsController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    /*    [HttpPut]
-        public async Task<IActionResult> UpdateByFirebaseId([FromBody] Draft draft)
-        {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
-
-            if (ModelState.IsValid)
-            {
-                draft.User = user;
-                _logger.LogInformation($"Draft updated by {user.UserName}.");
-                _draftRepository.UpdateDraftByFirebaseId(draft);
-                return RedirectToAction(nameof(Index));
-            }
-
-            return View(draft);
-        }*/
-
     // GET
     [HttpGet]
     [Route("/Drafts/Edit/{id}")]

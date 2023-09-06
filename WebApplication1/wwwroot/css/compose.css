@@ -29,7 +29,7 @@
 .compose--left--list--entry {
   display: block;
   font-size: 16px;
-  border: 2px solid gray;
+  border: 2px solid var(--gray);
   border-radius: 5px;
   margin-top: 10px;
   padding: 5px 5px 5px 5px;

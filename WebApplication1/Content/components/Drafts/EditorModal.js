@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Flex from 'react-flexview';
-import { Modal, Button } from 'react-bootstrap';
-import FileUploader from '../../components/Upload/FileUploader';
+import { Modal } from 'react-bootstrap';
 import EditIcon from '@material-ui/icons/Edit';
 import { IconButton } from '@material-ui/core';
 
@@ -25,18 +24,6 @@ const FullScreenModal = (props) => {
         props.onUpdateTitle(event);
     };
 
-    const handleExportClick = () => {
-        props.onExportClick();
-    };
-
-    const handleUploadSuccess = (puzzle, filename = '') => {
-        props.onUploadSuccess(puzzle, filename);
-    };
-
-    const handleUploadFail = () => {
-        props.onUploadFail();
-    };
-
     return (
         <>
             <IconButton className="settings-button" variant="primary" onClick={handleShow}>
@@ -44,10 +31,6 @@ const FullScreenModal = (props) => {
             </IconButton>
             <Modal show={show} onHide={handleClose} centered>
                 <Modal.Body style={{maxWidth: '25vw', margin: '0 auto'}}>
-                    <Flex>
-                        <FileUploader success={handleUploadSuccess} fail={handleUploadFail} v2 />
-                    </Flex>
-                    &nbsp;
                     <Flex>
                         <div>Title: </div>
                         &nbsp;
@@ -65,6 +48,8 @@ const FullScreenModal = (props) => {
                             type="number"
                             defaultValue={props.grid.size}
                             onChange={handleChangeRows}
+                            onInput={(e) => e.preventDefault()}
+                            onKeyDown={(e) => e.preventDefault()}
                         />
                     </Flex>
                     &nbsp;
@@ -75,15 +60,10 @@ const FullScreenModal = (props) => {
                             type="number"
                             defaultValue={props.grid.size}
                             onChange={handleChangeColumns}
+                            onInput={(e) => e.preventDefault()}
+                            onKeyDown={(e) => e.preventDefault()}
                         />
                     </Flex>
-                    &nbsp;
-                    <Flex>
-                        <Button variant="primary export-button" onClick={handleExportClick}>
-                            Export as .puz file
-                        </Button>
-                    </Flex>
-                    {/* Place any additional inputs or components here */}
                 </Modal.Body>
             </Modal>
         </>

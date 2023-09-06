@@ -9,7 +9,7 @@ import { downloadBlob, isMobile } from "../../lib/jsUtils";
 import { TestCrosswordClues } from "./Models/TestCrosswordClues";
 import format from "../../lib/format";
 import {useWordDB, wordDB} from '../../lib/WordDB';
-import { LoadButton } from './DBLoader';
+import {DBLoader, LoadButton} from './DBLoader';
 import { Button } from 'react-bootstrap';
 import {
     isAutofillCompleteMessage,
@@ -50,6 +50,7 @@ const DraftEditor = (props: DraftEditorProps) => {
     const [autofillEnabled, setAutofillEnabled] = useState(true);
     const [showSavedText, setShowSavedText] = useState(false);
     const [isCompleted, setIsCompleted] = useState(false);
+    const [symmetryOn, setSymmetryOn] = useState(false);
 
     const filterClues = (clues: TestCrosswordClues) => {
         const newClues = new TestCrosswordClues();
@@ -209,10 +210,17 @@ const DraftEditor = (props: DraftEditorProps) => {
             setCompState({...compState, grid: result});
         }
     }
+    
+    const handleChangeSymmetry = () => {
+        setSymmetryOn(!symmetryOn);
+    };
 
     const handleFlipColor = (r, c) => {
         const newGrid = compState.grid;
         newGrid[r][c] = newGrid[r][c] == '.' ? ' ' : '.';
+        if (symmetryOn) {
+            newGrid[compState.grid.length - r - 1][compState.grid[0].length - c - 1] = newGrid[r][c];
+        }
         setCompState({...compState, grid: newGrid});
     };
 
@@ -365,12 +373,13 @@ const DraftEditor = (props: DraftEditorProps) => {
     }
     
     const getPublishable = (): boolean => {
-        let { grid, clues, title } = compState;
+        let { grid, clues } = compState;
+        const alteredGrid = makeGridFromComposition(grid).toArray();
+        clues = makeClues(clues, alteredGrid);
         const cluesFinished = clues.across.every((clue) => clue !== '')
-            && this.props.clues.down.every((clue) => clue !== '');
+            && clues.down.every((clue) => clue !== '');
         const gridFinished = grid.every((row) => row.every((cell) => cell !== ' '));
-        const titleFinished = title !== '';
-        return cluesFinished && gridFinished && titleFinished;
+        return cluesFinished && gridFinished;
     }
 
     const renderEditor = () => {
@@ -380,7 +389,8 @@ const DraftEditor = (props: DraftEditorProps) => {
 
         return (
             <div>
-                {!ready && <LoadButton buttonText={"Build Database (for AutoFill)"} onComplete={setLoaded}/>}
+                {!ready && <DBLoader />}
+                &nbsp;
                 <DraftingToolbar
                     handleToggleAutofill={runAutofill}
                     handleSaveDraft={handleSaveDraft} 
@@ -391,11 +401,14 @@ const DraftEditor = (props: DraftEditorProps) => {
                     handleUpdateColumns={handleChangeColumns} 
                     handleUpdateRows={handleChangeRows}
                     handleUpdateTitle={handleUpdateTitle} 
+                    handleUpdateIsAnonymous={handleUpdateIsAnonymous}
+                    handleChangeSymmetry={handleChangeSymmetry}
                     isMobile={mobile} 
                     rows={grid.length}
                     columns={grid[0].length}
                     title={title}
                     isCompleted={isCompleted}
+                    symmetryOn={symmetryOn}
                 />
                 
                 <Editor

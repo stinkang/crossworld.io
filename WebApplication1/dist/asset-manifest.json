@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "auto/main.js",
+    "runtime.js": "auto/runtime.js",
+    "vendor.js": "auto/vendor.js"
+  },
+  "entrypoints": [
+    "auto/main.js",
+    "auto/runtime.js",
+    "auto/vendor.js"
+  ]
+}

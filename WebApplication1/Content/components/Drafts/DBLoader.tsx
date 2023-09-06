@@ -83,9 +83,9 @@ export const DBLoader = (): JSX.Element => {
         <h2>Database Rebuilder</h2>
         {error ? <p>Error loading existing database.</p> : ''}
         {ready ? (
-          <p>Found an existing database.</p>
+          <p>Found an existing database. AutoFill enabled.</p>
         ) : (
-          <p>No existing database found.</p>
+          <p>No existing database found. Please download to enable AutoFill.</p>
         )}
         <LoadButton
           buttonText={'Build Database'}

@@ -29,7 +29,7 @@ const CONFIGS = {
     measurementId: "G-LZQ0283BFR"
   },
 };
-const config = CONFIGS["development"];
+const config = CONFIGS["production"];
 
 const app = firebase.initializeApp(config);
 const db = firebase.database();
