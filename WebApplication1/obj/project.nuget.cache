@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "flN+LsliUlFuoIyVrSg+VzqRMcXD8ZuFW/ezgLC63qxdHg1vf6rJn4CwLwPOI/B+3sJ+Rmuuk+ajVN96Gw4x9g==",
+  "dgSpecHash": "pDsmY0sQJcoxnizLYWBlVKtBBf0Dyjue/nZSmDIdpFvzHGidD9rV9/XczV4zaOzSJ8hzVy7sTeINbt74YrRjLg==",
   "success": true,
   "projectFilePath": "C:\\Users\\austi\\RiderProjects\\WebApplication1\\WebApplication1\\CrossWorldApp.csproj",
   "expectedPackageFiles": [
@@ -58,19 +58,11 @@
     "C:\\Users\\austi\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
-    "C:\\Users\\austi\\.nuget\\packages\\javascriptengineswitcher.chakracore\\3.21.0\\javascriptengineswitcher.chakracore.3.21.0.nupkg.sha512",
-    "C:\\Users\\austi\\.nuget\\packages\\javascriptengineswitcher.chakracore.native.win-x64\\3.21.0\\javascriptengineswitcher.chakracore.native.win-x64.3.21.0.nupkg.sha512",
-    "C:\\Users\\austi\\.nuget\\packages\\javascriptengineswitcher.core\\3.21.0\\javascriptengineswitcher.core.3.21.0.nupkg.sha512",
-    "C:\\Users\\austi\\.nuget\\packages\\javascriptengineswitcher.extensions.msdependencyinjection\\3.21.0\\javascriptengineswitcher.extensions.msdependencyinjection.3.21.0.nupkg.sha512",
-    "C:\\Users\\austi\\.nuget\\packages\\javascriptengineswitcher.v8\\3.21.3\\javascriptengineswitcher.v8.3.21.3.nupkg.sha512",
-    "C:\\Users\\austi\\.nuget\\packages\\javascriptengineswitcher.v8.native.win-x64\\3.21.3\\javascriptengineswitcher.v8.native.win-x64.3.21.3.nupkg.sha512",
+    "C:\\Users\\austi\\.nuget\\packages\\javascriptengineswitcher.core\\3.1.0\\javascriptengineswitcher.core.3.1.0.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\jspool\\4.0.0\\jspool.4.0.0.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
-    "C:\\Users\\austi\\.nuget\\packages\\microsoft.aspnet.mvc\\5.2.9\\microsoft.aspnet.mvc.5.2.9.nupkg.sha512",
-    "C:\\Users\\austi\\.nuget\\packages\\microsoft.aspnet.razor\\3.2.9\\microsoft.aspnet.razor.3.2.9.nupkg.sha512",
-    "C:\\Users\\austi\\.nuget\\packages\\microsoft.aspnet.webpages\\3.2.9\\microsoft.aspnet.webpages.3.2.9.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.20\\microsoft.aspnetcore.cryptography.internal.6.0.20.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.20\\microsoft.aspnetcore.cryptography.keyderivation.6.0.20.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.20\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.20.nupkg.sha512",
@@ -79,10 +71,6 @@
     "C:\\Users\\austi\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\microsoft.build\\17.3.2\\microsoft.build.17.3.2.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\microsoft.build.framework\\17.3.2\\microsoft.build.framework.17.3.2.nupkg.sha512",
-    "C:\\Users\\austi\\.nuget\\packages\\microsoft.clearscript.core\\7.4.2\\microsoft.clearscript.core.7.4.2.nupkg.sha512",
-    "C:\\Users\\austi\\.nuget\\packages\\microsoft.clearscript.v8\\7.4.2\\microsoft.clearscript.v8.7.4.2.nupkg.sha512",
-    "C:\\Users\\austi\\.nuget\\packages\\microsoft.clearscript.v8.icudata\\7.4.2\\microsoft.clearscript.v8.icudata.7.4.2.nupkg.sha512",
-    "C:\\Users\\austi\\.nuget\\packages\\microsoft.clearscript.v8.native.win-x64\\7.4.2\\microsoft.clearscript.v8.native.win-x64.7.4.2.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.2\\microsoft.codeanalysis.analyzers.3.3.2.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\microsoft.codeanalysis.analyzerutilities\\3.3.0\\microsoft.codeanalysis.analyzerutilities.3.3.0.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\microsoft.codeanalysis.common\\4.0.0\\microsoft.codeanalysis.common.4.0.0.nupkg.sha512",
@@ -143,7 +131,6 @@
     "C:\\Users\\austi\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.templating\\6.0.15\\microsoft.visualstudio.web.codegeneration.templating.6.0.15.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.utils\\6.0.15\\microsoft.visualstudio.web.codegeneration.utils.6.0.15.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\microsoft.visualstudio.web.codegenerators.mvc\\6.0.15\\microsoft.visualstudio.web.codegenerators.mvc.6.0.15.nupkg.sha512",
-    "C:\\Users\\austi\\.nuget\\packages\\microsoft.web.infrastructure\\1.0.0\\microsoft.web.infrastructure.1.0.0.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
@@ -218,46 +205,5 @@
     "C:\\Users\\austi\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\austi\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Mvc 5.2.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Mvc",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Razor 3.2.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Razor",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.WebPages 3.2.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.WebPages",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.Web.Infrastructure 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.Web.Infrastructure",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }

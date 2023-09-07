@@ -19,16 +19,12 @@
     <Import Project="$(NuGetPackageRoot)microsoft.net.test.sdk\17.7.0\build\netcoreapp3.1\Microsoft.NET.Test.Sdk.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.test.sdk\17.7.0\build\netcoreapp3.1\Microsoft.NET.Test.Sdk.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore\8.0.0-preview.4.23259.3\buildTransitive\net6.0\Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore\8.0.0-preview.4.23259.3\buildTransitive\net6.0\Microsoft.EntityFrameworkCore.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design\8.0.0-preview.4.23259.3\build\net6.0\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design\8.0.0-preview.4.23259.3\build\net6.0\Microsoft.EntityFrameworkCore.Design.props')" />
-    <Import Project="$(NuGetPackageRoot)microsoft.clearscript.v8.native.win-x64\7.4.2\build\Microsoft.ClearScript.V8.Native.win-x64.props" Condition="Exists('$(NuGetPackageRoot)microsoft.clearscript.v8.native.win-x64\7.4.2\build\Microsoft.ClearScript.V8.Native.win-x64.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.identity.ui\6.0.20\build\Microsoft.AspNetCore.Identity.UI.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.identity.ui\6.0.20\build\Microsoft.AspNetCore.Identity.UI.props')" />
-    <Import Project="$(NuGetPackageRoot)javascriptengineswitcher.chakracore.native.win-x64\3.21.0\build\JavaScriptEngineSwitcher.ChakraCore.Native.win-x64.props" Condition="Exists('$(NuGetPackageRoot)javascriptengineswitcher.chakracore.native.win-x64\3.21.0\build\JavaScriptEngineSwitcher.ChakraCore.Native.win-x64.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMessagePackAnalyzer Condition=" '$(PkgMessagePackAnalyzer)' == '' ">C:\Users\austi\.nuget\packages\messagepackanalyzer\2.1.152</PkgMessagePackAnalyzer>
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\austi\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.2</PkgMicrosoft_CodeAnalysis_Analyzers>
     <PkgMicrosoft_CodeAnalysis_AnalyzerUtilities Condition=" '$(PkgMicrosoft_CodeAnalysis_AnalyzerUtilities)' == '' ">C:\Users\austi\.nuget\packages\microsoft.codeanalysis.analyzerutilities\3.3.0</PkgMicrosoft_CodeAnalysis_AnalyzerUtilities>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\austi\.nuget\packages\microsoft.entityframeworkcore.tools\6.0.20</PkgMicrosoft_EntityFrameworkCore_Tools>
-    <PkgMicrosoft_ClearScript_V8_Native_win-x64 Condition=" '$(PkgMicrosoft_ClearScript_V8_Native_win-x64)' == '' ">C:\Users\austi\.nuget\packages\microsoft.clearscript.v8.native.win-x64\7.4.2</PkgMicrosoft_ClearScript_V8_Native_win-x64>
-    <PkgJavaScriptEngineSwitcher_ChakraCore_Native_win-x64 Condition=" '$(PkgJavaScriptEngineSwitcher_ChakraCore_Native_win-x64)' == '' ">C:\Users\austi\.nuget\packages\javascriptengineswitcher.chakracore.native.win-x64\3.21.0</PkgJavaScriptEngineSwitcher_ChakraCore_Native_win-x64>
   </PropertyGroup>
 </Project>

@@ -1,4 +1,5 @@
-﻿using CrossWorldApp.Models;
+﻿using CrossWorldApp.Db;
+using CrossWorldApp.Models;
 
 namespace CrossWorldApp.Repositories
 {

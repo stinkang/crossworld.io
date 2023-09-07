@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CrossWorldApp.Migrations
 {
-    [DbContext(typeof(CrossWorldDbContext))]
+    [DbContext(typeof(ICrossWorldDbContext))]
     [Migration("20230727212023_AddCreatedAtToTestCrossword")]
     partial class AddCreatedAtToTestCrossword
     {

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CrossWorldApp.Migrations
 {
-    [DbContext(typeof(CrossWorldDbContext))]
+    [DbContext(typeof(ICrossWorldDbContext))]
     partial class CrossWorldDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

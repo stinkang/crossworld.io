@@ -1,10 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using CrossWorldApp;
+using CrossWorldApp.Db;
 using CrossWorldApp.Repositories;
 using CrossWorldApp.Services;
-using Microsoft.AspNetCore.Http;
-using JavaScriptEngineSwitcher.ChakraCore;
-using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using React.AspNet;
 using Microsoft.AspNetCore.Identity;
 using CrossWorldApp.Models;
@@ -21,9 +19,6 @@ builder.Services.AddTransient<IDraftService, DraftService>();
 builder.Services.AddTransient<ICrossWorldDbContext, CrossWorldDbContext>();
 
 builder.Services.AddReact();
-
-// Make sure a JS engine is registered, or you will get an error!
-builder.Services.AddJsEngineSwitcher(options => options.DefaultEngineName = ChakraCoreJsEngine.EngineName).AddChakraCore();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
