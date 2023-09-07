@@ -649,37 +649,7 @@
           }
         }
       },
-      "JavaScriptEngineSwitcher.ChakraCore/3.21.0": {
-        "type": "package",
-        "dependencies": {
-          "AdvancedStringBuilder": "0.1.0",
-          "JavaScriptEngineSwitcher.Core": "3.21.0"
-        },
-        "compile": {
-          "lib/netstandard2.1/JavaScriptEngineSwitcher.ChakraCore.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.1/JavaScriptEngineSwitcher.ChakraCore.dll": {}
-        },
-        "resource": {
-          "lib/netstandard2.1/ru-RU/JavaScriptEngineSwitcher.ChakraCore.resources.dll": {
-            "locale": "ru-RU"
-          }
-        }
-      },
-      "JavaScriptEngineSwitcher.ChakraCore.Native.win-x64/3.21.0": {
-        "type": "package",
-        "build": {
-          "build/JavaScriptEngineSwitcher.ChakraCore.Native.win-x64.props": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win-x64/native/ChakraCore.dll": {
-            "assetType": "native",
-            "rid": "win-x64"
-          }
-        }
-      },
-      "JavaScriptEngineSwitcher.Core/3.21.0": {
+      "JavaScriptEngineSwitcher.Core/3.1.0": {
         "type": "package",
         "dependencies": {
           "AdvancedStringBuilder": "0.1.0"
@@ -691,47 +661,9 @@
           "lib/netstandard2.0/JavaScriptEngineSwitcher.Core.dll": {}
         },
         "resource": {
-          "lib/netstandard2.0/ru-RU/JavaScriptEngineSwitcher.Core.resources.dll": {
-            "locale": "ru-RU"
+          "lib/netstandard2.0/ru-ru/JavaScriptEngineSwitcher.Core.resources.dll": {
+            "locale": "ru-ru"
           }
-        }
-      },
-      "JavaScriptEngineSwitcher.Extensions.MsDependencyInjection/3.21.0": {
-        "type": "package",
-        "dependencies": {
-          "JavaScriptEngineSwitcher.Core": "3.21.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/JavaScriptEngineSwitcher.Extensions.MsDependencyInjection.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/JavaScriptEngineSwitcher.Extensions.MsDependencyInjection.dll": {}
-        }
-      },
-      "JavaScriptEngineSwitcher.V8/3.21.3": {
-        "type": "package",
-        "dependencies": {
-          "AdvancedStringBuilder": "0.1.0",
-          "JavaScriptEngineSwitcher.Core": "3.21.0",
-          "Microsoft.ClearScript.V8": "7.4.2"
-        },
-        "compile": {
-          "lib/net5.0/JavaScriptEngineSwitcher.V8.dll": {}
-        },
-        "runtime": {
-          "lib/net5.0/JavaScriptEngineSwitcher.V8.dll": {}
-        },
-        "resource": {
-          "lib/net5.0/ru-RU/JavaScriptEngineSwitcher.V8.resources.dll": {
-            "locale": "ru-RU"
-          }
-        }
-      },
-      "JavaScriptEngineSwitcher.V8.Native.win-x64/3.21.3": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.ClearScript.V8.Native.win-x64": "7.4.2"
         }
       },
       "JSPool/4.0.0": {
@@ -775,47 +707,6 @@
       },
       "MessagePackAnalyzer/2.1.152": {
         "type": "package"
-      },
-      "Microsoft.AspNet.Mvc/5.2.9": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Razor": "[3.2.9, 3.3.0)",
-          "Microsoft.AspNet.WebPages": "[3.2.9, 3.3.0)"
-        },
-        "compile": {
-          "lib/net45/System.Web.Mvc.dll": {}
-        },
-        "runtime": {
-          "lib/net45/System.Web.Mvc.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Razor/3.2.9": {
-        "type": "package",
-        "compile": {
-          "lib/net45/System.Web.Razor.dll": {}
-        },
-        "runtime": {
-          "lib/net45/System.Web.Razor.dll": {}
-        }
-      },
-      "Microsoft.AspNet.WebPages/3.2.9": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Razor": "[3.2.9, 3.3.0)",
-          "Microsoft.Web.Infrastructure": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/System.Web.Helpers.dll": {},
-          "lib/net45/System.Web.WebPages.Deployment.dll": {},
-          "lib/net45/System.Web.WebPages.Razor.dll": {},
-          "lib/net45/System.Web.WebPages.dll": {}
-        },
-        "runtime": {
-          "lib/net45/System.Web.Helpers.dll": {},
-          "lib/net45/System.Web.WebPages.Deployment.dll": {},
-          "lib/net45/System.Web.WebPages.Razor.dll": {},
-          "lib/net45/System.Web.WebPages.dll": {}
-        }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/6.0.20": {
         "type": "package",
@@ -923,50 +814,6 @@
         },
         "runtime": {
           "lib/net6.0/Microsoft.Build.Framework.dll": {}
-        }
-      },
-      "Microsoft.ClearScript.Core/7.4.2": {
-        "type": "package",
-        "compile": {
-          "lib/net5.0/ClearScript.Core.dll": {}
-        },
-        "runtime": {
-          "lib/net5.0/ClearScript.Core.dll": {}
-        }
-      },
-      "Microsoft.ClearScript.V8/7.4.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.ClearScript.Core": "7.4.2",
-          "Microsoft.ClearScript.V8.ICUData": "7.4.2",
-          "Newtonsoft.Json": "13.0.1"
-        },
-        "compile": {
-          "lib/net5.0/ClearScript.V8.dll": {}
-        },
-        "runtime": {
-          "lib/net5.0/ClearScript.V8.dll": {}
-        }
-      },
-      "Microsoft.ClearScript.V8.ICUData/7.4.2": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard1.0/ClearScript.V8.ICUData.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.0/ClearScript.V8.ICUData.dll": {}
-        }
-      },
-      "Microsoft.ClearScript.V8.Native.win-x64/7.4.2": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.ClearScript.V8.Native.win-x64.props": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win-x64/native/ClearScriptV8.win-x64.dll": {
-            "assetType": "native",
-            "rid": "win-x64"
-          }
         }
       },
       "Microsoft.CodeAnalysis.Analyzers/3.3.2": {
@@ -2321,15 +2168,6 @@
         },
         "runtime": {
           "lib/net6.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
-        }
-      },
-      "Microsoft.Web.Infrastructure/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
         }
       },
       "Microsoft.Win32.SystemEvents/6.0.0": {
@@ -4213,155 +4051,30 @@
         "logo.png"
       ]
     },
-    "JavaScriptEngineSwitcher.ChakraCore/3.21.0": {
-      "sha512": "rJLy5KuyC9EJI6sKwG9w3fXWEXKX767ewJuP45VgjWxaFqamPO6hhzI19u7TXj3d9/bKQIUD9Vwc54PCYOKDtA==",
+    "JavaScriptEngineSwitcher.Core/3.1.0": {
+      "sha512": "UbyvwC+aSYwV76FDEa/C59lVzgBVdAuP/F4YpNfv+Ev+HllqLBgEhj8Hzo0pAk7uUGQwUxVnQBAtsINMy29ysQ==",
       "type": "package",
-      "path": "javascriptengineswitcher.chakracore/3.21.0",
+      "path": "javascriptengineswitcher.core/3.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.txt",
         "advanced-string-builder-license.txt",
-        "chakra-samples-license.txt",
-        "icon.png",
-        "javascriptengineswitcher.chakracore.3.21.0.nupkg.sha512",
-        "javascriptengineswitcher.chakracore.nuspec",
-        "jsrt-dotnet-license.txt",
-        "lib/net40-client/JavaScriptEngineSwitcher.ChakraCore.dll",
-        "lib/net40-client/JavaScriptEngineSwitcher.ChakraCore.xml",
-        "lib/net40-client/ru-RU/JavaScriptEngineSwitcher.ChakraCore.resources.dll",
-        "lib/net45/JavaScriptEngineSwitcher.ChakraCore.dll",
-        "lib/net45/JavaScriptEngineSwitcher.ChakraCore.xml",
-        "lib/net45/ru-RU/JavaScriptEngineSwitcher.ChakraCore.resources.dll",
-        "lib/net471/JavaScriptEngineSwitcher.ChakraCore.dll",
-        "lib/net471/JavaScriptEngineSwitcher.ChakraCore.xml",
-        "lib/net471/ru-RU/JavaScriptEngineSwitcher.ChakraCore.resources.dll",
-        "lib/netstandard1.3/JavaScriptEngineSwitcher.ChakraCore.dll",
-        "lib/netstandard1.3/JavaScriptEngineSwitcher.ChakraCore.xml",
-        "lib/netstandard1.3/ru-RU/JavaScriptEngineSwitcher.ChakraCore.resources.dll",
-        "lib/netstandard2.0/JavaScriptEngineSwitcher.ChakraCore.dll",
-        "lib/netstandard2.0/JavaScriptEngineSwitcher.ChakraCore.xml",
-        "lib/netstandard2.0/ru-RU/JavaScriptEngineSwitcher.ChakraCore.resources.dll",
-        "lib/netstandard2.1/JavaScriptEngineSwitcher.ChakraCore.dll",
-        "lib/netstandard2.1/JavaScriptEngineSwitcher.ChakraCore.xml",
-        "lib/netstandard2.1/ru-RU/JavaScriptEngineSwitcher.ChakraCore.resources.dll",
-        "polyfills-for-old-dot-net-license.txt",
-        "readme.txt"
-      ]
-    },
-    "JavaScriptEngineSwitcher.ChakraCore.Native.win-x64/3.21.0": {
-      "sha512": "RVUj0ZcsQns8HC0jhyEC6lvSHKH+AtK8p5JTPTL/fe2lIx1RVq7d+Hn3/t3bDbSDGP7afY1kmETJFchmwNc/3Q==",
-      "type": "package",
-      "path": "javascriptengineswitcher.chakracore.native.win-x64/3.21.0",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "build/JavaScriptEngineSwitcher.ChakraCore.Native.win-x64.props",
-        "chakra-core-license.txt",
-        "icon.png",
-        "javascriptengineswitcher.chakracore.native.win-x64.3.21.0.nupkg.sha512",
-        "javascriptengineswitcher.chakracore.native.win-x64.nuspec",
-        "readme.txt",
-        "runtimes/win-x64/native/ChakraCore.dll",
-        "tools/Install.ps1",
-        "tools/Uninstall.ps1"
-      ]
-    },
-    "JavaScriptEngineSwitcher.Core/3.21.0": {
-      "sha512": "/gXflCb9CMjXkoY84mOZcVoezfT6/pIPvgAsaSm+ADrOE4PSFCVyMg5/e9JRuGCHPnQRo6Cj34WgAVJ0BKJVLw==",
-      "type": "package",
-      "path": "javascriptengineswitcher.core/3.21.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "advanced-string-builder-license.txt",
-        "icon.png",
-        "javascriptengineswitcher.core.3.21.0.nupkg.sha512",
+        "javascriptengineswitcher.core.3.1.0.nupkg.sha512",
         "javascriptengineswitcher.core.nuspec",
         "lib/net40-client/JavaScriptEngineSwitcher.Core.dll",
         "lib/net40-client/JavaScriptEngineSwitcher.Core.xml",
-        "lib/net40-client/ru-RU/JavaScriptEngineSwitcher.Core.resources.dll",
+        "lib/net40-client/ru-ru/JavaScriptEngineSwitcher.Core.resources.dll",
         "lib/net45/JavaScriptEngineSwitcher.Core.dll",
         "lib/net45/JavaScriptEngineSwitcher.Core.xml",
-        "lib/net45/ru-RU/JavaScriptEngineSwitcher.Core.resources.dll",
+        "lib/net45/ru-ru/JavaScriptEngineSwitcher.Core.resources.dll",
         "lib/netstandard1.3/JavaScriptEngineSwitcher.Core.dll",
         "lib/netstandard1.3/JavaScriptEngineSwitcher.Core.xml",
-        "lib/netstandard1.3/ru-RU/JavaScriptEngineSwitcher.Core.resources.dll",
+        "lib/netstandard1.3/ru-ru/JavaScriptEngineSwitcher.Core.resources.dll",
         "lib/netstandard2.0/JavaScriptEngineSwitcher.Core.dll",
         "lib/netstandard2.0/JavaScriptEngineSwitcher.Core.xml",
-        "lib/netstandard2.0/ru-RU/JavaScriptEngineSwitcher.Core.resources.dll",
+        "lib/netstandard2.0/ru-ru/JavaScriptEngineSwitcher.Core.resources.dll",
         "readme.txt"
-      ]
-    },
-    "JavaScriptEngineSwitcher.Extensions.MsDependencyInjection/3.21.0": {
-      "sha512": "YtBxucm4ONwBBGKL+O66C7R5gNfe0Sldyjw4YZQjKjcTK6J3A0snUrYIG0om4nqXRvVbs37QhPTTOnAurhLjZA==",
-      "type": "package",
-      "path": "javascriptengineswitcher.extensions.msdependencyinjection/3.21.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "icon.png",
-        "javascriptengineswitcher.extensions.msdependencyinjection.3.21.0.nupkg.sha512",
-        "javascriptengineswitcher.extensions.msdependencyinjection.nuspec",
-        "lib/net45/JavaScriptEngineSwitcher.Extensions.MsDependencyInjection.dll",
-        "lib/net45/JavaScriptEngineSwitcher.Extensions.MsDependencyInjection.xml",
-        "lib/netstandard1.3/JavaScriptEngineSwitcher.Extensions.MsDependencyInjection.dll",
-        "lib/netstandard1.3/JavaScriptEngineSwitcher.Extensions.MsDependencyInjection.xml",
-        "lib/netstandard2.0/JavaScriptEngineSwitcher.Extensions.MsDependencyInjection.dll",
-        "lib/netstandard2.0/JavaScriptEngineSwitcher.Extensions.MsDependencyInjection.xml",
-        "readme.txt"
-      ]
-    },
-    "JavaScriptEngineSwitcher.V8/3.21.3": {
-      "sha512": "t6NjCnOFVXbZy0NNTh87v1xV2kQAn3YUOlSXCEcY6xWdnOYbQFkgO5EKFhcnIoATgoBAriSuXrwpbEaihZTRLA==",
-      "type": "package",
-      "path": "javascriptengineswitcher.v8/3.21.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "advanced-string-builder-license.txt",
-        "clearscript-license.txt",
-        "icon.png",
-        "javascriptengineswitcher.v8.3.21.3.nupkg.sha512",
-        "javascriptengineswitcher.v8.nuspec",
-        "lib/net45/JavaScriptEngineSwitcher.V8.dll",
-        "lib/net45/JavaScriptEngineSwitcher.V8.xml",
-        "lib/net45/ru-RU/JavaScriptEngineSwitcher.V8.resources.dll",
-        "lib/net471/JavaScriptEngineSwitcher.V8.dll",
-        "lib/net471/JavaScriptEngineSwitcher.V8.xml",
-        "lib/net471/ru-RU/JavaScriptEngineSwitcher.V8.resources.dll",
-        "lib/net5.0/JavaScriptEngineSwitcher.V8.dll",
-        "lib/net5.0/JavaScriptEngineSwitcher.V8.xml",
-        "lib/net5.0/ru-RU/JavaScriptEngineSwitcher.V8.resources.dll",
-        "lib/netcoreapp3.1/JavaScriptEngineSwitcher.V8.dll",
-        "lib/netcoreapp3.1/JavaScriptEngineSwitcher.V8.xml",
-        "lib/netcoreapp3.1/ru-RU/JavaScriptEngineSwitcher.V8.resources.dll",
-        "lib/netstandard2.1/JavaScriptEngineSwitcher.V8.dll",
-        "lib/netstandard2.1/JavaScriptEngineSwitcher.V8.xml",
-        "lib/netstandard2.1/ru-RU/JavaScriptEngineSwitcher.V8.resources.dll",
-        "readme.txt",
-        "v8-license.txt"
-      ]
-    },
-    "JavaScriptEngineSwitcher.V8.Native.win-x64/3.21.3": {
-      "sha512": "MWe1xBVO2Zon/7oYwDsbzHEcBze26SyfbODD7OHvWy5y8DuxeWeTxHqj3UqGfMA/oyG77g8+7GNei1tnUnyYdw==",
-      "type": "package",
-      "path": "javascriptengineswitcher.v8.native.win-x64/3.21.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "clearscript-license.txt",
-        "icon.png",
-        "javascriptengineswitcher.v8.native.win-x64.3.21.3.nupkg.sha512",
-        "javascriptengineswitcher.v8.native.win-x64.nuspec",
-        "readme.txt",
-        "v8-license.txt"
       ]
     },
     "JSPool/4.0.0": {
@@ -4427,61 +4140,6 @@
         "messagepackanalyzer.nuspec",
         "tools/install.ps1",
         "tools/uninstall.ps1"
-      ]
-    },
-    "Microsoft.AspNet.Mvc/5.2.9": {
-      "sha512": "bcekKshCAh7kTWSMZPavQStSZQF/QmjEjO2gVWGITEd0/t5eRlb+ZLDE+az2qY1bZ8L6Hz0OCNeS0uzXtJcK5w==",
-      "type": "package",
-      "path": "microsoft.aspnet.mvc/5.2.9",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Content/Web.config.install.xdt",
-        "Content/Web.config.uninstall.xdt",
-        "NET.icon.png",
-        "NET_Library_EULA_ENU.txt",
-        "lib/net45/System.Web.Mvc.dll",
-        "lib/net45/System.Web.Mvc.xml",
-        "microsoft.aspnet.mvc.5.2.9.nupkg.sha512",
-        "microsoft.aspnet.mvc.nuspec"
-      ]
-    },
-    "Microsoft.AspNet.Razor/3.2.9": {
-      "sha512": "QOJEnEw3xp+t5lMvYR5nGCF4CfZpHqr2p8uZOBEgDZoB6r2txtSj6581YNr+/dOHjI3YRlo1QAKGQoSohbQ/KA==",
-      "type": "package",
-      "path": "microsoft.aspnet.razor/3.2.9",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "NET.icon.png",
-        "NET_Library_EULA_ENU.txt",
-        "lib/net45/System.Web.Razor.dll",
-        "lib/net45/System.Web.Razor.xml",
-        "microsoft.aspnet.razor.3.2.9.nupkg.sha512",
-        "microsoft.aspnet.razor.nuspec"
-      ]
-    },
-    "Microsoft.AspNet.WebPages/3.2.9": {
-      "sha512": "yByb721lwv8YFsx1oKA5CLKXa89XVbVMkPafS4bg/bPelBEgChq/coFBQEkA4kwcabG7AR56w3vapnoZUfr2Cw==",
-      "type": "package",
-      "path": "microsoft.aspnet.webpages/3.2.9",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Content/Web.config.install.xdt",
-        "Content/Web.config.uninstall.xdt",
-        "NET.icon.png",
-        "NET_Library_EULA_ENU.txt",
-        "lib/net45/System.Web.Helpers.dll",
-        "lib/net45/System.Web.Helpers.xml",
-        "lib/net45/System.Web.WebPages.Deployment.dll",
-        "lib/net45/System.Web.WebPages.Deployment.xml",
-        "lib/net45/System.Web.WebPages.Razor.dll",
-        "lib/net45/System.Web.WebPages.Razor.xml",
-        "lib/net45/System.Web.WebPages.dll",
-        "lib/net45/System.Web.WebPages.xml",
-        "microsoft.aspnet.webpages.3.2.9.nupkg.sha512",
-        "microsoft.aspnet.webpages.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/6.0.20": {
@@ -4739,113 +4397,6 @@
         "ref/net6.0/Microsoft.Build.Framework.xml",
         "ref/netstandard2.0/Microsoft.Build.Framework.dll",
         "ref/netstandard2.0/Microsoft.Build.Framework.xml"
-      ]
-    },
-    "Microsoft.ClearScript.Core/7.4.2": {
-      "sha512": "EHITzjTF3wchM2epMEGuo0FDVuscW6tvY7kXFEo9SVMg5UYPLH3IGaLrODtdM82+1Q5f0xU/RtOZ5PHLcjbEpg==",
-      "type": "package",
-      "path": "microsoft.clearscript.core/7.4.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "License.txt",
-        "ReadMe.md",
-        "images/ClearScript.png",
-        "lib/net45/ClearScript.Core.dll",
-        "lib/net45/ClearScript.Core.xml",
-        "lib/net471/ClearScript.Core.dll",
-        "lib/net471/ClearScript.Core.xml",
-        "lib/net5.0/ClearScript.Core.dll",
-        "lib/net5.0/ClearScript.Core.xml",
-        "lib/netcoreapp3.1/ClearScript.Core.dll",
-        "lib/netcoreapp3.1/ClearScript.Core.xml",
-        "lib/netstandard2.1/ClearScript.Core.dll",
-        "lib/netstandard2.1/ClearScript.Core.xml",
-        "lib/uap10.0/ClearScript.Core.dll",
-        "lib/uap10.0/ClearScript.Core.xml",
-        "licenses/ClearScript/License.txt",
-        "licenses/V8/LICENSE",
-        "licenses/V8/LICENSE.fdlibm",
-        "licenses/V8/LICENSE.strongtalk",
-        "licenses/V8/LICENSE.v8",
-        "microsoft.clearscript.core.7.4.2.nupkg.sha512",
-        "microsoft.clearscript.core.nuspec"
-      ]
-    },
-    "Microsoft.ClearScript.V8/7.4.2": {
-      "sha512": "cA+EfenwcBLMEpKPA8cmRBowY1a3w+I8XFiUudYbRyoXjwDTjsORogaOWQaZetVfO2ER1WasfD6iq1w1RZTXoA==",
-      "type": "package",
-      "path": "microsoft.clearscript.v8/7.4.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "License.txt",
-        "ReadMe.md",
-        "images/ClearScript.png",
-        "lib/net45/ClearScript.V8.dll",
-        "lib/net45/ClearScript.V8.xml",
-        "lib/net471/ClearScript.V8.dll",
-        "lib/net471/ClearScript.V8.xml",
-        "lib/net5.0/ClearScript.V8.dll",
-        "lib/net5.0/ClearScript.V8.xml",
-        "lib/netcoreapp3.1/ClearScript.V8.dll",
-        "lib/netcoreapp3.1/ClearScript.V8.xml",
-        "lib/netstandard2.1/ClearScript.V8.dll",
-        "lib/netstandard2.1/ClearScript.V8.xml",
-        "lib/uap10.0/ClearScript.V8.dll",
-        "lib/uap10.0/ClearScript.V8.xml",
-        "licenses/ClearScript/License.txt",
-        "licenses/V8/LICENSE",
-        "licenses/V8/LICENSE.fdlibm",
-        "licenses/V8/LICENSE.strongtalk",
-        "licenses/V8/LICENSE.v8",
-        "microsoft.clearscript.v8.7.4.2.nupkg.sha512",
-        "microsoft.clearscript.v8.nuspec"
-      ]
-    },
-    "Microsoft.ClearScript.V8.ICUData/7.4.2": {
-      "sha512": "q8FAC8XD5eckRpL5fN7d8bfqStNdULstl0fuk8Fp0faz4r2aQWNPxc7vfl+R98U2gh2N12nJ9tO9wYnHqjVpIg==",
-      "type": "package",
-      "path": "microsoft.clearscript.v8.icudata/7.4.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "License.txt",
-        "ReadMe.md",
-        "images/ClearScript.png",
-        "lib/netstandard1.0/ClearScript.V8.ICUData.dll",
-        "lib/netstandard1.0/ClearScript.V8.ICUData.xml",
-        "licenses/ClearScript/License.txt",
-        "licenses/V8/LICENSE",
-        "licenses/V8/LICENSE.fdlibm",
-        "licenses/V8/LICENSE.strongtalk",
-        "licenses/V8/LICENSE.v8",
-        "microsoft.clearscript.v8.icudata.7.4.2.nupkg.sha512",
-        "microsoft.clearscript.v8.icudata.nuspec"
-      ]
-    },
-    "Microsoft.ClearScript.V8.Native.win-x64/7.4.2": {
-      "sha512": "SAwqAp0JLApXajZ8ZDVpv6f1epkkbEFx+KBWfSw1nwJcr1HnxKIIOoEssZg9Alyi/sLq6iHS+YrePXIgjW1pmw==",
-      "type": "package",
-      "path": "microsoft.clearscript.v8.native.win-x64/7.4.2",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "License.txt",
-        "ReadMe.md",
-        "build/Microsoft.ClearScript.V8.Native.win-x64.props",
-        "images/ClearScript.png",
-        "licenses/ClearScript/License.txt",
-        "licenses/V8/LICENSE",
-        "licenses/V8/LICENSE.fdlibm",
-        "licenses/V8/LICENSE.strongtalk",
-        "licenses/V8/LICENSE.v8",
-        "microsoft.clearscript.v8.native.win-x64.7.4.2.nupkg.sha512",
-        "microsoft.clearscript.v8.native.win-x64.nuspec",
-        "runtimes/win-x64/native/ClearScriptV8.win-x64.dll",
-        "tools/Install.ps1",
-        "tools/Uninstall.ps1"
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/3.3.2": {
@@ -7110,18 +6661,6 @@
         "lib/net6.0/minimalApiChanges.json",
         "microsoft.visualstudio.web.codegenerators.mvc.6.0.15.nupkg.sha512",
         "microsoft.visualstudio.web.codegenerators.mvc.nuspec"
-      ]
-    },
-    "Microsoft.Web.Infrastructure/1.0.0": {
-      "sha512": "FNmvLn5m2LTU/Rs2KWVo0SIIh9Ek+U0ojex7xeDaSHw/zgEP77A8vY5cVWgUtBGS8MJfDGNn8rpXJWEIQaPwTg==",
-      "type": "package",
-      "path": "microsoft.web.infrastructure/1.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/Microsoft.Web.Infrastructure.dll",
-        "microsoft.web.infrastructure.1.0.0.nupkg.sha512",
-        "microsoft.web.infrastructure.nuspec"
       ]
     },
     "Microsoft.Win32.SystemEvents/6.0.0": {
@@ -10013,12 +9552,6 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "JavaScriptEngineSwitcher.ChakraCore >= 3.21.0",
-      "JavaScriptEngineSwitcher.ChakraCore.Native.win-x64 >= 3.21.0",
-      "JavaScriptEngineSwitcher.Extensions.MsDependencyInjection >= 3.21.0",
-      "JavaScriptEngineSwitcher.V8 >= 3.21.3",
-      "JavaScriptEngineSwitcher.V8.Native.win-x64 >= 3.21.3",
-      "Microsoft.AspNet.Mvc >= 5.2.9",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.20",
       "Microsoft.AspNetCore.Identity.UI >= 6.0.20",
       "Microsoft.EntityFrameworkCore >= 8.0.0-preview.4.23259.3",
@@ -10072,30 +9605,6 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
-          "JavaScriptEngineSwitcher.ChakraCore": {
-            "target": "Package",
-            "version": "[3.21.0, )"
-          },
-          "JavaScriptEngineSwitcher.ChakraCore.Native.win-x64": {
-            "target": "Package",
-            "version": "[3.21.0, )"
-          },
-          "JavaScriptEngineSwitcher.Extensions.MsDependencyInjection": {
-            "target": "Package",
-            "version": "[3.21.0, )"
-          },
-          "JavaScriptEngineSwitcher.V8": {
-            "target": "Package",
-            "version": "[3.21.3, )"
-          },
-          "JavaScriptEngineSwitcher.V8.Native.win-x64": {
-            "target": "Package",
-            "version": "[3.21.3, )"
-          },
-          "Microsoft.AspNet.Mvc": {
-            "target": "Package",
-            "version": "[5.2.9, )"
-          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[6.0.20, )"
@@ -10167,47 +9676,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Mvc 5.2.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Mvc",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Razor 3.2.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Razor",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.WebPages 3.2.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.WebPages",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.Web.Infrastructure 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.Web.Infrastructure",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  }
 }

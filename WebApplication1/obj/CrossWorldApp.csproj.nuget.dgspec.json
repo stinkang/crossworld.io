@@ -41,30 +41,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "JavaScriptEngineSwitcher.ChakraCore": {
-              "target": "Package",
-              "version": "[3.21.0, )"
-            },
-            "JavaScriptEngineSwitcher.ChakraCore.Native.win-x64": {
-              "target": "Package",
-              "version": "[3.21.0, )"
-            },
-            "JavaScriptEngineSwitcher.Extensions.MsDependencyInjection": {
-              "target": "Package",
-              "version": "[3.21.0, )"
-            },
-            "JavaScriptEngineSwitcher.V8": {
-              "target": "Package",
-              "version": "[3.21.3, )"
-            },
-            "JavaScriptEngineSwitcher.V8.Native.win-x64": {
-              "target": "Package",
-              "version": "[3.21.3, )"
-            },
-            "Microsoft.AspNet.Mvc": {
-              "target": "Package",
-              "version": "[5.2.9, )"
-            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.20, )"

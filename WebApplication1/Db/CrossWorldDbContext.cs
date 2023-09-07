@@ -3,7 +3,7 @@ using CrossWorldApp.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using CrossWorldApp.Controllers;
 
-namespace CrossWorldApp;
+namespace CrossWorldApp.Db;
 
 public class CrossWorldDbContext : IdentityDbContext<CrossworldUser>, ICrossWorldDbContext
 {
@@ -15,9 +15,7 @@ public class CrossWorldDbContext : IdentityDbContext<CrossworldUser>, ICrossWorl
     public DbSet<Clue> Clues { get; set; }
     public DbSet<CrosswordClue> CrosswordClues { get; set; }
     public DbSet<TestCrossword> TestCrosswords { get; set; }
-
     public DbSet<Draft> Drafts { get; set; }
-    
     public DbSet<Solve> Solves { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

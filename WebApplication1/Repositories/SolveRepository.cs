@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CrossWorldApp.Db;
+using Microsoft.EntityFrameworkCore;
 
 namespace CrossWorldApp.Repositories;
 using CrossWorldApp.Models;
