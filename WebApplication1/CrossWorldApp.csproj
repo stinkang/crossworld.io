@@ -9,8 +9,8 @@
     <ItemGroup>
       <Compile Remove="React\**" />
       <Content Remove="React\**" />
-      <Content Include="Content\components\Home\index.tsx" />
-      <Content Include="Content\components\Home\Tutorial.tsx" />
+      <Content Include="FrontEnd\components\Home\index.tsx" />
+      <Content Include="FrontEnd\components\Home\Tutorial.tsx" />
       <EmbeddedResource Remove="React\**" />
       <None Remove="React\**" />
     </ItemGroup>
@@ -50,24 +50,24 @@
     </ItemGroup>
 
     <ItemGroup>
-      <TypeScriptCompile Include="Content\components\Crosswords\CrosswordIcon.tsx" />
-      <TypeScriptCompile Include="Content\components\Crosswords\CrosswordsIndex.tsx" />
-      <TypeScriptCompile Include="Content\components\Crosswords\InitCrosswordsIndex.tsx" />
-      <TypeScriptCompile Include="Content\components\Crosswords\Models\CrosswordModel.ts" />
-      <TypeScriptCompile Include="Content\components\Crosswords\Models\LeaderboardItemViewModel.ts" />
-      <TypeScriptCompile Include="Content\components\Crosswords\LoginModal.tsx" />
-      <TypeScriptCompile Include="Content\components\Drafts\DraftIcon.tsx" />
-      <TypeScriptCompile Include="Content\components\Drafts\DraftsIndex.tsx" />
-      <TypeScriptCompile Include="Content\components\Drafts\InitDraftsIndex.tsx" />
-      <TypeScriptCompile Include="Content\components\Drafts\PublishModal.tsx" />
-      <TypeScriptCompile Include="Content\components\Solve\InitSolveEdit.tsx" />
-      <TypeScriptCompile Include="Content\components\Solve\InitSolveGame.tsx" />
-      <TypeScriptCompile Include="Content\components\Solve\Models\Solve.ts" />
-      <TypeScriptCompile Include="Content\components\Solve\Models\SolveViewModel.ts" />
-      <TypeScriptCompile Include="Content\components\Solve\SolveEdit.tsx" />
-      <TypeScriptCompile Include="Content\components\Solve\SolveGame.tsx" />
-      <None Include="Content\components\Users\InitProfileView.tsx" />
-      <TypeScriptCompile Include="Content\components\Users\ProfileView.tsx" />
+      <TypeScriptCompile Include="FrontEnd\components\Crosswords\CrosswordIcon.tsx" />
+      <TypeScriptCompile Include="FrontEnd\components\Crosswords\CrosswordsIndex.tsx" />
+      <TypeScriptCompile Include="FrontEnd\components\Crosswords\InitCrosswordsIndex.tsx" />
+      <TypeScriptCompile Include="FrontEnd\components\Crosswords\Models\CrosswordModel.ts" />
+      <TypeScriptCompile Include="FrontEnd\components\Crosswords\Models\LeaderboardItemViewModel.ts" />
+      <TypeScriptCompile Include="FrontEnd\components\Crosswords\LoginModal.tsx" />
+      <TypeScriptCompile Include="FrontEnd\components\Drafts\DraftIcon.tsx" />
+      <TypeScriptCompile Include="FrontEnd\components\Drafts\DraftsIndex.tsx" />
+      <TypeScriptCompile Include="FrontEnd\components\Drafts\InitDraftsIndex.tsx" />
+      <TypeScriptCompile Include="FrontEnd\components\Drafts\PublishModal.tsx" />
+      <TypeScriptCompile Include="FrontEnd\components\Solve\InitSolveEdit.tsx" />
+      <TypeScriptCompile Include="FrontEnd\components\Solve\InitSolveGame.tsx" />
+      <TypeScriptCompile Include="FrontEnd\components\Solve\Models\Solve.ts" />
+      <TypeScriptCompile Include="FrontEnd\components\Solve\Models\SolveViewModel.ts" />
+      <TypeScriptCompile Include="FrontEnd\components\Solve\SolveEdit.tsx" />
+      <TypeScriptCompile Include="FrontEnd\components\Solve\SolveGame.tsx" />
+      <None Include="FrontEnd\components\Users\InitProfileView.tsx" />
+      <TypeScriptCompile Include="FrontEnd\components\Users\ProfileView.tsx" />
     </ItemGroup>
 
     <ItemGroup>

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CrossWorldApp.Migrations
 {
-    [DbContext(typeof(ICrossWorldDbContext))]
+    [DbContext(typeof(CrossWorldDbContext))]
     [Migration("20230718230640_InitialCreate")]
     partial class InitialCreate
     {

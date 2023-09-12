@@ -1,4 +1,4 @@
-﻿using CrossWorldApp.Db;
+﻿using CrossWorldApp;
 using Microsoft.EntityFrameworkCore;
 
 namespace CrossWorldApp.Repositories;

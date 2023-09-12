@@ -3,9 +3,9 @@ using CrossWorldApp.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using CrossWorldApp.Controllers;
 
-namespace CrossWorldApp.Db;
+namespace CrossWorldApp;
 
-public class CrossWorldDbContext : IdentityDbContext<CrossworldUser>, ICrossWorldDbContext
+public class CrossWorldDbContext : IdentityDbContext<CrossworldUser>
 {
     public CrossWorldDbContext(DbContextOptions<CrossWorldDbContext> options)
         : base(options)

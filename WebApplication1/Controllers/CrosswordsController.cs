@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Identity;
 namespace CrossWorldApp.Controllers;
 public class CrosswordsController : Controller
 {
-    private readonly ICrossWorldDbContext _context;
+    private readonly CrossWorldDbContext _context;
     private readonly ITestCrosswordRepository _testCrosswordRepository;
     private readonly UserManager<CrossworldUser> _userManager;
 
     public CrosswordsController(
-        ICrossWorldDbContext context,
+        CrossWorldDbContext context,
         ITestCrosswordRepository testCrosswordRepository,
         UserManager<CrossworldUser> userManager
         )
