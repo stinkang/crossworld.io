@@ -6,9 +6,15 @@ CrossWorld! is an open-source website for constructing and sharing crosswords. I
 
 # Development
 
-`docker-compose build`
+```console
+docker-compose build
+```
 
-`docker-compose up`
+```console
+docker-compose up
+```
+
+The containerized setup is using a SQL Server 2019 container with data persistence. Alternatively, you can set up your own local database by adding a `DefaultConnection` string in appsettings.json.
 
 Note: The Firebase container setup is still a WIP. As a result, real-time collaborative gameplay and the word database from Google Cloud storage do not work yet. 
 
