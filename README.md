@@ -1,6 +1,19 @@
-# crossworld.io
-crossworld website
+# Welcome to CrossWorld!
 
-# Coming soon...
+crossworld.io
 
-Currently working on moving to a containerized environment. The README will be updated with development/contribution instructions once that is ready! Thanks.
+CrossWorld! is an open-source website for constructing and sharing crosswords. It runs an ASP.NET Core server on Azure, and has a React frontend implemented in TypeScript/JavaScript. Real-time gameplay uses Firebase Realtime Database, and a word database for Autofill is stored in Google Cloud storage.
+
+# Development
+
+`docker-compose build`
+
+`docker-compose up`
+
+Note: The Firebase container setup is still a WIP. As a result, real-time collaborative gameplay and the word database from Google Cloud storage do not work yet. 
+
+# Contribution
+
+Contributions are highly encouraged, and much needed! Right now, unit testing is minimal, and Continuous Integration needs to be set up (among other issues). If you are a crossword enthusiast or want to see a feature that hasn't been implemented yet, please submit a pull request!
+
+
