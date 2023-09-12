@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  webapp:
+    build: .
+    ports:
+      - "8000:80"
+    environment:
+      - ConnectionString=Server=db;Database=mydatabase;User Id=sa;Password=YourStrong!Passw0rd;Encrypt=False;
+    depends_on:
+      - db
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "YourStrong!Passw0rd"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql-data:/var/opt/mssql
+      - ./init.sql:/var/opt/mssql/scripts/init.sql
+volumes:
+  sql-data:

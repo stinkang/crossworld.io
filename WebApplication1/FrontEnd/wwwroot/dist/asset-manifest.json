@@ -1,0 +1,16 @@
+{
+  "files": {
+    "drafts.js": "auto/drafts.js",
+    "crosswords.js": "auto/crosswords.js",
+    "solve.js": "auto/solve.js",
+    "users.js": "auto/users.js",
+    "lib_autofill_worker_ts.js": "auto/lib_autofill_worker_ts.js",
+    "vendors-node_modules_fp-ts_lib_Option_js-node_modules_io-ts_es6_index_js-node_modules_io-ts_l-8d9ed5.js": "auto/vendors-node_modules_fp-ts_lib_Option_js-node_modules_io-ts_es6_index_js-node_modules_io-ts_l-8d9ed5.js"
+  },
+  "entrypoints": [
+    "auto/drafts.js",
+    "auto/crosswords.js",
+    "auto/solve.js",
+    "auto/users.js"
+  ]
+}

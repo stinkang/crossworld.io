@@ -1,4 +1,4 @@
-﻿using CrossWorldApp.Db;
+﻿using CrossWorldApp;
 using CrossWorldApp.Models;
 using Microsoft.EntityFrameworkCore;
 

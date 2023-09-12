@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CrossWorldApp.Models;
 using CrossWorldApp;
-using CrossWorldApp.Db;
+using CrossWorldApp;
 using CrossWorldApp.Repositories;
 using CrossWorldApp.Services;
 using CrossWorldApp.ViewModels;

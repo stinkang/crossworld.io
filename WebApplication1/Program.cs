@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using CrossWorldApp;
-using CrossWorldApp.Db;
+using CrossWorldApp;
 using CrossWorldApp.Repositories;
 using CrossWorldApp.Services;
 using React.AspNet;
@@ -16,7 +16,6 @@ builder.Services.AddTransient<ICrosswordRepository, CrosswordRepository>();
 builder.Services.AddTransient<ICrossworldUserService, CrossworldUserService>();
 builder.Services.AddTransient<ISolveRepository, SolveRepository>();
 builder.Services.AddTransient<IDraftService, DraftService>();
-builder.Services.AddTransient<ICrossWorldDbContext, CrossWorldDbContext>();
 
 builder.Services.AddReact();
 
@@ -25,7 +24,8 @@ builder.Services.AddControllersWithViews();
 
 // Add the DbContext and the Repository to the services.
 builder.Services.AddDbContext<CrossWorldDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") ??
+                         Environment.GetEnvironmentVariable("ConnectionString")));
 
 builder.Services.AddDefaultIdentity<CrossworldUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<CrossWorldDbContext>();
@@ -66,7 +66,23 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 builder.Services.AddScoped<ICrosswordRepository, CrosswordRepository>();
+
 var app = builder.Build();
+
+// Here
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var dbContext = services.GetRequiredService<CrossWorldDbContext>();
+        dbContext.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        // Log or output the error here
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
