@@ -1,6 +1,6 @@
 # Welcome to CrossWorld!
 
-crossworld.io
+[crossworld.io](crossworld.io)
 
 CrossWorld! is an open-source website for constructing and sharing crosswords. It runs an ASP.NET Core server on Azure, and has a React frontend implemented in TypeScript/JavaScript. Real-time gameplay uses Firebase Realtime Database, and a word database for Autofill is stored in Google Cloud storage.
 
